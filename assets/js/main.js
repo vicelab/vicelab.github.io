@@ -1,100 +1,95 @@
 /*
-	Spectral by HTML5 UP
+	Future Imperfect by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 (function($) {
 
-	skel
-		.breakpoints({
-			xlarge:	'(max-width: 1680px)',
-			large:	'(max-width: 1280px)',
-			medium:	'(max-width: 980px)',
-			small:	'(max-width: 736px)',
-			xsmall:	'(max-width: 480px)'
+	var	$window = $(window),
+		$body = $('body'),
+		$menu = $('#menu'),
+		$sidebar = $('#sidebar'),
+		$main = $('#main');
+
+	// Breakpoints.
+		breakpoints({
+			xlarge:   [ '1281px',  '1680px' ],
+			large:    [ '981px',   '1280px' ],
+			medium:   [ '737px',   '980px'  ],
+			small:    [ '481px',   '736px'  ],
+			xsmall:   [ null,      '480px'  ]
 		});
 
-	$(function() {
+	// Play initial animations on page load.
+		$window.on('load', function() {
+			window.setTimeout(function() {
+				$body.removeClass('is-preload');
+			}, 100);
+		});
 
-		var	$window = $(window),
-			$body = $('body'),
-			$wrapper = $('#page-wrapper'),
-			$banner = $('#banner'),
-			$header = $('#header');
+	// Menu.
+		$menu
+			.appendTo($body)
+			.panel({
+				delay: 500,
+				hideOnClick: true,
+				hideOnSwipe: true,
+				resetScroll: true,
+				resetForms: true,
+				side: 'right',
+				target: $body,
+				visibleClass: 'is-menu-visible'
+			});
 
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
+	// Search (header).
+		var $search = $('#search'),
+			$search_input = $search.find('input');
 
-			$window.on('load', function() {
+		$body
+			.on('click', '[href="#search"]', function(event) {
+
+				event.preventDefault();
+
+				// Not visible?
+					if (!$search.hasClass('visible')) {
+
+						// Reset form.
+							$search[0].reset();
+
+						// Show.
+							$search.addClass('visible');
+
+						// Focus input.
+							$search_input.focus();
+
+					}
+
+			});
+
+		$search_input
+			.on('keydown', function(event) {
+
+				if (event.keyCode == 27)
+					$search_input.blur();
+
+			})
+			.on('blur', function() {
 				window.setTimeout(function() {
-					$body.removeClass('is-loading');
+					$search.removeClass('visible');
 				}, 100);
 			});
 
-		// Mobile?
-			if (skel.vars.mobile)
-				$body.addClass('is-mobile');
-			else
-				skel
-					.on('-medium !medium', function() {
-						$body.removeClass('is-mobile');
-					})
-					.on('+medium', function() {
-						$body.addClass('is-mobile');
-					});
+	// Intro.
+		var $intro = $('#intro');
 
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
-
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
+		// Move to main on <=large, back to sidebar on >large.
+			breakpoints.on('<=large', function() {
+				$intro.prependTo($main);
 			});
 
-		// Scrolly.
-			$('.scrolly')
-				.scrolly({
-					speed: 1500,
-					offset: $header.outerHeight()
-				});
-
-		// Menu.
-			$('#menu')
-				.append('<a href="#menu" class="close"></a>')
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'right',
-					target: $body,
-					visibleClass: 'is-menu-visible'
-				});
-
-		// Header.
-			if (skel.vars.IEVersion < 9)
-				$header.removeClass('alt');
-
-			if ($banner.length > 0
-			&&	$header.hasClass('alt')) {
-
-				$window.on('resize', function() { $window.trigger('scroll'); });
-
-				$banner.scrollex({
-					bottom:		$header.outerHeight() + 1,
-					terminate:	function() { $header.removeClass('alt'); },
-					enter:		function() { $header.addClass('alt'); },
-					leave:		function() { $header.removeClass('alt'); }
-				});
-
-			}
-
-	});
+			breakpoints.on('>large', function() {
+				$intro.prependTo($sidebar);
+			});
 
 })(jQuery);
