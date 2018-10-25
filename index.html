@@ -154,7 +154,6 @@
 							<span class="name">Joshua H. Viers</span>
 							<img src="images/people/josh-viers.jpg" alt="" style="box-shadow: 5px 5px 25px -5px rgba(0, 0, 0, 0.45);" />
 						</a>
-
 					</div> -->
 				</header>
 				<a href="single.html" class="image featured" style="box-shadow: 5px 5px 25px -5px rgba(0, 0, 0, 0.45);">
@@ -325,19 +324,8 @@
 			</article>
 
 			<!-- WHERE WE ARE -->
-			<article class="post">
-				<header>
-					<div class="title">
-						<h2>
-							<a href="single.html">Where We Are</a>
-						</h2>
-						<p>Located at the University of California, Merced, in the heart of California's Central Valley, we aim to bring a global
-							perspective to issues pertintent to our region.</p>
-						<!-- . Through national and international collaboration,  -->
-					</div>
-				</header>
-				<iframe allowfullscreen="" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3227292.804823977!2d-120.8346489!3d37.821593!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809146ac7787812b%3A0xc26bf75dd5d66333!2sUniversity+of+California+Merced!5e0!3m2!1sen!2sus!4v1444858347415"
-				 style="border:0; padding-left: 20px; padding-bottom: 20px;" width="100%" height="350" frameborder="0"></iframe>
+			<article class="post" id="where-we-are">
+
 			</article>
 		</div>
 
@@ -460,37 +448,11 @@
 			</section>
 
 			<!-- About -->
-			<section class="blurb">
-				<h2>About</h2>
-				<p> The research lab of Professor Joshua H. Viers, based out of the University of California, Merced, focuses on pressing
-					multifaceted environmental problems facing California, emphasizing on coupled human-environment systems, and leveraging
-					geospatial information systems to turn data into decisions.
-				</p>
-				<!-- VICE Lab is the research lab of Professor Joshua H. Viers at the University of California, Merced. We focus on pressing environmental
-				problems facing California and the planet, with a particular emphasis on coupled human-environment systems, leveraging
-				-->
-				<ul class="actions">
-					<li>
-						<a href="about" class="button">Learn More</a>
-					</li>
-				</ul>
+			<section class="blurb" id="blurb">
 			</section>
 
 			<!-- Footer -->
 			<section id="footer">
-				<ul class="icons">
-					<li>
-						<a href="https://twitter.com/vicelab" class="fa-twitter">
-							<span class="label">Twitter</span>
-						</a>
-					</li>
-					<li>
-						<a href="mailto:jviers@ucmerced.edu" class="fa-envelope">
-							<span class="label">Email</span>
-						</a>
-					</li>
-				</ul>
-				<p class="copyright">&copy; VICE Lab. Updated October 2018</p>
 			</section>
 		</section>
 	</div>
@@ -502,5 +464,28 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 
+	<script>
+		$(function () {
+			$("#where-we-are").load("snippets/where-we-are.html"); /*where-we-are: Controlled by HTML snippet in snippets/where-we-are.html*/
+			$("#blurb").load("snippets/blurb.html"); /*Blurb: Controlled by HTML snippet in snippets/blurb.html*/
+			$("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
+		});
+	</script>
+	<script>
+		var lines = "banner";
+		var slide_count = 0;
+		$.get('images/banners/items.txt', function (data) {
+			lines = data.split("\n");
+			for (var i = 0; i < lines.length; i++) {
+				lines[i] = lines[i].split("\r")[0];
+			}
+			setInterval(function () {
+				document.getElementById("banner-wrapper").style.backgroundImage = "url('assets/css/images/overlay.png'), url('assets/css/images/overlay.png'), url('images/" + lines[slide_count++] + ".jpg')";
+				if (slide_count >= lines.length) slide_count = 0;
+			}, 5000);
+		}, "text");
+	</script>
+
 </body>
+
 </html>
