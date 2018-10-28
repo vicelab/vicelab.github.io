@@ -149,9 +149,9 @@
 				<header>
 					<div class="title">
 						<h2>
-							<a href="#">Magna sed adipiscing</a>
+							<a href="#">News & Media</a>
 						</h2>
-						<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+						<!-- <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p> -->
 					</div>
 					<div class="meta">
 						<time class="published" datetime="2015-11-01">November 1, 2015</time>
@@ -164,6 +164,8 @@
 				<span class="image featured">
 					<img src="images/pic01.jpg" alt="" />
 				</span>
+
+				<div id="news"></div>
 				<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus
 					porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt
 					sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
@@ -228,12 +230,25 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+	<script>
+        $(function () {
+            $("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 
+            $.get('items.txt', function (data) {
+                var lines = data.split("\n");
+                $.each(lines, function (n, elem) {
+                    jQuery.get(elem + ".html").then(function (text, status, xhr) {
+                        $("#news").append($.parseHTML(text + "<hr>"));
+                    });
+                });
+            }, "text");
+        });
+    </script>
 </body>
 
 </html>
