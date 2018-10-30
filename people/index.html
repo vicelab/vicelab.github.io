@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<!--
+
+########################################################################
+#																	   #
+#	VICELAB.NET, Research Lab of Professor Joshua H. Viers			   #
+#   Hosted via Github Pages (github.com/vicelab)					   #
+#																	   #
+#	This site is built using HTML, with jQuery as a light-weight CMS.  #
+#																	   #
+#	Are you a web developer maintaining this site? Have any questions? #
+#	Email brianhungerman@gmail.com with any questions!				   #
+#																	   #
+########################################################################
+
+-->
+<html>
+<link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+
+<head>
+	<title>News
+		<- VICE Lab</title>
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+			<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="single is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- HEADER [top menu] -->
+		<header id="header">
+			<h1>
+				<a href="../index.html">VICE Lab</a>
+			</h1>
+			<nav class="links">
+				<ul>
+					<li>
+						<a href="../news">News</a>
+					</li>
+					<li>
+						<a href="../projects">Projects</a>
+					</li>
+					<li>
+						<a href="../publications">Publications</a>
+					</li>
+					<li>
+						<a href="../people">People</a>
+					</li>
+					<li>
+						<a href="../collaborators">Collaborators</a>
+					</li>
+					<li>
+						<a href="../about">About</a>
+					</li>
+					<li>
+						<a href="../contact">Contact</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="main">
+				<ul>
+					<li class="search">
+						<a class="fa-search" href="#search">Search</a>
+						<form id="search" method="get" action="#">
+							<input type="text" name="query" placeholder="Search" />
+						</form>
+					</li>
+					<li class="menu">
+						<a class="fa-bars" href="#menu">Menu</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<!-- MENU [right-side pull-out menu] -->
+		<section id="menu">
+			<section>
+				<form class="search" method="get" action="#">
+					<input type="text" name="query" placeholder="Search" />
+				</form>
+			</section>
+			<section>
+				<ul class="links">
+					<li>
+						<a href="../news">
+							<h3>News</h3>
+							<!-- <p>Show how VICE Lab is making itself known.</p> -->
+						</a>
+					</li>
+					<li>
+						<a href="../projects">
+							<h3>Projects</h3>
+							<!-- <p>See the type of work we are producing.</p> -->
+						</a>
+					</li>
+					<li>
+						<a href="../publications">
+							<h3>Publications</h3>
+							<!-- <p>See the papers we are publishing.</p> -->
+						</a>
+					</li>
+					<li>
+						<a href="../people">
+							<h3>People</h3>
+							<!-- <p>See who works under the VICE Lab.</p> -->
+						</a>
+					</li>
+					<li>
+						<a href="../collaborators">
+							<h3>Collaborators</h3>
+							<!-- <p>See who is involved with the VICE Lab.</p> -->
+						</a>
+					</li>
+					<li>
+						<a href="../about">
+							<h3>About</h3>
+							<!-- <p>Learn more about the lab.</p> -->
+						</a>
+					</li>
+					<li>
+						<a href="../contact">
+							<h3>Contact</h3>
+							<!-- <p>Reach out to us!</p> -->
+						</a>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<ul class="actions stacked">
+					<li>
+						<a href="#" class="button large fit">Log In</a>
+					</li>
+				</ul>
+			</section>
+		</section>
+
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Post -->
+			<article class="post">
+				<header style = "border-bottom:0px; margin: -3em 0 0 0">
+					<div class="title">
+						<h2>
+							<a href="#">News & Media</a>
+						</h2>
+						<p>See how the VICE Lab makes itself known throughout California and across the world!</p>
+					</div>
+				</header>
+			</article>
+			<div id="news"></div>
+		</div>
+
+		<!-- Footer -->
+		<section id="footer">
+		</section>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+	<script>
+        $(function () {
+            $("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
+
+            $.get('items.txt', function (data) {
+                var lines = data.split("\n");
+                $.each(lines, function (n, elem) {
+                    jQuery.get(elem + ".html").then(function (text, status, xhr) {
+                        $("#news").append($.parseHTML(text + "<hr>"));
+                    });
+                });
+            }, "text");
+        });
+    </script>
+</body>
+
+</html>
