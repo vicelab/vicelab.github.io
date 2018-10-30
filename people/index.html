@@ -36,8 +36,8 @@
 				<a href="../index.html">VICE Lab</a>
 			</h1>
 			<nav class="links">
-				<ul>
-					<li>
+				<ul id ="nav2">
+					<!-- <li>
 						<a href="../news">News</a>
 					</li>
 					<li>
@@ -57,7 +57,7 @@
 					</li>
 					<li>
 						<a href="../contact">Contact</a>
-					</li>
+					</li> -->
 				</ul>
 			</nav>
 			<nav class="main">
@@ -83,8 +83,7 @@
 				</form>
 			</section>
 			<section>
-				<ul class="links" id="navigation">
-					
+				<ul class="links" id="navigation">					
 				</ul>
 			</section>
 			<section>
@@ -132,6 +131,9 @@
 			jQuery.get("../snippets/navigation.html").then(function (text, status, xhr) {
 				$("#navigation").append($.parseHTML(text));
 			});
+			jQuery.get("../snippets/navigation.html").then(function (text, status, xhr) {
+				$("#nav2").append($.parseHTML(text));
+			});
 			
 			// $("#nav2").load("snippets/navigation.html");
 			// $.get('items.txt', function (data) {
@@ -148,38 +150,3 @@
 
 </html>
 
-<!-- <li>
-						<a href="../news">
-							<h3>News</h3>
-						</a>
-					</li>
-					<li>
-						<a href="../projects">
-							<h3>Projects</h3>
-						</a>
-					</li>
-					<li>
-						<a href="../publications">
-							<h3>Publications</h3>
-						</a>
-					</li>
-					<li>
-						<a href="../people">
-							<h3>People</h3>
-						</a>
-					</li>
-					<li>
-						<a href="../collaborators">
-							<h3>Collaborators</h3>
-						</a>
-					</li>
-					<li>
-						<a href="../about">
-							<h3>About</h3>
-						</a>
-					</li>
-					<li>
-						<a href="../contact">
-							<h3>Contact</h3>
-						</a>
-					</li> -->
