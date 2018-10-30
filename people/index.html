@@ -35,8 +35,8 @@
 			<h1>
 				<a href="../index.html">VICE Lab</a>
 			</h1>
-			<nav class="links">
-				<ul>
+			<nav class="links" id = "navigation">
+				<!-- <ul>
 					<li>
 						<a href="../news">News</a>
 					</li>
@@ -58,7 +58,7 @@
 					<li>
 						<a href="../contact">Contact</a>
 					</li>
-				</ul>
+				</ul> -->
 			</nav>
 			<nav class="main">
 				<ul>
@@ -170,7 +170,7 @@
 	<script>
         $(function () {
             $("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-
+			$("#navigation").load("snippets/navigation.html");
             $.get('items.txt', function (data) {
                 var lines = data.split("\n");
                 $.each(lines, function (n, elem) {
