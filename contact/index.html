@@ -143,14 +143,19 @@
 
 			<!-- Post -->
 			<article class="post">
-				<header style = "border-bottom:0px; margin: -3em 0 0 0">
+				<header>
 					<div class="title">
 						<h2>
-							<a href="#">News & Media</a>
+							<a href="#">Get in touch!</a>
 						</h2>
-						<p>See how the VICE Lab makes itself known throughout California and across the world!</p>
+
 					</div>
 				</header>
+				<p>
+
+					We're always open to suggestions, questions and new oppportunities to collaborate. Feel free to shoot Josh an email or follow
+					VICE Lab on Twitter.
+				</p>
 			</article>
 			<div id="news"></div>
 		</div>
@@ -168,19 +173,10 @@
 	<script src="../assets/js/util.js"></script>
 	<script src="../assets/js/main.js"></script>
 	<script>
-        $(function () {
-            $("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-
-            $.get('items.txt', function (data) {
-                var lines = data.split("\n");
-                $.each(lines, function (n, elem) {
-                    jQuery.get(elem + ".html").then(function (text, status, xhr) {
-                        $("#news").append($.parseHTML(text + "<hr>"));
-                    });
-                });
-            }, "text");
-        });
-    </script>
+		$(function () {
+			$("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
+		});
+	</script>
 </body>
 
 </html>

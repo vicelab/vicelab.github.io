@@ -143,16 +143,32 @@
 
 			<!-- Post -->
 			<article class="post">
-				<header style = "border-bottom:0px; margin: -3em 0 0 0">
+				<header>
 					<div class="title">
 						<h2>
-							<a href="#">News & Media</a>
+							<a href="#">What is VICE Lab?</a>
 						</h2>
-						<p>See how the VICE Lab makes itself known throughout California and across the world!</p>
+						<!-- <p>See how the VICE Lab makes itself known throughout California and across the world!</p> -->
 					</div>
 				</header>
+				<p>
+					VICE Lab is the research lab of Professor Joshua H. Viers at the University
+					of California, Merced. We focus on pressing environmental problems facing California and the planet, with a particular
+					emphasis on coupled human-environment systems, leveraging information systems to turn data into decisions, and novel
+					solutions in decision making.
+
+					VICE Lab Publications
+VICE Lab Projects
+VICE Lab Collaboration
+
+Though the bulk of our research takes place here at UC Merced, we collaborate on research within California and around the world.
+VICE Lab Researchers
+VICE Lab Collaborators
+Get in touch!
+
+We're always open to suggestions, questions and new oppportunities to collaborate. Feel free to shoot Josh an email or follow VICE Lab on Twitter.
+				</p>
 			</article>
-			<div id="news"></div>
 		</div>
 
 		<!-- Footer -->
@@ -168,19 +184,10 @@
 	<script src="../assets/js/util.js"></script>
 	<script src="../assets/js/main.js"></script>
 	<script>
-        $(function () {
-            $("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-
-            $.get('items.txt', function (data) {
-                var lines = data.split("\n");
-                $.each(lines, function (n, elem) {
-                    jQuery.get(elem + ".html").then(function (text, status, xhr) {
-                        $("#news").append($.parseHTML(text + "<hr>"));
-                    });
-                });
-            }, "text");
-        });
-    </script>
+		$(function () {
+			$("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
+		});
+	</script>
 </body>
 
 </html>
