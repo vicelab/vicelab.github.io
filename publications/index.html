@@ -143,16 +143,17 @@
 
 			<!-- Post -->
 			<article class="post">
-				<header style = "border-bottom:0px; margin: -3em 0 0 0">
+				<header>
 					<div class="title">
 						<h2>
-							<a href="#">News & Media</a>
+							<a href="#">Publications</a>
 						</h2>
-						<p>See how the VICE Lab makes itself known throughout California and across the world!</p>
+					
 					</div>
 				</header>
+				<p>See VICE Lab's recent papers!</p>
 			</article>
-			<div id="news"></div>
+			<div id="publications"></div>
 		</div>
 
 		<!-- Footer -->
@@ -175,7 +176,7 @@
                 var lines = data.split("\n");
                 $.each(lines, function (n, elem) {
                     jQuery.get(elem + ".html").then(function (text, status, xhr) {
-                        $("#news").append($.parseHTML(text + "<hr>"));
+                        $("#publications").append($.parseHTML(text + "<hr>"));
                     });
                 });
             }, "text");
