@@ -380,10 +380,13 @@
 			$("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			$.get('news/items.txt', function (data) {
 				var lines = data.split("\n");
+				var count = 3;
 				$.each(lines, function (n, elem) {
-					jQuery.get("news/" + elem + ".html").then(function (text, status, xhr) {
-						$("#news").append($.parseHTML(text + "<hr>"));
-					});
+					if (count-- > 0) {
+						jQuery.get("news/" + elem + ".html").then(function (text, status, xhr) {
+							$("#news").append($.parseHTML(text + "<hr>"));
+						});
+					} else break;
 				});
 			}, "text");
 		});
