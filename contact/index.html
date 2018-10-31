@@ -15,14 +15,14 @@
 
 -->
 <html>
-<link rel="stylesheet" type="text/css" href="../assets/css/main.css">
 
 <head>
-	<title>News
-		<- VICE Lab</title>
-			<meta charset="utf-8" />
-			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-			<link rel="stylesheet" href="assets/css/main.css" />
+	<title>
+		People ~ VICE Lab
+	</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
 </head>
 
 <body class="single is-preload">
@@ -33,31 +33,10 @@
 		<!-- HEADER [top menu] -->
 		<header id="header">
 			<h1>
-				<a href="../index.html">VICE Lab</a>
+				<a href="../#">VICE Lab</a>
 			</h1>
 			<nav class="links">
-				<ul>
-					<li>
-						<a href="../news">News</a>
-					</li>
-					<li>
-						<a href="../projects">Projects</a>
-					</li>
-					<li>
-						<a href="../publications">Publications</a>
-					</li>
-					<li>
-						<a href="../people">People</a>
-					</li>
-					<li>
-						<a href="../collaborators">Collaborators</a>
-					</li>
-					<li>
-						<a href="../about">About</a>
-					</li>
-					<li>
-						<a href="../contact">Contact</a>
-					</li>
+				<ul id="navigation_top">
 				</ul>
 			</nav>
 			<nav class="main">
@@ -83,49 +62,7 @@
 				</form>
 			</section>
 			<section>
-				<ul class="links">
-					<li>
-						<a href="../news">
-							<h3>News</h3>
-							<!-- <p>Show how VICE Lab is making itself known.</p> -->
-						</a>
-					</li>
-					<li>
-						<a href="../projects">
-							<h3>Projects</h3>
-							<!-- <p>See the type of work we are producing.</p> -->
-						</a>
-					</li>
-					<li>
-						<a href="../publications">
-							<h3>Publications</h3>
-							<!-- <p>See the papers we are publishing.</p> -->
-						</a>
-					</li>
-					<li>
-						<a href="../people">
-							<h3>People</h3>
-							<!-- <p>See who works under the VICE Lab.</p> -->
-						</a>
-					</li>
-					<li>
-						<a href="../collaborators">
-							<h3>Collaborators</h3>
-							<!-- <p>See who is involved with the VICE Lab.</p> -->
-						</a>
-					</li>
-					<li>
-						<a href="../about">
-							<h3>About</h3>
-							<!-- <p>Learn more about the lab.</p> -->
-						</a>
-					</li>
-					<li>
-						<a href="../contact">
-							<h3>Contact</h3>
-							<!-- <p>Reach out to us!</p> -->
-						</a>
-					</li>
+				<ul class="links" id="navigation_side">
 				</ul>
 			</section>
 			<section>
@@ -152,17 +89,14 @@
 					</div>
 				</header>
 				<p>
-
 					We're always open to suggestions, questions and new oppportunities to collaborate. Feel free to shoot Josh an email or follow
 					VICE Lab on Twitter.
 				</p>
 			</article>
-			<div id="news"></div>
 		</div>
 
 		<!-- Footer -->
-		<section id="footer">
-		</section>
+		<section id="footer"></section>
 
 	</div>
 
@@ -174,7 +108,11 @@
 	<script src="../assets/js/main.js"></script>
 	<script>
 		$(function () {
-			$("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
+			jQuery.get("../snippets/navigation.html").then(function (text, status, xhr) {
+				$("#navigation_top").append($.parseHTML(text)); /*Navigation: Controlled by HTML snippet in snippets/navigation.html*/
+				$("#navigation_side").append($.parseHTML(text));
+			});
+			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 		});
 	</script>
 </body>
