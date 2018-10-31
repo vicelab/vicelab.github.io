@@ -386,7 +386,7 @@
 						jQuery.get("news/" + elem + ".html").then(function (text, status, xhr) {
 							$("#news").append($.parseHTML(text + "<hr>"));
 						});
-					} else break;
+					}
 				});
 			}, "text");
 		});
