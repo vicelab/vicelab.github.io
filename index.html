@@ -87,43 +87,36 @@
 					<li>
 						<a href="news">
 							<h3>News</h3>
-							<!-- <p>Show how VICE Lab is making itself known.</p> -->
 						</a>
 					</li>
 					<li>
 						<a href="projects">
 							<h3>Projects</h3>
-							<!-- <p>See the type of work we are producing.</p> -->
 						</a>
 					</li>
 					<li>
 						<a href="publications">
 							<h3>Publications</h3>
-							<!-- <p>See the papers we are publishing.</p> -->
 						</a>
 					</li>
 					<li>
 						<a href="people">
 							<h3>People</h3>
-							<!-- <p>See who works under the VICE Lab.</p> -->
 						</a>
 					</li>
 					<li>
 						<a href="collaborators">
 							<h3>Collaborators</h3>
-							<!-- <p>See who is involved with the VICE Lab.</p> -->
 						</a>
 					</li>
 					<li>
 						<a href="about">
 							<h3>About</h3>
-							<!-- <p>Learn more about the lab.</p> -->
 						</a>
 					</li>
 					<li>
 						<a href="contact">
 							<h3>Contact</h3>
-							<!-- <p>Reach out to us!</p> -->
 						</a>
 					</li>
 				</ul>
@@ -145,19 +138,11 @@
 				<header>
 					<div class="title">
 						<h2>
-							<a href="single.html">Welcome to the VICE Lab</a>
+							<a href="about">Welcome to the VICE Lab</a>
 						</h2>
-						<!-- <p>University of California, Merced's leading computational environmental engineering research organization</p> -->
 					</div>
-					<!-- <div class="meta">
-						<time class="published" datetime="2015-11-01">September 10th, 2018</time>
-						<a href="#" class="author">
-							<span class="name">Joshua H. Viers</span>
-							<img src="images/people/josh-viers.jpg" alt="" style="box-shadow: 5px 5px 25px -5px rgba(0, 0, 0, 0.45);" />
-						</a>
-					</div> -->
 				</header>
-				<a href="single.html" class="image featured" style="box-shadow: 5px 5px 25px -5px rgba(0, 0, 0, 0.45);">
+				<a href="about.html" class="image featured" style="box-shadow: 5px 5px 25px -5px rgba(0, 0, 0, 0.45);">
 					<img src="images/pic01.jpg" alt="" />
 				</a>
 				<div id="about"></div>
@@ -178,45 +163,11 @@
 				<header>
 					<div class="title">
 						<h2>
-							<a href="single.html">Recent News & Publications</a>
+							<a href="news">Recent News & Publications</a>
 						</h2>
 					</div>
 				</header>
-				<p>
-					<span class="image left">
-						<img src="images/usda-project-engadget.jpg" alt="" />
-					</span>
-					<h4>USDA project featured in Engadget</h4>The precision irrigation project led by UC Merced Professor Stefano Carpin was
-					featured in
-					<a href="https://www.engadget.com/2018/04/08/robots-wine-california/">Engadget</a>!
-					<br/>
-					<br/>VICE Lab is assisting with UAV deployment and multisensor data gathering. Vineyards are ideal testbeds for robotic solutions
-					to complex navigation and task assignments. These breakthroughs in agricultural technology are the focus of UC Merced's
-					emerging focus on San Joaquin Valley problems at the coupled human-environment interface.
-				</p>
-				<p>
-					<span class="image left">
-						<img src="images/motorboat-training-course.jpg" alt="" />
-					</span>
-					<h4>Motorboat Operator Training Course</h4>Three VICE Lab researchers got the opportunity to work with James Fitzgerald
-					from the UC Davis Bodega Bay Marine Lab, taking his Motorboat Operator Training Course.
-					<br/>
-					<br/> James Fitzgerald is the standing UC Davis Boat Safety Officer, and was instrumental in teaching our VICE Lab researchers
-					the basics of boat mechanics, nagivation, knot tying, and general water safety. James parters with local UC Davis students
-					and staff as well as UC Davis Bodega Bay firefighters to run this program, offering unique learning opportunities including
-					how to run rescue drills, form huddles in water (see image below), and how to perform evasive maneuvers.
-				</p>
-				<p>
-					<span class="image left">
-						<img src="images/news/uc-merceds-dr-daniel-nover-wins-jsps-2017-bridge-fellowship.png" alt="" />
-					</span>
-					<h4>UC Merced's Dr. Daniel Nover wins JSPS 2017 BRIDGE Fellowship</h4>The Japanese Society for the Promotion of Science
-					(JSPS) recently awarded the 2017 BRIDGE Fellowship to Dr. Daniel Nover from UC Merced’s School of Engineering. The BRIDGE
-					Fellowship is designed to build collaborations between American scientists and engineers who have been funded by JSPS
-					in the past with Japanese researchers at qualifying universities. Dr. Nover will spend October as a visiting fellow
-					in the Yamashiki Lab at Kyoto University where he will work to build research partnerships in water resources and disaster
-					risk management. Additionally, he will work to build international exchanges between UC Merced and Kyoto University.
-				</p>
+				
 				<div id="news"></div>
 
 				<footer>
@@ -384,7 +335,7 @@
 				$.each(lines, function (n, elem) {
 					if (count-- > 0) {
 						jQuery.get("news/" + elem + ".html").then(function (text, status, xhr) {
-							$("#news").append($.parseHTML(text + "<hr>"));
+							$("#news").append($.parseHTML(text));
 						});
 					}
 				});
