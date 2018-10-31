@@ -167,7 +167,7 @@
 						</h2>
 					</div>
 				</header>
-				
+
 				<div id="news"></div>
 
 				<footer>
@@ -188,11 +188,6 @@
 			</article>
 		</div>
 
-
-
-
-
-
 		<!-- SIDE COLUMN -->
 		<section id="sidebar">
 			<section id="intro">
@@ -202,7 +197,7 @@
 				</center>
 			</section>
 			<section style="border-top: 0px; margin: 0em; padding: 0em">
-				<div class="mini-posts">
+				<div class="mini-posts" id ="projects">
 					<article class="mini-post">
 						<header>
 							<h3>
@@ -338,6 +333,14 @@
 							$("#news").append($.parseHTML(text));
 						});
 					}
+				});
+			}, "text");
+			$.get('projects/items.txt', function (data) {
+				var lines = data.split("\n");
+				$.each(lines, function (n, elem) {
+					jQuery.get("projects/" + elem + ".html").then(function (text, status, xhr) {
+						$("#projects").append($.parseHTML(text));
+					});
 				});
 			}, "text");
 		});
