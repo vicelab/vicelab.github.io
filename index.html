@@ -217,6 +217,7 @@
 					in the Yamashiki Lab at Kyoto University where he will work to build research partnerships in water resources and disaster
 					risk management. Additionally, he will work to build international exchanges between UC Merced and Kyoto University.
 				</p>
+				<div id="news"></div>
 
 				<footer>
 					<ul class="actions">
@@ -377,6 +378,14 @@
 			$("#about").load("snippets/who-we-are.html"); /*About: Controlled by HTML snippet in snippets/who-we-are.html*/
 			$("#blurb").load("snippets/blurb.html"); /*Blurb: Controlled by HTML snippet in snippets/blurb.html*/
 			$("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
+			$.get('news/items.txt', function (data) {
+				var lines = data.split("\n");
+				$.each(lines, function (n, elem) {
+					jQuery.get("news/" + elem + ".html").then(function (text, status, xhr) {
+						$("#news").append($.parseHTML(text + "<hr>"));
+					});
+				});
+			}, "text");
 		});
 	</script>
 	<script>
