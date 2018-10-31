@@ -18,7 +18,7 @@
 
 <head>
 	<title>
-		People ~ VICE Lab
+		About ~ VICE Lab
 	</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -88,6 +88,7 @@
 						<!-- <p>See how the VICE Lab makes itself known throughout California and across the world!</p> -->
 					</div>
 				</header>
+				<div id="about"></div>
 				<p>
 					VICE Lab is the research lab of Professor Joshua H. Viers at the University of California, Merced. We focus on pressing environmental
 					problems facing California and the planet, with a particular emphasis on coupled human-environment systems, leveraging
@@ -117,6 +118,7 @@
 				$("#navigation_top").append($.parseHTML(text)); /*Navigation: Controlled by HTML snippet in snippets/navigation.html*/
 				$("#navigation_side").append($.parseHTML(text));
 			});
+			$("#about").load("../snippets/who-we-are.html"); /*About: Controlled by HTML snippet in snippets/who-we-are.html*/
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 		});
 	</script>
