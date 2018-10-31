@@ -95,7 +95,7 @@
 					Ongoing:
 				</h2>
 
-				<div id="ongoing-projects"></div>
+				<div id="projects"></div>
 				<h2>
 					Completed:
 				</h2>
@@ -122,17 +122,14 @@
 				$("#navigation_side").append($.parseHTML(text));
 			});
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-
-
-			// $("#nav2").load("snippets/navigation.html");
-			// $.get('items.txt', function (data) {
-			// 	var lines = data.split("\n");
-			// 	$.each(lines, function (n, elem) {
-			// 		jQuery.get(elem + ".html").then(function (text, status, xhr) {
-			// 			$("#people").append($.parseHTML(text + "<hr>"));
-			// 		});
-			// 	});
-			// }, "text");
+			$.get('items.txt', function (data) {
+				var lines = data.split("\n");
+				$.each(lines, function (n, elem) {
+					jQuery.get(elem + ".html").then(function (text, status, xhr) {
+						$("#projects").append($.parseHTML(text + "<hr>"));
+					});
+				});
+			}, "text");
 		});
 	</script>
 </body>

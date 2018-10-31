@@ -1,1 +1,6 @@
-test
+avocet
+nri-usda-rapid
+consumnes
+cerc-wet
+agriculture-water-footprints
+al2al3lidar
