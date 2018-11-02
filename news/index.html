@@ -116,7 +116,7 @@
 				var lines = data.split("\n");
 				$.each(lines, function (n, elem) {
 					jQuery.get(elem + ".html").then(function (text, status, xhr) {
-						$("#news").append($.parseHTML(text + "<hr>"));
+						$("#news").append($.parseHTML(text));
 					});
 				});
 			}, "text");
