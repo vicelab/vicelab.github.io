@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<!--
+
+########################################################################
+#																	   #
+#	VICELAB.NET, Research Lab of Professor Joshua H. Viers			   #
+#   Hosted via Github Pages (github.com/vicelab)					   #
+#																	   #
+#	This site is built using HTML, with jQuery as a light-weight CMS.  #
+#																	   #
+#	Are you a web developer maintaining this site? Have any questions? #
+#	Email brianhungerman@gmail.com with any questions!				   #
+#																	   #
+########################################################################
+
+-->
+<html>
+
+<head>
+	<title>
+		People ~ VICE Lab
+	</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+
+<body class="single is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- HEADER [top menu] -->
+		<header id="header">
+			<h1>
+				<a href="../#">VICE Lab</a>
+			</h1>
+			<nav class="links">
+				<ul id="navigation_top">
+				</ul>
+			</nav>
+			<nav class="main">
+				<ul>
+					<li class="search">
+						<a class="fa-search" href="#search">Search</a>
+						<form id="search" method="get" action="#">
+							<input type="text" name="query" placeholder="Search" />
+						</form>
+					</li>
+					<li class="menu">
+						<a class="fa-bars" href="#menu">Menu</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<!-- MENU [right-side pull-out menu] -->
+		<section id="menu">
+			<section>
+				<form class="search" method="get" action="#">
+					<input type="text" name="query" placeholder="Search" />
+				</form>
+			</section>
+			<section>
+				<ul class="links" id="navigation_side">
+				</ul>
+			</section>
+			<section>
+				<ul class="actions stacked">
+					<li>
+						<a href="#" class="button large fit">Log In</a>
+					</li>
+				</ul>
+			</section>
+		</section>
+
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Post -->
+			<article class="post">
+				<header>
+					<div class="title">
+						<h2>
+							<a href="#">People</a>
+						</h2>
+						<p>See the people that make up VICE Lab!</p>
+					</div>
+				</header>
+				<span class="image featured">
+					<img src="../images/andy_banner.jpg" alt="" />
+				</span>
+				<h2>
+					Director:
+				</h2>
+				https://www.w3schools.com/howto/howto_css_profile_card.asp
+				https://www.w3schools.com/howto/howto_js_collapsible.asp
+				<div id="people"></div>
+				<h2>
+					Researchers:
+				</h2>
+
+				<div id="people"></div>
+				<h2>
+					Graduate Students:
+				</h2>
+
+				<div id="people"></div>
+			</article>
+		</div>
+
+		<!-- Footer -->
+		<section id="footer"></section>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+	<script>
+		$(function () {
+			jQuery.get("../snippets/navigation.html").then(function (text, status, xhr) {
+				$("#navigation_top").append($.parseHTML(text)); /*Navigation: Controlled by HTML snippet in snippets/navigation.html*/
+				$("#navigation_side").append($.parseHTML(text));
+			});
+			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
+
+
+			// $("#nav2").load("snippets/navigation.html");
+			// $.get('items.txt', function (data) {
+			// 	var lines = data.split("\n");
+			// 	$.each(lines, function (n, elem) {
+			// 		jQuery.get(elem + ".html").then(function (text, status, xhr) {
+			// 			$("#people").append($.parseHTML(text + "<hr>"));
+			// 		});
+			// 	});
+			// }, "text");
+		});
+	</script>
+</body>
+
+</html>
