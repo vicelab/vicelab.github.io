@@ -191,13 +191,13 @@
 
 	<script>
 		$(function () {
-			$("#about").load("../../snippets/who-we-are.html"); /*About: Controlled by HTML snippet in snippets/who-we-are.html*/
-			$("#blurb").load("../../snippets/blurb.html"); /*Blurb: Controlled by HTML snippet in snippets/blurb.html*/
-			$("#footer").load("../../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-			$.get('../items.txt', function (data) {
+			$("#about").load("/snippets/who-we-are.html"); /*About: Controlled by HTML snippet in snippets/who-we-are.html*/
+			$("#blurb").load("/snippets/blurb.html"); /*Blurb: Controlled by HTML snippet in snippets/blurb.html*/
+			$("#footer").load("/snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
+			$.get('/projects/items.txt', function (data) {
 				var lines = data.split("\n");
 				$.each(lines, function (n, elem) {
-					jQuery.get("../" + elem + ".html").then(function (text, status, xhr) {
+					jQuery.get("projects/" + elem + ".html").then(function (text, status, xhr) {
 						$("#projects").append($.parseHTML(text));
 					});
 				});
