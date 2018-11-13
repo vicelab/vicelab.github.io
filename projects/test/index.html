@@ -17,26 +17,43 @@
 <html>
 
 <head>
-	<title>
-		Projects ~ VICE Lab
-	</title>
+	<title>VICE Lab</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="../../assets/css/main.css" />
 </head>
 
-<body class="single is-preload">
-
-	<!-- Wrapper -->
+<body class="is-preload">
 	<div id="wrapper">
 
 		<!-- HEADER [top menu] -->
 		<header id="header">
 			<h1>
-				<a href="../../#">VICE Lab</a>
+				<a href="index.html">VICE Lab</a>
 			</h1>
 			<nav class="links">
-				<ul id="navigation_top">
+				<ul>
+					<li>
+						<a href="news">News</a>
+					</li>
+					<li>
+						<a href="projects">Projects</a>
+					</li>
+					<li>
+						<a href="publications">Publications</a>
+					</li>
+					<li>
+						<a href="people">People</a>
+					</li>
+					<li>
+						<a href="collaborators">Collaborators</a>
+					</li>
+					<li>
+						<a href="about">About</a>
+					</li>
+					<li>
+						<a href="contact">Contact</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="main">
@@ -62,7 +79,42 @@
 				</form>
 			</section>
 			<section>
-				<ul class="links" id="navigation_side">
+				<ul class="links">
+					<li>
+						<a href="news">
+							<h3>News</h3>
+						</a>
+					</li>
+					<li>
+						<a href="projects">
+							<h3>Projects</h3>
+						</a>
+					</li>
+					<li>
+						<a href="publications">
+							<h3>Publications</h3>
+						</a>
+					</li>
+					<li>
+						<a href="people">
+							<h3>People</h3>
+						</a>
+					</li>
+					<li>
+						<a href="collaborators">
+							<h3>Collaborators</h3>
+						</a>
+					</li>
+					<li>
+						<a href="about">
+							<h3>About</h3>
+						</a>
+					</li>
+					<li>
+						<a href="contact">
+							<h3>Contact</h3>
+						</a>
+					</li>
 				</ul>
 			</section>
 			<section>
@@ -73,7 +125,6 @@
 				</ul>
 			</section>
 		</section>
-
 
 		<!-- Main -->
 		<div id="main">
@@ -108,24 +159,49 @@
 			</article>
 		</div>
 
-		<!-- Footer -->
-		<section id="footer"></section>
+		<!-- SIDE COLUMN -->
+		<section id="sidebar">
+			<section id="intro">
+				<center>
+					<img src="../../images/logo.png" style="height:7.6em" alt="" />
+					<pre><code style="padding: .75em .5em; font-size: .85em;">vicelab <- lab(viers ~ (info + cons + env))</code></pre>
+				</center>
+			</section>
+			<section style="border-top: 0px; margin: 0em; padding: 0em">
+				<div class="mini-posts" id="projects">
+				</div>
+			</section>
 
+			<!-- About -->
+			<section class="blurb" id="blurb">
+			</section>
+
+			<!-- Footer -->
+			<section id="footer">
+			</section>
+		</section>
 	</div>
 
 	<!-- Scripts -->
-	<script src="../assets/js/jquery.min.js"></script>
-	<script src="../assets/js/browser.min.js"></script>
-	<script src="../assets/js/breakpoints.min.js"></script>
-	<script src="../assets/js/util.js"></script>
-	<script src="../assets/js/main.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
 	<script>
 		$(function () {
-			jQuery.get("../snippets/navigation.html").then(function (text, status, xhr) {
-				$("#navigation_top").append($.parseHTML(text)); /*Navigation: Controlled by HTML snippet in snippets/navigation.html*/
-				$("#navigation_side").append($.parseHTML(text));
-			});
-			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
+			$("#about").load("../../snippets/who-we-are.html"); /*About: Controlled by HTML snippet in snippets/who-we-are.html*/
+			$("#blurb").load("../../snippets/blurb.html"); /*Blurb: Controlled by HTML snippet in snippets/blurb.html*/
+			$("#footer").load("../../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
+			$.get('../items.txt', function (data) {
+				var lines = data.split("\n");
+				$.each(lines, function (n, elem) {
+					jQuery.get("../" + elem + ".html").then(function (text, status, xhr) {
+						$("#projects").append($.parseHTML(text));
+					});
+				});
+			}, "text");
 		});
 	</script>
 </body>
