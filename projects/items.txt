@@ -1,7 +1,2 @@
-avocet
-nri-usda-rapid
-streamdev
-consumnes
-cerc-wet
+test
 agriculture-water-footprints
-al2al3lidar
