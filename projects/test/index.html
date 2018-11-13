@@ -20,40 +20,20 @@
 	<title>VICE Lab</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="../../assets/css/main.css" />
+	<link rel="stylesheet" href="/assets/css/main.css" />
 </head>
 
 <body class="is-preload">
 	<div id="wrapper">
 
+
 		<!-- HEADER [top menu] -->
 		<header id="header">
 			<h1>
-				<a href="index.html">VICE Lab</a>
+				<a href="/#">VICE Lab</a>
 			</h1>
 			<nav class="links">
-				<ul>
-					<li>
-						<a href="news">News</a>
-					</li>
-					<li>
-						<a href="projects">Projects</a>
-					</li>
-					<li>
-						<a href="publications">Publications</a>
-					</li>
-					<li>
-						<a href="people">People</a>
-					</li>
-					<li>
-						<a href="collaborators">Collaborators</a>
-					</li>
-					<li>
-						<a href="about">About</a>
-					</li>
-					<li>
-						<a href="contact">Contact</a>
-					</li>
+				<ul id="navigation_top">
 				</ul>
 			</nav>
 			<nav class="main">
@@ -79,42 +59,7 @@
 				</form>
 			</section>
 			<section>
-				<ul class="links">
-					<li>
-						<a href="news">
-							<h3>News</h3>
-						</a>
-					</li>
-					<li>
-						<a href="projects">
-							<h3>Projects</h3>
-						</a>
-					</li>
-					<li>
-						<a href="publications">
-							<h3>Publications</h3>
-						</a>
-					</li>
-					<li>
-						<a href="people">
-							<h3>People</h3>
-						</a>
-					</li>
-					<li>
-						<a href="collaborators">
-							<h3>Collaborators</h3>
-						</a>
-					</li>
-					<li>
-						<a href="about">
-							<h3>About</h3>
-						</a>
-					</li>
-					<li>
-						<a href="contact">
-							<h3>Contact</h3>
-						</a>
-					</li>
+				<ul class="links" id="navigation_side">
 				</ul>
 			</section>
 			<section>
@@ -141,7 +86,7 @@
 						<time class="published" datetime="2015-11-01">November 2015</time>
 						<a href="#" class="author">
 							<span class="name">Lorenzo Booth</span>
-							<img src="../../images/people/lorenzo-booth.jpg" alt="" />
+							<img src="/images/people/lorenzo-booth.jpg" alt="" />
 						</a>
 					</div>
 				</header>
@@ -163,7 +108,7 @@
 		<section id="sidebar">
 			<section id="intro">
 				<center>
-					<img src="../../images/logo.png" style="height:7.6em" alt="" />
+					<img src="/images/logo.png" style="height:7.6em" alt="" />
 					<pre><code style="padding: .75em .5em; font-size: .85em;">vicelab <- lab(viers ~ (info + cons + env))</code></pre>
 				</center>
 			</section>
@@ -191,6 +136,11 @@
 
 	<script>
 		$(function () {
+			/*Navigation: Controlled by HTML snippet in snippets/navigation.html*/
+			jQuery.get("/snippets/navigation.html").then(function (text, status, xhr) {
+				$("#navigation_top").append($.parseHTML(text));
+				$("#navigation_side").append($.parseHTML(text));
+			});
 			$("#blurb").load("/snippets/blurb.html"); /*Blurb: Controlled by HTML snippet in snippets/blurb.html*/
 			$("#footer").load("/snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			$.get('/projects/items.txt', function (data) {
