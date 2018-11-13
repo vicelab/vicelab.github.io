@@ -183,21 +183,20 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="../../assets/js/jquery.min.js"></script>
-	<script src="../../assets/js/browser.min.js"></script>
-	<script src="../../assets/js/breakpoints.min.js"></script>
-	<script src="../../assets/js/util.js"></script>
-	<script src="../../assets/js/main.js"></script>
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/browser.min.js"></script>
+	<script src="/assets/js/breakpoints.min.js"></script>
+	<script src="/assets/js/util.js"></script>
+	<script src="/assets/js/main.js"></script>
 
 	<script>
 		$(function () {
-			$("#about").load("/snippets/who-we-are.html"); /*About: Controlled by HTML snippet in snippets/who-we-are.html*/
 			$("#blurb").load("/snippets/blurb.html"); /*Blurb: Controlled by HTML snippet in snippets/blurb.html*/
-			$("#footer").load("../../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
+			$("#footer").load("/snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			$.get('/projects/items.txt', function (data) {
 				var lines = data.split("\n");
 				$.each(lines, function (n, elem) {
-					jQuery.get("projects/" + elem + ".html").then(function (text, status, xhr) {
+					jQuery.get("/projects/" + elem + ".html").then(function (text, status, xhr) {
 						$("#projects").append($.parseHTML(text));
 					});
 				});
