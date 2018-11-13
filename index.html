@@ -27,37 +27,15 @@
 	<div id="wrapper">
 
 		<!-- HEADER [top menu] -->
-
 		<div style="position:fixed;width:540px;height:40px;left:-100px; transform: rotate(-45deg);z-index:1000000;background-color:lightcoral;">
 			<h2 style="font-size:1em; color:white;">&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Site under construction!</h2>
 		</div>
 		<header id="header">
 			<h1>
-				<a href="index.html">VICE Lab</a>
+				<a href="../#">VICE Lab</a>
 			</h1>
 			<nav class="links">
-				<ul>
-					<li>
-						<a href="news">News</a>
-					</li>
-					<li>
-						<a href="projects">Projects</a>
-					</li>
-					<li>
-						<a href="publications">Publications</a>
-					</li>
-					<li>
-						<a href="people">People</a>
-					</li>
-					<li>
-						<a href="collaborators">Collaborators</a>
-					</li>
-					<li>
-						<a href="about">About</a>
-					</li>
-					<li>
-						<a href="contact">Contact</a>
-					</li>
+				<ul id="navigation_top">
 				</ul>
 			</nav>
 			<nav class="main">
@@ -83,42 +61,7 @@
 				</form>
 			</section>
 			<section>
-				<ul class="links">
-					<li>
-						<a href="news">
-							<h3>News</h3>
-						</a>
-					</li>
-					<li>
-						<a href="projects">
-							<h3>Projects</h3>
-						</a>
-					</li>
-					<li>
-						<a href="publications">
-							<h3>Publications</h3>
-						</a>
-					</li>
-					<li>
-						<a href="people">
-							<h3>People</h3>
-						</a>
-					</li>
-					<li>
-						<a href="collaborators">
-							<h3>Collaborators</h3>
-						</a>
-					</li>
-					<li>
-						<a href="about">
-							<h3>About</h3>
-						</a>
-					</li>
-					<li>
-						<a href="contact">
-							<h3>Contact</h3>
-						</a>
-					</li>
+				<ul class="links" id="navigation_side">
 				</ul>
 			</section>
 			<section>
@@ -197,7 +140,7 @@
 				</center>
 			</section>
 			<section style="border-top: 0px; margin: 0em; padding: 0em">
-				<div class="mini-posts" id ="projects">			
+				<div class="mini-posts" id="projects">
 				</div>
 			</section>
 
@@ -220,6 +163,10 @@
 
 	<script>
 		$(function () {
+			jQuery.get("../snippets/navigation.html").then(function (text, status, xhr) {
+				$("#navigation_top").append($.parseHTML(text)); /*Navigation: Controlled by HTML snippet in snippets/navigation.html*/
+				$("#navigation_side").append($.parseHTML(text));
+			});
 			$("#where-we-are").load("snippets/where-we-are.html"); /*where-we-are: Controlled by HTML snippet in snippets/where-we-are.html*/
 			$("#about").load("snippets/who-we-are.html"); /*About: Controlled by HTML snippet in snippets/who-we-are.html*/
 			$("#blurb").load("snippets/blurb.html"); /*Blurb: Controlled by HTML snippet in snippets/blurb.html*/
@@ -238,7 +185,7 @@
 			$.get('projects/items.txt', function (data) {
 				var lines = data.split("\n");
 				$.each(lines, function (n, elem) {
-					jQuery.get("projects/" + elem + ".html").then(function (text, status, xhr) {
+					jQuery.get("projects/" + elem + "/preview.html").then(function (text, status, xhr) {
 						$("#projects").append($.parseHTML(text));
 					});
 				});
@@ -246,7 +193,7 @@
 		});
 	</script>
 	<script>
-		var lines = "banner";
+	/*	var lines = "banner";
 		var slide_count = 0;
 		$.get('images/banners/items.txt', function (data) {
 			lines = data.split("\n");
@@ -257,7 +204,7 @@
 				document.getElementById("banner-wrapper").style.backgroundImage = "url('assets/css/images/overlay.png'), url('assets/css/images/overlay.png'), url('images/" + lines[slide_count++] + ".jpg')";
 				if (slide_count >= lines.length) slide_count = 0;
 			}, 5000);
-		}, "text");
+		}, "text");*/
 	</script>
 
 </body>
