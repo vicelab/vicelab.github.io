@@ -96,7 +96,7 @@
 				</h2>
 				https://www.w3schools.com/howto/howto_css_profile_card.asp
 				https://www.w3schools.com/howto/howto_js_collapsible.asp
-				<div id="people"></div>
+				<div id="director"></div>
 				<h2>
 					Researchers:
 				</h2>
@@ -128,7 +128,9 @@
 				$("#navigation_side").append($.parseHTML(text));
 			});
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-
+			jQuery.get("josh-viers/blurb.html").then(function (text, status, xhr) {
+			 			$("#director").append($.parseHTML(text));
+			});	
 
 			// $("#nav2").load("snippets/navigation.html");
 			// $.get('items.txt', function (data) {
