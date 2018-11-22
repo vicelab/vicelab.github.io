@@ -137,7 +137,7 @@
 				var lines = data.split("\n");
 				$.each(lines, function (n, elem) {
 					jQuery.get(elem + "/blurb.html").then(function (text, status, xhr) {
-						$("#scientists").append($.parseHTML(text + " "));
+						$("#scientists").append($.parseHTML(" " + text + " "));
 					});
 				});
 			}, "text");
