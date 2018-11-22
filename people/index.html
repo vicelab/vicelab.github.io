@@ -91,17 +91,16 @@
 				<!-- <span class="image featured">
 					<img src="../images/andy_banner.jpg" alt="" />
 				</span> -->
-				<h2>
+				<!-- <h2>
 					Director:
-				</h2>
+				</h2> -->
 				<!-- https://www.w3schools.com/howto/howto_css_profile_card.asp
 				https://www.w3schools.com/howto/howto_js_collapsible.asp -->
 				<div id="director"></div>
-				<h2>
+				<!-- <h2>
 					Researchers:
-				</h2>
-
-				<div id="people"></div>
+				</h2> -->
+				<div id="scientists"></div>
 				<h2>
 					Graduate Students:
 				</h2>
@@ -129,18 +128,18 @@
 			});
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			jQuery.get("josh-viers/blurb.html").then(function (text, status, xhr) {
-			 			$("#director").append($.parseHTML(text));
-			});	
+				$("#director").append($.parseHTML(text));
+			});	//scientists
 
 			// $("#nav2").load("snippets/navigation.html");
-			// $.get('items.txt', function (data) {
-			// 	var lines = data.split("\n");
-			// 	$.each(lines, function (n, elem) {
-			// 		jQuery.get(elem + ".html").then(function (text, status, xhr) {
-			// 			$("#people").append($.parseHTML(text + "<hr>"));
-			// 		});
-			// 	});
-			// }, "text");
+			$.get('scientists.txt', function (data) {
+				var lines = data.split("\n");
+				$.each(lines, function (n, elem) {
+					jQuery.get(elem + "/blurb.html").then(function (text, status, xhr) {
+						$("#scientists").append($.parseHTML(text));
+					});
+				});
+			}, "text");
 		});
 	</script>
 </body>
