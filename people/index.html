@@ -117,9 +117,9 @@
 				var data = $.csv.toObjects(text);
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
-						case "BREAK":
+						case "ALUMNI":
 							$("#people").append(
-								$.parseHTML('<hr>'//'<div style="display:inline-block;width:15em;height:200px;"><center\><h2>Alumni</h2\></center></div> '
+								$.parseHTML('<hr><h1>Alumni<h1><hr>'//'<div style="display:inline-block;width:15em;height:200px;"><center\><h2>Alumni</h2\></center></div> '
 								));
 							break;
 						default:
