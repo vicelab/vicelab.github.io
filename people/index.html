@@ -123,24 +123,28 @@
 	<script src="../assets/js/util.js"></script>
 	<script src="../assets/js/main.js"></script>
 	<script>
-		function load () { 
-		
-		}
 		$(function () {
 			jQuery.get("../snippets/navigation.html").then(function (text, status, xhr) {
 				$("#navigation_top").append($.parseHTML(text)); /*Navigation: Controlled by HTML snippet in snippets/navigation.html*/
 				$("#navigation_side").append($.parseHTML(text));
 			});
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-			var data;
 			jQuery.get("people.csv").then(function (text, status, xhr) {
-				console.log(text);
-				data = $.csv.toObjects(text);
+				var data = $.csv.toObjects(text);
 				for (var i = 0; i < data.length; i++) {
-					$("#people").append(
-						$.parseHTML('<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/'+ data[i].ID + '.jpg" alt=""/><center\><h2>'+ data[i].NAME + '</h2\><h3>'+ data[i].TITLE + '</h3\><ul class="icons"\><li\><a href="'+ data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li><li><a href="'+ data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li></ul></center></div> '
-					));
-					console.log(data[i]);
+					switch (data[i].ID) {
+						case "BREAK":
+							$("#people").append(
+								$.parseHTML('<div style="display:inline-block;width:15em;height:200px;"><center\><h2>' + Alumni + '</h2\></center></div> '
+								));
+							break;
+						default:
+							$("#people").append(
+								$.parseHTML('<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center\><h2>' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3\><ul class="icons"\><li\><a href="' + data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li><li><a href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li></ul></center></div> '
+								));
+							break;
+					}
+
 				}
 			});
 		});
