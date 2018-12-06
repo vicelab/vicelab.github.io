@@ -108,12 +108,12 @@
 	<script src="../assets/js/main.js"></script>
 	<script>
 		$(function () {
-			jQuery.get("../snippets/navigation.html").then(function (text, status, xhr) {
+			$.get("../snippets/navigation.html").then(function (text, status, xhr) {
 				$("#navigation_top").append($.parseHTML(text)); /*Navigation: Controlled by HTML snippet in snippets/navigation.html*/
 				$("#navigation_side").append($.parseHTML(text));
 			});
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-			jQuery.get("people.csv").then(function (text, status, xhr) {
+			$.get("people.csv").then(function (text, status, xhr) {
 				var data = $.csv.toObjects(text);
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
