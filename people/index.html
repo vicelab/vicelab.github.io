@@ -136,10 +136,11 @@
 			jQuery.get("people.csv").then(function (text, status, xhr) {
 				console.log(text);
 				data = $.csv.toObjects(text);
+				for (var i = 0; i < data.length; i++) {
+					console.log(data[i]);
+				}
 			});
-			for (var i = 0; i < data.length; i++) {
-				console.log(data[i]);
-			}
+			
 
 			jQuery.get("josh-viers/blurb.html").then(function (text, status, xhr) {
 				$("#people").append($.parseHTML(text + " "));
