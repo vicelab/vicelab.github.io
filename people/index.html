@@ -134,6 +134,7 @@
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			
 			var data = $.csv.toObjects("people.csv");
+			console.log(data);
 			for (var i = 0; i < data.length; i++) {
 				console.log(data[i]);
 			}
