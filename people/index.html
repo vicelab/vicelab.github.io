@@ -151,7 +151,7 @@
 			$.get('scientists.txt', function (data) {
 				var lines = data.split("\n");
 				$.each(lines, function (n, elem) {
-					jQuery.get(elem + "/blurb.html").ready(function (text, status, xhr) {
+					jQuery.get(elem + "/blurb.html").then(function (text, status, xhr) {
 						$("#people").append($.parseHTML(text.html + " "));
 					});
 				});
@@ -159,7 +159,7 @@
 			$.get('researchers.txt', function (data) {
 				var lines = data.split("\n");
 				$.each(lines, function (n, elem) {
-					jQuery.get(elem + "/blurb.html").ready(function (text, status, xhr) {
+					jQuery.get(elem + "/blurb.html").then(function (text, status, xhr) {
 						$("#people").append($.parseHTML(text + " "));
 					});
 				});
