@@ -91,17 +91,17 @@
 				<span class="image featured">
 					<img src="images/andy_banner.jpg" alt="" />
 				</span>
-				<h2>
+				<!-- <h2>
 					Ongoing:
-				</h2>
+				</h2> -->
 
 				<div id="projects"></div>
-				<h2>
+				<!-- <h2>
 					Completed:
 				</h2>
 
 				<div id="completed-projects"></div>
-			</article>
+			</article> -->
 		</div>
 
 		<!-- Footer -->
@@ -122,14 +122,28 @@
 				$("#navigation_side").append($.parseHTML(text));
 			});
 			$("#footer").load("/snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-			$.get('items.txt', function (data) {
-				var lines = data.split("\n");
-				$.each(lines, function (n, elem) {
-					jQuery.get(elem + "/preview.html").then(function (text, status, xhr) {
-						$("#projects").append($.parseHTML(text));
-					});
-				});
-			}, "text");
+			$.get("/projects.csv").then(function (text, status, xhr) {
+				var data = $.csv.toObjects(text);
+
+				//check for what sorting is being done, then filter via for();
+
+				for (var i = 0; i < data.length; i++) {
+					switch (data[i].ID) {
+						default:
+							$("#projects").append(
+								$.parseHTML('<article class="mini-post"><header><h3><a href="' + data[i].ID + '">' + data[i].NAME + '</a></h3><time class="published" datetime="2015-10-18">' + data[i].DATE '</time><a href="' + data[i].AUTHOR + '" class="author"><img src="images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></header<a href="' + data[i].ID + '" class="image"><img src="images/' + data[i].ID + '.jpg" alt="" /></a></article>'));
+							break;
+					}
+				}
+			});
+			// $.get('items.txt', function (data) {
+			// 	var lines = data.split("\n");
+			// 	$.each(lines, function (n, elem) {
+			// 		jQuery.get(elem + "/preview.html").then(function (text, status, xhr) {
+			// 			$("#projects").append($.parseHTML(text));
+			// 		});
+			// 	});
+			// }, "text");
 		});
 	</script>
 </body>
