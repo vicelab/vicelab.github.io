@@ -143,31 +143,6 @@
 					console.log(data[i]);
 				}
 			});
-			
-
-			jQuery.get("josh-viers/blurb.html").then(function (text, status, xhr) {
-				$("#people").append($.parseHTML(text + " "));
-			});	//scientists
-
-			// $("#nav2").load("snippets/navigation.html");
-
-
-			$.get('scientists.txt', function (data) {
-				var lines = data.split("\n");
-				$.each(lines, function (n, elem) {
-					jQuery.get(elem + "/blurb.html").then(function (text, status, xhr) {
-						$("#people").append($.parseHTML(text.html + " "));
-					});
-				});
-			}, "text");
-			$.get('researchers.txt', function (data) {
-				var lines = data.split("\n");
-				$.each(lines, function (n, elem) {
-					jQuery.get(elem + "/blurb.html").then(function (text, status, xhr) {
-						$("#people").append($.parseHTML(text + " "));
-					});
-				});
-			}, "text");
 		});
 	</script>
 </body>
