@@ -182,14 +182,29 @@
 					}
 				});
 			}, "text");
-			$.get('projects/items.txt', function (data) {
-				var lines = data.split("\n");
-				$.each(lines, function (n, elem) {
-					jQuery.get("projects/" + elem + "/preview.html").then(function (text, status, xhr) {
-						$("#projects").append($.parseHTML(text));
-					});
-				});
-			}, "text");
+			$.get("/projects.csv").then(function (text, status, xhr) {
+				var data = $.csv.toObjects(text);
+
+				//check for what sorting is being done, then filter via for();
+
+				for (var i = 0; i < data.length; i++) {
+					switch (data[i].ID) {
+						default:
+							$("#projects").append(
+								$.parseHTML('<article class="mini-post"><header><h3><a href="' + 'people' + '">' + data[i].NAME + '</a></h3><time class="published" datetime="2015-10-18">' + data[i].DATE + '</time><a href="' + 'people' + '" class="author"><img src="images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></header<a href="' + data[i].ID + '" class="image"><img src="images/' + data[i].ID + '.jpg" alt="" /></a></article>'
+							));
+							break;
+					}
+				}
+			});
+			// $.get('projects/items.txt', function (data) {
+			// 	var lines = data.split("\n");
+			// 	$.each(lines, function (n, elem) {
+			// 		jQuery.get("projects/" + elem + "/preview.html").then(function (text, status, xhr) {
+			// 			$("#projects").append($.parseHTML(text));
+			// 		});
+			// 	});
+			// }, "text");
 		});
 	</script>
 	<script>
