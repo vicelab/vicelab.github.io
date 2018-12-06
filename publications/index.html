@@ -122,7 +122,7 @@
 					switch (data[i].ID) {
 						default:
 							$("#publications").append(
-								$.parseHTML('<h3>' + 
+								$.parseHTML('<h3>' + data[i].ID + '</h3><hr>'
 //'<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3\><ul class="icons"\><li\><a href="' + data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li><li><a href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li></ul></center></div> '
 							));
 							break;
