@@ -190,13 +190,18 @@
 
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
-						default:
-							$("#projects").append(
-								$.parseHTML('<article class="mini-post"><header><h3><a href="' + 'people' + '">' + data[i].NAME + '</a></h3><time class="published" datetime="2015-10-18">' + data[i].DATE + '</time><a href="' + 'people' + '" class="author"><img src="images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></header><a href="' + data[i].ID + '" class="image"><img src="images/' + data[i].ID + '.jpg" alt="" /></a></article>'
-							));
-							break;
-					}
+					case "READ MORE":
+					$("#projects").append(
+						$.parseHTML('<ul class="actions"><li><a href="projects" class="button">See Projects</a></li></ul>'
+						));
+					break; 
+					default:
+					$("#projects").append(
+						$.parseHTML('<article class="mini-post"><header><h3><a href="' + 'people' + '">' + data[i].NAME + '</a></h3><time class="published" datetime="2015-10-18">' + data[i].DATE + '</time><a href="' + 'people' + '" class="author"><img src="images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></header><a href="' + data[i].ID + '" class="image"><img src="images/' + data[i].ID + '.jpg" alt="" /></a></article>'
+						));
+					break;
 				}
+			}
 			});
 		});
 	</script>
