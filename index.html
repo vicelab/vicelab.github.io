@@ -198,14 +198,14 @@
 					}
 				}
 			});
-			// $.get('projects/items.txt', function (data) {
-			// 	var lines = data.split("\n");
-			// 	$.each(lines, function (n, elem) {
-			// 		jQuery.get("projects/" + elem + "/preview.html").then(function (text, status, xhr) {
-			// 			$("#projects").append($.parseHTML(text));
-			// 		});
-			// 	});
-			// }, "text");
+			$.get('projects/items.txt', function (data) {
+				var lines = data.split("\n");
+				$.each(lines, function (n, elem) {
+					jQuery.get("/projects/" + elem + "/preview.html").then(function (text, status, xhr) {
+						$("#projects").append($.parseHTML(text));
+					});
+				});
+			}, "text");
 		});
 	</script>
 	<script>
