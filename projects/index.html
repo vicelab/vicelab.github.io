@@ -88,12 +88,9 @@
 						<p>See the projects that VICE Lab is working on!</p>
 					</div>
 				</header>
-				<span class="image featured">
-					<img src="images/andy_banner.jpg" alt="" />
-				</span>
 			</article>
 		</div>
-		
+
 		<div id="projects"></div>
 		<!-- Footer -->
 		<section id="footer"></section>
@@ -121,11 +118,13 @@
 
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
+						case "READ MORE":
+							break;
 						default:
 							$("#projects").append(
-								$.parseHTML('<article class="post"><header><div class="title"><h2><a href="#">'+data[i].NAME+'</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">'+data[i].DATE+'</time><a href="people" class="author"><span class="name">'+data[i].AUTHOR+'</span><img src="../images/people/'+ data[i].AUTHOR +'.jpg" alt="" /></a></div></header><table><tr style="border:0px; background-color:white;"><th style="width:25.5%"><img class="image featured" src="../images/'+ data[i].ID+ '.jpg" alt="" /></th><th style="width:74.5%; vertical-align: top;"><p style="margin:0;">'+ data[i].TEXT + '</p></th></tr></table></article>'
-								// '<article class="mini-post"><header><h3><a href="' + 'people' + '">' + data[i].NAME + '</a></h3><time class="published" datetime="2015-10-18">' + data[i].DATE + '</time><a href="' + 'people' + '" class="author"><img src="images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></header><a href="' + data[i].ID + '" class="image"><img src="images/' + data[i].ID + '.jpg" alt="" /></a></article>'
-							));
+								$.parseHTML(
+									'<article class="post"><header><div class="title"><h2><a href="#">' + data[i].NAME + '</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="../images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header><table><tr style="border:0px; background-color:white;"><th style="width:25.5%"><img class="image featured" src="../images/' + data[i].ID + '.jpg" alt="" /></th><th style="width:74.5%; vertical-align: top;"><p style="margin:0;">' + data[i].TEXT + '</p></th></tr></table></article>'
+								));
 							break;
 					}
 				}
