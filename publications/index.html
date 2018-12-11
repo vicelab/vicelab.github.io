@@ -123,6 +123,7 @@
 						case "READ MORE":
 							break;
 						default:
+							console.log(data[i]);
 							$("#publications").append(
 								$.parseHTML(
 									'<article class="post"><header><div class="title"><h2><a href="#">' + data[i].NAME + '</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="../images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header><p style="margin:0;">' + data[i].ABSTRACT + '</p></article>'
