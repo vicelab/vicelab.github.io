@@ -114,8 +114,9 @@
 			});
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			$.get("/publications.csv").then(function (text, status, xhr) {
+				console.log("test");
 				var data = $.csv.toObjects(text);
-
+				console.log("test2");
 				//check for what sorting is being done, then filter via for();
 
 				for (var i = 0; i < data.length; i++) {
