@@ -113,7 +113,7 @@
 				$("#navigation_side").append($.parseHTML(text));
 			});
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-			$.get("/publications.csv").then(function (text, status, xhr) {
+			$.get("/publications-temp.csv").then(function (text, status, xhr) {
 				console.log("test");
 				var data = $.csv.toObjects(text);
 				console.log("test2");
