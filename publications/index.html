@@ -91,7 +91,7 @@
 
 			</article>
 		</div>
-		
+
 		<div id="publications"></div>
 
 		<!-- Footer -->
@@ -115,19 +115,10 @@
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			$.get("/publications.csv").then(function (text, status, xhr) {
 
-				var lines = text.split("\n");
-				var input = "";
-				for (var i = 0; i < lines.length; i++) {
-					input += lines[i];
-					console.log(i);
-					var data = $.csv.toObjects(input);
-					console.log (data);
 
-				}
-				
-				//check for what sorting is being done, then filter via for();
-				
-				//check for what sorting is being done, then filter via for();
+				console.log("test");
+				var data = $.csv.toObjects(text);
+				console.log("working");
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
 						case "READ MORE":
