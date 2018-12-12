@@ -171,36 +171,47 @@
 			$("#about").load("snippets/who-we-are.html"); /*About: Controlled by HTML snippet in snippets/who-we-are.html*/
 			$("#blurb").load("snippets/blurb.html"); /*Blurb: Controlled by HTML snippet in snippets/blurb.html*/
 			$("#footer").load("snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-			$.get('news/items.txt', function (data) {
-				var lines = data.split("\n");
-				var count = 3;
-				$.each(lines, function (n, elem) {
-					if (count-- > 0) {
-						jQuery.get("news/" + elem + ".html").then(function (text, status, xhr) {
-							$("#news").append($.parseHTML(text));
-						});
+			// $.get('news/items.txt', function (data) {
+			// 	var lines = data.split("\n");
+			// 	var count = 3;
+			// 	$.each(lines, function (n, elem) {
+			// 		if (count-- > 0) {
+			// 			jQuery.get("news/" + elem + ".html").then(function (text, status, xhr) {
+			// 				$("#news").append($.parseHTML(text));
+			// 			});
+			// 		}
+			// 	});
+			// }, "text");
+			$.get("/news.csv").then(function (text, status, xhr) {
+				var data = $.csv.toObjects(text);
+				for (var i = 0; i < 1; i++) {
+					switch (data[i].ID) {
+						default:
+							$("#news").append(
+								$.parseHTML(
+									'<article class="post"><header><div class="title"><h2><a href="news">'+ data[i].NAME +'</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">'+ data[i].DATE +'</time><a href="people" class="author"><span class="name">'+ data[i].AUTHOR +'</span><img src="/images/people/' + data[i].AUTHOR +'" alt="" /></a></div></header><p><span class="image left"><img src="/images/news/'+ data[i].ID +'.jpg" alt="" /></span>'+ data[i].TEXT +'</p></article>
+								));
+							break;
+							
 					}
-				});
-			}, "text");
+				}
+			});
 			$.get("/projects.csv").then(function (text, status, xhr) {
 				var data = $.csv.toObjects(text);
-
-				//check for what sorting is being done, then filter via for();
-
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
-					case "READ MORE":
-					$("#projects").append(
-						$.parseHTML('<ul class="actions"><li><a href="projects" class="button">See Projects</a></li></ul>'
-						));
-					break; 
-					default:
-					$("#projects").append(
-						$.parseHTML('<article class="mini-post"><header><h3><a href="' + 'people' + '">' + data[i].NAME + '</a></h3><time class="published" datetime="2015-10-18">' + data[i].DATE + '</time><a href="' + 'people' + '" class="author"><img src="images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></header><a href="' + data[i].ID + '" class="image"><img src="images/' + data[i].ID + '.jpg" alt="" /></a></article>'
-						));
-					break;
+						case "READ MORE":
+							$("#projects").append(
+								$.parseHTML('<ul class="actions"><li><a href="projects" class="button">See Projects</a></li></ul>'
+								));
+							break;
+						default:
+							$("#projects").append(
+								$.parseHTML('<article class="mini-post"><header><h3><a href="' + 'people' + '">' + data[i].NAME + '</a></h3><time class="published" datetime="2015-10-18">' + data[i].DATE + '</time><a href="' + 'people' + '" class="author"><img src="images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></header><a href="' + data[i].ID + '" class="image"><img src="images/' + data[i].ID + '.jpg" alt="" /></a></article>'
+								));
+							break;
+					}
 				}
-			}
 			});
 		});
 	</script>
