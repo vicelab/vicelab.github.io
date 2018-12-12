@@ -115,6 +115,9 @@
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			$.get("/publications.csv").then(function (text, status, xhr) {
 				var data = $.csv.toObjects(text);
+				console.log("test");
+				//check for what sorting is being done, then filter via for();
+				console.log (data);
 				//check for what sorting is being done, then filter via for();
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
