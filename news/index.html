@@ -111,15 +111,20 @@
 				$("#navigation_top").append($.parseHTML(text));
 				$("#navigation_side").append($.parseHTML(text));
 			});
-			/*News Items: Controlled by items.html*/
-			$.get('items.txt', function (data) {
-				var lines = data.split("\n");
-				$.each(lines, function (n, elem) {
-					jQuery.get(elem + ".html").then(function (text, status, xhr) {
-						$("#news").append($.parseHTML(text));
-					});
-				});
-			}, "text");
+			/*News Items: Controlled by news.csv*/
+			$.get("/news.csv").then(function (text, status, xhr) {
+				var data = $.csv.toObjects(text);
+				for (var i = 0; i < data.length; i++) {
+					switch (data[i].ID) {
+						default:
+							$("#news").append(
+								$.parseHTML(
+									'<article class="post"><header><div class="title"><h2><a href="news">' + data[i].NAME + '</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="/images/people/' + data[i].AUTHOR + '" alt="" /></a></div></header><p><span class="image left"><img src="/images/news/' + data[i].ID + '.jpg" alt="" /></span>' + data[i].TEXT + '</p></article>'
+								));
+							break;
+					}
+				}
+			});
 			/*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			$("#footer").load("../snippets/footer.html");
 		});
