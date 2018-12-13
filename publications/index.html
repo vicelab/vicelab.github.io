@@ -124,10 +124,10 @@
 						case "READ MORE":
 							break;
 						default:
-						var authors = data[i].AUTHOR.split(";");
+							var authors = data[i].AUTHOR.split(";");
 							var authors_html = '';
 							for (var j = 0; j < authors.length; j++) {
-								authors_html += '<a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="/images/people/' + data[i].AUTHOR + '" alt="" /></a>'
+								authors_html += '<a href="people" class="author"><span class="name">' + authors[j] + '</span><img src="/images/people/' + authors[j] + '" alt="" /></a>'
 							}
 							var tags = data[i].TAGS.split(";");
 							var tags_html = '';
