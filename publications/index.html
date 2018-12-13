@@ -135,7 +135,7 @@
 							var tags = data[i].TAGS.split(";");
 							var tags_html = '';
 							for (var k = 0; k <= tags.length; k++) {
-								if (!visted_tags.includes(tags[k])) {
+								if (!visted_tags.includes(tags[k]) || visted_tags.includes("") || visted_tags.includes("undefined")) {
 									visted_tags.push(tags[k]);
 									$("#tagfilter").append(
 										'<a href="#" class="button fit">' + tags[k] + '</a>'
