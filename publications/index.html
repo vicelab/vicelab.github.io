@@ -135,19 +135,11 @@
 							var tags = data[i].TAGS.split(";");
 							var tags_html = '';
 							for(var k = 0; k <= tags.length; k++){
-								var index = 0;
-								while(index != k){
-									if(visted_tags[index] == tags[k]){
-										break;
-									}
-									index = index + 1;
-								};
-								
-								if(index == k){
-									visted_tags[index] = tags[k]
-									$("#tagfilter").append(
-										'<a href="#" class="button fit">'+ tags[k] +'</a>'
-									)};
+									if(!visted_tags.includes(tags[k])){
+										visted_tags.push(tags[k]);
+										$("#tagfilter").append(
+											'<a href="#" class="button fit">'+ tags[k] +'</a>'
+									)}};
 							}
 		
 							$("#publications").append(
