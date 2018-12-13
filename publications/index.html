@@ -121,6 +121,7 @@
 				console.log("test");
 				var data = $.csv.toObjects(text);
 				console.log("working");
+				var visted_tags = [];
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
 						case "READ MORE":
@@ -128,7 +129,6 @@
 						default:
 							var authors = data[i].AUTHOR.split(";");
 							var authors_html = '';
-							var visted_tags = [];
 							for (var j = 0; j < authors.length; j++) {
 								authors_html += '<a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="/images/people/' + data[i].AUTHOR + '" alt="" /></a>'
 							}
