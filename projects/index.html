@@ -131,12 +131,30 @@
 			$("#footer").load("/snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			$.get("/projects.csv").then(function (text, status, xhr) {
 				var data = $.csv.toObjects(text);
-
+				var visited_tags = [];
+				var visited_locations = [];
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
 						case "READ MORE":
 							break;
 						default:
+						var tags = data[i].TAGS.split(";");
+							var tags_html = '';
+							for (var k = 0; k < tags.length; k++) {
+								if (tags[k] === " " || tags[k] === "") continue;
+								if (!visited_tags.includes(tags[k])) {
+									visited_tags.push(tags[k]);
+									$("#tags").append(
+										'<a href="#" class="button">' + tags[k].replace("-", " ") + '</a> '
+									);
+								}
+							}
+							if (data[i].LOCATION !== "" && !visited_locations.includes(data[i].LOCATION)) {
+								visited_locations.push(data[i].LOCATION);
+								$("#locations").append(
+									'<a href="#" class="button">' + data[i].LOCATION.replace("-", " ") + '</a> '
+								);
+							}
 							$("#projects").append(
 								$.parseHTML(
 									'<article class="post"><header><div class="title"><h2><a href="/projects">' + data[i].NAME + '</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header><table><tr style="border:0px; background-color:white;"><th style="width:25.5%"><img class="image featured" src="/images/' + data[i].ID + '.jpg" alt="" /></th><th style="width:74.5%; vertical-align: top;"><p style="margin:0;">' + data[i].TEXT + '</p></th></tr></table></article>'
