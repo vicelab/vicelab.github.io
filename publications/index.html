@@ -125,7 +125,7 @@
 							break;
 						default:
 						var authors = data[i].AUTHOR.split(";");
-							var authors_html;
+							var authors_html = '';
 							for (var j = 0; j < authors.length; j++) {
 								authors_html += '<a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="/images/people/' + data[i].AUTHOR + '" alt="" /></a>'
 							}
