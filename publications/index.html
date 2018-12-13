@@ -130,7 +130,7 @@
 							var authors = data[i].AUTHOR.split(";");
 							var authors_html = '';
 							for (var j = 0; j < authors.length; j++) {
-								authors_html += '<a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="/images/people/' + data[i].AUTHOR + '" alt="" /></a>'
+								authors_html += '<a href="people" class="author"><span class="name">' + data[i].AUTHOR.split("-"," ") + '</span><img src="/images/people/' + data[i].AUTHOR + '" alt="" /></a>'
 							}
 							var tags = data[i].TAGS.split(";");
 							var tags_html = '';
@@ -138,18 +138,18 @@
 								if (!visted_tags.includes(tags[k])) {
 									visted_tags.push(tags[k]);
 									$("#tagfilter").append(
-										'<a href="#" class="button fit">' + tags[k] + '</a>'
+										'<a href="#" class="button" style="width:20%">' + tags[k].split("-"," ") + '</a>'
 									);
 								}
 							}
 
-					$("#publications").append(
-						$.parseHTML(
-							'<article class="post"><header><div class="title"><h2><a href="#">' + data[i].NAME + '</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + '</p></article>'
-						));
-					break;
+							$("#publications").append(
+								$.parseHTML(
+									'<article class="post"><header><div class="title"><h2><a href="#">' + data[i].NAME + '</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + '</p></article>'
+								));
+							break;
+					}
 				}
-			}
 			});
 		});
 
