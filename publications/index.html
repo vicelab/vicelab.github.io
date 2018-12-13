@@ -92,13 +92,27 @@
 			</article>
 		</div>
 
-		<div id="tagfilter"></div>
+		<!-- <div id="tagfilter"></div> -->
 
 		<div id="publications"></div>
 
-		<!-- Footer -->
-		<section id="footer"></section>
+		<!-- SIDE COLUMN -->
+		<section id="sidebar">
+			<section id="intro">
+				<center>
+					<img src="images/logo.png" style="height:7.6em" alt="" />
+					<pre><code style="padding: .75em .5em; font-size: .85em;">vicelab <- lab(viers ~ (info + cons + env))</code></pre>
+				</center>
+			</section>
 
+			<!-- About -->
+			<section class="blurb" id="tags">
+			</section>
+
+			<!-- Footer -->
+			<section id="footer">
+			</section>
+		</section>
 	</div>
 
 	<!-- Scripts -->
@@ -136,9 +150,9 @@
 							var tags_html = '';
 							for (var k = 0; k < tags.length; k++) {
 								if (tags[k] === " " || tags[k] === "") continue;
-								if (!visted_tags.includes(tags[k]) ) {
+								if (!visted_tags.includes(tags[k])) {
 									visted_tags.push(tags[k]);
-									$("#tagfilter").append(
+									$("#tags").append(
 										'<a href="#" class="button" style="width:20%">' + tags[k].replace("-", " ") + '</a>'
 									);
 								}
