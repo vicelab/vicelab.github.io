@@ -164,8 +164,20 @@
 	<script>
 		const NUMBER_FRONT_PAGE_NEWS = 3;
 
+		function showSlides() {
+			var i;
+			var slides = document.getElementsByClassName("mySlides");
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			}
+			slideIndex++;
+			if (slideIndex > slides.length) { slideIndex = 1 }
+			slides[slideIndex - 1].style.display = "block";
+			setTimeout(showSlides, 2000); // Change image every 2 seconds
+		}
+		
 		$(function () {
-			
+
 			jQuery.get("../snippets/navigation.html").then(function (text, status, xhr) {
 				$("#navigation_top").append($.parseHTML(text)); /*Navigation: Controlled by HTML snippet in snippets/navigation.html*/
 				$("#navigation_side").append($.parseHTML(text));
@@ -182,7 +194,7 @@
 						default:
 							$("#news").append(
 								$.parseHTML(
-									'<article class="post"><header><div class="title"><h2><a href="news">'+ data[i].NAME +'</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">'+ data[i].DATE +'</time><a href="people" class="author"><span class="name">'+ data[i].AUTHOR +'</span><img src="/images/people/' + data[i].AUTHOR +'" alt="" /></a></div></header><p><span class="image left"><img src="/images/news/'+ data[i].ID +'.jpg" alt="" /></span>'+ data[i].TEXT +'</p></article>'
+									'<article class="post"><header><div class="title"><h2><a href="news">' + data[i].NAME + '</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="/images/people/' + data[i].AUTHOR + '" alt="" /></a></div></header><p><span class="image left"><img src="/images/news/' + data[i].ID + '.jpg" alt="" /></span>' + data[i].TEXT + '</p></article>'
 								));
 							break;
 					}
