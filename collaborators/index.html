@@ -121,7 +121,7 @@
 						default:
 							$("#collaborators").append(
 								$.parseHTML(
-									'<article class="post"><header><div class="title"><h2><a href="collaborators">' + data[i].NAME + '</a></h2></div><div class="meta"><a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="/images/people/' + data[i].AUTHOR.replace("-", " ") + '.jpg" alt="" /></a></div></header><p>' + data[i].TEXT + '</p></article>'
+									'<article class="post"><header><div class="title"><h2><a href="collaborators">' + data[i].NAME + '</a></h2></div><div class="meta"><a href="people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header><p>' + data[i].TEXT + '</p></article>'
 								));
 							break;
 					}
