@@ -139,7 +139,7 @@
 								console.log(visted_tags.includes(tags[k]));
 								console.log(visted_tags.indexOf(tags[k]));
 
-								if (!visted_tags.includes(tags[k]) || !tags[k] == " " || !tags[k] == null) {
+								if (!visted_tags.includes(tags[k]) || tags[k] != " " || tags[k] !== null) {
 									visted_tags.push(tags[k]);
 									$("#tagfilter").append(
 										'<a href="#" class="button" style="width:20%">' + tags[k].replace("-"," ") + '</a>'
