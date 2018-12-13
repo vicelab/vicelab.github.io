@@ -101,6 +101,7 @@
 
 	<!-- Scripts -->
 	<script src="../assets/js/jquery.min.js"></script>
+	<script src="/assets/js/jquery.csv.min.js"></script>
 	<script src="../assets/js/browser.min.js"></script>
 	<script src="../assets/js/breakpoints.min.js"></script>
 	<script src="../assets/js/util.js"></script>
@@ -112,15 +113,20 @@
 				$("#navigation_top").append($.parseHTML(text));
 				$("#navigation_side").append($.parseHTML(text));
 			});
-			/*News Items: Controlled by items.html*/
-			$.get('items.txt', function (data) {
-				var lines = data.split("\n");
-				$.each(lines, function (n, elem) {
-					jQuery.get(elem + "/post.html").then(function (text, status, xhr) {
-						$("#collaborators").append($.parseHTML(text));
-					});
-				});
-			}, "text");
+			
+			$.get("/collaborators.csv").then(function (text, status, xhr) {
+				var data = $.csv.toObjects(text);
+				for (var i = 0; i < data.length; i++) {
+					switch (data[i].ID) {
+						default:
+							$("#collaborators").append(
+								$.parseHTML(
+									'<article class="post"><header><div class="title"><h2><a href="collaborators">' + data[i].NAME + '</a></h2></div><div class="meta"><a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header><p>' + data[i].TEXT + '</p></article>'
+								));
+							break;
+					}
+				}
+			});
 			/*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			$("#footer").load("../snippets/footer.html");
 		});
