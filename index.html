@@ -169,7 +169,7 @@
 						default:
 							$("#news").append(
 								$.parseHTML(
-									'<article class="post"><header><div class="title"><h2><a href="news">' + data[i].NAME + '</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="people" class="author"><span class="name">' + data[i].AUTHOR.replace("-"," ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header><p><span class="image left"><img src="/images/news/' + data[i].ID + '.jpg" alt="" /></span>' + data[i].TEXT + '</p></article>'
+									'<article class="post"><header><div class="title"><h2><a href="/news">' + data[i].NAME + '</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replace("-"," ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header><table><tr style="border:0px; background-color:white;"><th style="width:25.5%"><img class="image featured" src="/images/' + data[i].ID + '.jpg" alt="" /></th><th style="width:74.5%; vertical-align: top;"><p style="margin:0;">' + data[i].TEXT + '</p></th></tr></table>'
 								));
 							break;
 					}
@@ -181,12 +181,12 @@
 					switch (data[i].ID) {
 						case "READ MORE":
 							$("#projects").append(
-								$.parseHTML('<ul class="actions"><li><a href="projects" class="button large">See Projects</a></li></ul>'
+								$.parseHTML('<ul class="actions"><li><a href="/projects" class="button large">See Projects</a></li></ul>'
 								));
 							break;
 						default:
 							$("#projects").append(
-								$.parseHTML('<article class="mini-post"><header><h3><a href="' + 'people' + '">' + data[i].NAME + '</a></h3><time class="published" datetime="2015-10-18">' + data[i].DATE + '</time><a href="' + 'people' + '" class="author"><img src="images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></header><a href="' + data[i].ID + '" class="image"><img src="images/' + data[i].ID + '.jpg" alt="" /></a></article>'
+								$.parseHTML('<article class="mini-post"><header><h3><a href="/projects">' + data[i].NAME + '</a></h3><time class="published" datetime="2015-10-18">' + data[i].DATE + '</time><a href="/people" class="author"><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></header><a href="/projects" class="image"><img src="images/' + data[i].ID + '.jpg" alt="" /></a></article>'
 								));
 							break;
 					}
