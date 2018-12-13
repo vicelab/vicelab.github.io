@@ -125,16 +125,16 @@
 						case "READ MORE":
 							break;
 						default:
-						var authors = data[i].AUTHOR.split(";");
+							var authors = data[i].AUTHOR.split(";");
 							var authors_html = '';
 							for (var j = 0; j < authors.length; j++) {
 								authors_html += '<a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="/images/people/' + data[i].AUTHOR + '" alt="" /></a>'
 							}
 							var tags = data[i].TAGS.split(";");
 							var tags_html = '';
-							for(var k = 0; k < tags.length; k++){
+							for(var k = 0; k < 1; k++) {//tags.length; k++){
 								$("#tagfilter").append(
-									'<a class = "button">' + tags[i]
+									'<div class="col-6 col-12-small"><input type="checkbox" id="demo-copy" name="demo-copy"><label for="demo-copy">example</label></div>'
 								);
 							}
 							$("#publications").append(
