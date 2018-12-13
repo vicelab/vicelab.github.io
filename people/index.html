@@ -138,7 +138,7 @@
 							if (data[i].EMAIL !== " " && data[i].EMAIL !== "") email_html = '<li><a href="' + data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li>';
 							if (data[i].TWITTER !== " " && data[i].TWITTER !== "") twitter_html = '<li><a href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li>';
 							$("#people").append(
-								$.parseHTML('<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><ul class="icons">'+ email_html + email_html + '</ul></center></div> '
+								$.parseHTML('<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><ul class="icons">'+ email_html + twitter_html + '</ul></center></div> '
 							));
 							break;
 					}
