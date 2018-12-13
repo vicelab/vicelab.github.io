@@ -94,9 +94,6 @@
 						<li>
 							<a href="about" class="button large">Learn More</a>
 						</li>
-						<li>
-							<a href="contact" class="button large">Contact Us</a>
-						</li>
 					</ul>
 				</footer>
 			</article>
@@ -140,7 +137,7 @@
 	<script src="assets/js/main.js"></script>
 
 	<script>
-		const NUMBER_FRONT_PAGE_NEWS = 3;
+		const NUMBER_FRONT_PAGE_NEWS = 5;
 
 		function showSlides() {
 			var i;
@@ -184,7 +181,7 @@
 					switch (data[i].ID) {
 						case "READ MORE":
 							$("#projects").append(
-								$.parseHTML('<ul class="actions"><li><a href="projects" class="button">See Projects</a></li></ul>'
+								$.parseHTML('<ul class="actions"><li><a href="projects" class="button large">See Projects</a></li></ul>'
 								));
 							break;
 						default:
