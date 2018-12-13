@@ -132,8 +132,6 @@
 			$.get("/projects.csv").then(function (text, status, xhr) {
 				var data = $.csv.toObjects(text);
 
-				//check for what sorting is being done, then filter via for();
-
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
 						case "READ MORE":
@@ -147,14 +145,6 @@
 					}
 				}
 			});
-			// $.get('items.txt', function (data) {
-			// 	var lines = data.split("\n");
-			// 	$.each(lines, function (n, elem) {
-			// 		jQuery.get(elem + "/preview.html").then(function (text, status, xhr) {
-			// 			$("#projects").append($.parseHTML(text));
-			// 		});
-			// 	});
-			// }, "text");
 		});
 	</script>
 </body>
