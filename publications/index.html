@@ -87,6 +87,7 @@
 						</h2>
 						<p>See the papers that VICE Lab has produced!</p>
 					</div>
+					<div id="tagfilter"></div>
 				</header>
 
 			</article>
@@ -124,13 +125,18 @@
 						case "READ MORE":
 							break;
 						default:
-							var authors = data[i].AUTHOR.split(";");
+						var authors = data[i].AUTHOR.split(";");
 							var authors_html = '';
 							for (var j = 0; j < authors.length; j++) {
-								authors_html += '<a href="people" class="author"><span class="name">' + authors[j].replace("-", " ") + '</span><img src="/images/people/' + authors[j] + '.jpg" alt="" /></a>'
+								authors_html += '<a href="people" class="author"><span class="name">' + data[i].AUTHOR + '</span><img src="/images/people/' + data[i].AUTHOR + '" alt="" /></a>'
 							}
 							var tags = data[i].TAGS.split(";");
 							var tags_html = '';
+							for(var k = 0; k < tags.length; k++){
+								$("#tagfilter").append(
+									'<a class = "button">' + tags[i]
+								);
+							}
 							$("#publications").append(
 								$.parseHTML(
 									'<article class="post"><header><div class="title"><h2><a href="#">' + data[i].NAME + '</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + '</p></article>'
@@ -140,6 +146,7 @@
 				}
 			});
 		});
+
 	</script>
 </body>
 
