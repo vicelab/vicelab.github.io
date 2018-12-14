@@ -1,5 +1,6 @@
 # VICE Lab
-`vicelab <- lab(viers ~ (info + cons + env))`
+`vicelab <- lab(viers ~ (info + cons + env))`  
+
  The research lab of Professor Joshua H. Viers, based out of the University of California, Merced, focuses on pressing multifaceted environmental problems facing California, emphasizing on coupled human-environment systems, and leveraging geospatial information systems to turn data into decisions.
 
 ## Research Foci:
