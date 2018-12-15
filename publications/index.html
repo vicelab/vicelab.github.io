@@ -149,8 +149,10 @@
 								authors_html += '<a href="/people" class="author"><span class="name">' + authors[j].replace("-", " ") + '</span><img src="/images/people/' + authors[j] + '.jpg" alt="" /></a>'
 							}
 							var tags = data[i].TAGS.split(";");
-							var tags_html = '';
+							var tags_html = "class =\"tags ";
+							
 							for (var k = 0; k < tags.length; k++) {
+								tags_html += tag[k] + " ";
 								if (tags[k] === " " || tags[k] === "") continue;
 								if (!visited_tags.includes(tags[k])) {
 									visited_tags.push(tags[k]);
@@ -159,6 +161,7 @@
 									);
 								}
 							}
+							tags_html += "\" "
 							if (data[i].LOCATION !== "" && !visited_locations.includes(data[i].LOCATION)) {
 								visited_locations.push(data[i].LOCATION);
 								$("#locations").append(
@@ -174,38 +177,38 @@
 				}
 			});
 
-			// filterSelection("all")
-			// function filterSelection(c) {
-			// 	var x, i;
-			// 	//Needs each publication to have the tags be callable
-			// 	//x = document.getElementById("filterDiv");
-			// 	if (c == "all") c = "";
-			// 	for (i = 0; i < x.length; i++) {
-			// 		removeElement(x[i], "show");
-			// 		if (x[i].className.indexOf(c) > -1) addElement(x[i], "show");
-			// 	}
-			// }
+			filterSelection("all")
+			function filterSelection(c) {
+				var x, i;
+				//Needs each publication to have the tags be callable
+				x = document.getElementsByClassName("tags");
+				if (c == "all") c = "";
+				for (i = 0; i < x.length; i++) {
+					removeElement(x[i], "show");
+					if (x[i].className.indexOf(c) > -1) addElement(x[i], "show");
+				}
+			}
 
-			// function addElement(element, name) {
-			// 	var i, arr1, arr2;
-			// 	arr1 = element.className.split(" ");
-			// 	arr2 = name.split(" ");
-			// 	for (i = 0; i < arr2.length; i++) {
-			// 		if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
-			// 	}
-			// }
+			function addElement(element, name) {
+				var i, arr1, arr2;
+				arr1 = element.className.split(" ");
+				arr2 = name.split(" ");
+				for (i = 0; i < arr2.length; i++) {
+					if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+				}
+			}
 
-			// function removeElement(element, name) {
-			// 	var i, arr1, arr2;
-			// 	arr1 = element.className.split(" ");
-			// 	arr2 = name.split(" ");
-			// 	for (i = 0; i < arr2.length; i++) {
-			// 		while (arr1.indexOf(arr2[i]) > -1) {
-			// 			arr1.splice(arr1.indexOf(arr2[i]), 1);
-			// 		}
-			// 	}
-			// 	element.className = arr1.join(" ");
-			// }
+			function removeElement(element, name) {
+				var i, arr1, arr2;
+				arr1 = element.className.split(" ");
+				arr2 = name.split(" ");
+				for (i = 0; i < arr2.length; i++) {
+					while (arr1.indexOf(arr2[i]) > -1) {
+						arr1.splice(arr1.indexOf(arr2[i]), 1);
+					}
+				}
+				element.className = arr1.join(" ");
+			}
 		});
 
 	</script>
