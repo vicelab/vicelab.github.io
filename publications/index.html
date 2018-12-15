@@ -158,7 +158,7 @@
 								if (!visited_tags.includes(tags[k])) {
 									visited_tags.push(tags[k]);
 									$("#tags").append(
-										'<a href="#" class="button" onclick="filterSelection("tags[k]")">' + tags[k].replace("-", " ") + '</a> '
+										'<a href="#" class="button" onclick="filterSelection(' + tag[k] + ')">' + tags[k].replace("-", " ") + '</a> '
 									);
 								}
 							}
