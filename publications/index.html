@@ -150,7 +150,7 @@
 							}
 							var tags = data[i].TAGS.split(";");
 							var tags_html = "";
-							var tags_html = "class =\"post ";
+							var tags_html = "<a class =\"tags ";
 							
 							for (var k = 0; k < tags.length; k++) {
 								tags_html += tags[k] + " ";
@@ -162,7 +162,7 @@
 									);
 								}
 							}
-							tags_html += "\""
+							tags_html += "\"/a>"
 							if (data[i].LOCATION !== "" && !visited_locations.includes(data[i].LOCATION)) {
 								visited_locations.push(data[i].LOCATION);
 								$("#locations").append(
@@ -171,7 +171,7 @@
 							}
 							$("#publications").append(
 								$.parseHTML(
-									'<article tags_html><header><div class = "title"><h3><a href="'+ data[i].LINK +'">' + data[i].NAME + '</a></h3></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + '</p></article>'
+									'<article class ="post"><header><div class = "title"><h3><a href="'+ data[i].LINK +'">' + data[i].NAME + '</a></h3></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + tags_html +'</p></article>'
 								));
 							break;
 					}
@@ -182,7 +182,7 @@
 			function filterSelection(c) {
 				var x, i;
 				//Needs each publication to have the tags be callable
-				x = document.getElementsByClassName("post");
+				x = document.getElementsByClassName("tags");
 				if (c == "all") c = "";
 				for (i = 0; i < x.length; i++) {
 					removeElement(x[i], "show");
