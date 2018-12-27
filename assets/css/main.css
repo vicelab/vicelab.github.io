@@ -3588,9 +3588,9 @@ input, select, textarea {
 		}
 
 		.filterDiv {
-			display: block;
+			display: none;
 		  }
 		  
 		  .hide {
-			display: none;
+			display: block;
 		  }
