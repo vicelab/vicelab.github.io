@@ -187,7 +187,7 @@
 							// }
 							$("#publications").append(
 								$.parseHTML(
-									'<article ' + tags_html + '><header><div class = "title"><h3><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + tags_html + location_html + '</p></article>'
+									'<article ' + tags_html + location_html + '><header><div class = "title"><h3><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + tags_html + '</p></article>'
 								));
 							break;
 					}
