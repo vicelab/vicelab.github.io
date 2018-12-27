@@ -155,11 +155,11 @@
 							for (var k = 0; k < tags.length; k++) {
 								tags_html += tags[k] + " ";
 								if (tags[k] === " " || tags[k] === "") continue;
-								tags_buttons_html += '<a href="#" class="button" onclick="filterSelection(\"' + tags[k] + '\")">' + tags[k].replace("-", " ") + '</a> ';
+								tags_buttons_html += '<a href="#" class="button" onclick="filterSelection(\'' + tags[k] + '\')">' + tags[k].replace("-", " ") + '</a> ';
 								if (!visited_tags.includes(tags[k])) {
 									visited_tags.push(tags[k]);
 									$("#tags").append(
-										'<a href="#" class="button" onclick="filterSelection(\"' + tags[k] + '\")">' + tags[k].replace("-", " ") + '</a> '
+										'<a href="#" class="button" onclick="filterSelection(\'' + tags[k] + '\')">' + tags[k].replace("-", " ") + '</a> '
 									);
 								}
 							}	
