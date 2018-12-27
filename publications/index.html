@@ -150,7 +150,7 @@
 							}
 							var tags = data[i].TAGS.split(";");
 							var tags_buttons_html = '';
-							var tags_html = 'class ="filterDiv ';
+							var tags_html = 'class ="post ';
 
 							for (var k = 0; k < tags.length; k++) {
 								tags_html += tags[k] + " ";
@@ -189,11 +189,11 @@
 		function filterSelection(c) {
 			var x, i;
 			//Needs each publication to have the tags be callable
-			x = document.getElementsByClassName("filterDiv");
+			x = document.getElementsByClassName("post");
 			if (c == "all") c = "";
 			for (i = 0; i < x.length; i++) {
 				removeElement(x[i], "hide");
-				if (x[i].className.indexOf(c) > -1) addElement(x[i], "hide");
+				if (x[i].className.indexOf(c) < -1) addElement(x[i], "hide");
 			}
 		}
 

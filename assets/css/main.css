@@ -3586,11 +3586,7 @@ input, select, textarea {
 			}
 
 		}
-
-		.filterDiv {
-			display: none;
-		  }
 		  
 		  .hide {
-			display: block;
+			display: none;
 		  }
