@@ -204,6 +204,7 @@
 			for (i = 0; i < arr2.length; i++) {
 				if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
 			}
+			onsole.log(element, element.className);
 		}
 
 		function removeElement(element, name) {
@@ -216,6 +217,7 @@
 				}
 			}
 			element.className = arr1.join(" ");
+			console.log(element, element.className);
 		}
 	</script>
 </body>
