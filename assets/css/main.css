@@ -2535,7 +2535,7 @@ input, select, textarea {
 	ul.posts {
 		list-style: none;
 		padding: 0;
-		display: block;
+		display: none;
 	}
 		ul.posts
 		ul.posts li {
@@ -2603,7 +2603,7 @@ input, select, textarea {
 					margin-bottom: 0;
 				}
 	.hide{
-		display: none;
+		display: block;
 	}
 
 /* Mini Post */
