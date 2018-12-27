@@ -152,30 +152,40 @@
 							var tags_buttons_html = '';
 							var tags_html = 'class ="post ';
 
-							for (var k = 0; k < tags.length; k++) {
-								tags_html += tags[k] + " ";
-								if (tags[k] === " " || tags[k] === "") continue;
-								tags_buttons_html += '<a href="#" class="button" onclick="filterSelection(\'' + tags[k] + '\')">' + tags[k].replace("-", " ") + '</a> ';
-								if (!visited_tags.includes(tags[k])) {
-									visited_tags.push(tags[k]);
+							for (var j = 0; j < tags.length; j++) {
+								tags_html += tags[j] + " ";
+								if (tags[j] === " " || tags[j] === "") continue;
+								tags_buttons_html += '<a href="#" class="button" onclick="filterSelection(\'' + tags[j] + '\')">' + tags[j].replace("-", " ") + '</a> ';
+								if (!visited_tags.includes(tags[j])) {
+									visited_tags.push(tags[j]);
 									$("#tags").append(
-										'<a href="#" class="button" onclick="filterSelection(\'' + tags[k] + '\')">' + tags[k].replace("-", " ") + '</a> '
+										'<a href="#" class="button" onclick="filterSelection(\'' + tags[j] + '\')">' + tags[j].replace("-", " ") + '</a> '
 									);
 								}
-							}	
+							}
 							tags_html += '"'
 							var location_html = '';
-							var locationsArr = data[i].LOCATION.split(",");
-							if (data[i].LOCATION !== "" && !visited_locations.includes(data[i].LOCATION)) {
-								location_html = '<a href="#" class="button" onclick="filterSelection(\'' + locationsArr[k] + '\')">' + data[i].LOCATION.replace("-", " ") + '</a>';
-								visited_locations.push(data[i].LOCATION);
-								$("#locations").append(
-									'<a href="#" class="button" onclick="filterSelection(\'' + locationsArr[k] + '\')">' + data[i].LOCATION.replace("-", " ") + '</a> '
-								);
+							var locationArr = data[i].LOCATION.split(";");
+							for (var j = 0; j < locationArr.length; j++) {
+								location_html += locationArr[j] + " ";
+								if (locationArr[j] === " " || locationArr[j] === "") continue;
+								if(!visited_locations.includes(locationArr[j])){
+									visited_locations.push(locationArr[j]);
+									$("#locations").append(
+										'<a href="#" class="button">' + data[i].LOCATION.replace("-", " ") + '</a> '
+									);
+								}
 							}
+							// if (data[i].LOCATION !== "" && !visited_locations.includes(data[i].LOCATION)) {
+							// 	location_html = '<a href="#" class="button">' + data[i].LOCATION.replace("-", " ") + '</a>';
+							// 	visited_locations.push(data[i].LOCATION);
+							// 	$("#locations").append(
+							// 		'<a href="#" class="button">' + data[i].LOCATION.replace("-", " ") + '</a> '
+							// 	);
+							// }
 							$("#publications").append(
 								$.parseHTML(
-									'<article ' + tags_html + '><header><div class = "title"><h3><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>'+ tags_buttons_html + location_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + tags_html + '</p></article>'
+									'<article ' + tags_html + '><header><div class = "title"><h3><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + tags_html + '</p></article>'
 								));
 							break;
 					}
@@ -193,7 +203,7 @@
 			x = document.getElementsByClassName("post");
 			if (c == "all") c = "";
 			for (i = 0; i < x.length; i++) {
-				addElement(	x[i], "hide");
+				addElement(x[i], "hide");
 				if (x[i].className.indexOf(c) > -1) removeElement(x[i], "hide");
 			}
 		}
