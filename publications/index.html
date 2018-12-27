@@ -165,11 +165,12 @@
 							}	
 							tags_html += '"'
 							var location_html = '';
+							var locationsArr = data[i].LOCATION.split(",");
 							if (data[i].LOCATION !== "" && !visited_locations.includes(data[i].LOCATION)) {
-								location_html = '<a href="#" class="button">' + data[i].LOCATION.replace("-", " ") + '</a>';
+								location_html = '<a href="#" class="button" onclick="filterSelection(\'' + locationsArr[k] + '\')">' + data[i].LOCATION.replace("-", " ") + '</a>';
 								visited_locations.push(data[i].LOCATION);
 								$("#locations").append(
-									'<a href="#" class="button">' + data[i].LOCATION.replace("-", " ") + '</a> '
+									'<a href="#" class="button" onclick="filterSelection(\'' + locationsArr[k] + '\')">' + data[i].LOCATION.replace("-", " ") + '</a> '
 								);
 							}
 							$("#publications").append(
