@@ -2535,9 +2535,8 @@ input, select, textarea {
 	ul.posts {
 		list-style: none;
 		padding: 0;
-		display: none;
 	}
-		ul.posts
+
 		ul.posts li {
 			border-top: dotted 1px rgba(160, 160, 160, 0.3);
 			margin: 1.5em 0 0 0;
@@ -2602,9 +2601,6 @@ input, select, textarea {
 				ul.posts article header > :last-child {
 					margin-bottom: 0;
 				}
-	.hide{
-		display: block;
-	}
 
 /* Mini Post */
 
@@ -3590,3 +3586,11 @@ input, select, textarea {
 			}
 
 		}
+
+		.filterDiv {
+			display: block;
+		  }
+		  
+		  .hide {
+			display: none;
+		  }
