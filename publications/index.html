@@ -192,8 +192,8 @@
 			x = document.getElementsByClassName("post");
 			if (c == "all") c = "";
 			for (i = 0; i < x.length; i++) {
-				removeElement(x[i], "show");
-				if (x[i].className.indexOf(c) > -1) addElement(x[i], "show");
+				removeElement(x[i], "hide");
+				if (x[i].className.indexOf(c) > -1) addElement(x[i], "hide");
 			}
 		}
 
