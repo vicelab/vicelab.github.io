@@ -3590,3 +3590,6 @@ input, select, textarea {
 		  .hide {
 			display: none;
 		  }
+		  .show{
+			  display: inline;
+		  }
