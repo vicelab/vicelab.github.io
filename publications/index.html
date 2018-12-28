@@ -184,9 +184,9 @@
 							var firstSection = "";
 							var secondSection = "";
 							var showMoreBTN = "";
-							
+
 							if(articleArr.length > 1){
-								showMoreBTN = '<button onclick="showMoreText()" id="myBtn">Show More Text</button>';
+								showMoreBTN = '<button onclick="showMoreText()" id=\"' + data[i].LINK + "Button" + '">Show More Text</button>';
 							}
 
 							for(var j = 0; j < articleArr.length; j++){
@@ -200,7 +200,7 @@
 							
 							$("#publications").append(
 								$.parseHTML(
-									'<article ' + tags_html + location_html + '><header><div class = "title"><h3><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_buttons_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + firstSection + '</p>'+ showMoreBTN + '</article>'
+									'<article ' + tags_html + location_html + '><header><div class = "title"><h3><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_buttons_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + firstSection + '</p>' + '<p class = "hide" style = "margin:0;">' + secondSection + '</p>' + showMoreBTN + '</article>'
 								));
 							break;
 					}
@@ -247,18 +247,7 @@
 
 	<script>
 		function showMoreText() {
-			var dots = document.getElementById("dots");
-			var moreText = document.getElementById("more");
-			var btnText = document.getElementById("myBtn");
-
-			if (dots.style.display === "none") {
-				dots.style.display = "inline";
-				moreText.style.display = "inline";
-			} else {
-				dots.style.display = "none";
-				document.getElementById("myBtn").style.visibility = 'hidden';
-				moreText.style.display = "inline";
-			}
+			
 		}
 	</script>
 </body>
