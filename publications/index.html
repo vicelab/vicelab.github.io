@@ -180,9 +180,22 @@
 							}
 							location_html += '"';
 
+							var articleArr = data[i].ABSTRACT.split(" ");
+							var firstSection = "";
+							var secondSection = "";
+
+							for(var j = 0; j < articleArr.length; j++){
+								if(j < 50){
+									firstSection += articleArr[j] + " ";
+								}
+								else{
+									secondSection += articleArr[j] + " ";
+								}
+							}
+							
 							$("#publications").append(
 								$.parseHTML(
-									'<article ' + tags_html + location_html + '><header><div class = "title"><h3><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_buttons_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + '</p>'+ '<button onclick="showMoreText()" id="myBtn">Show More Text</button>' + '</article>'
+									'<article ' + tags_html + location_html + '><header><div class = "title"><h3><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_buttons_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + firstSection + '</p>'+ '<button onclick="showMoreText()" id="myBtn">Show More Text</button>' + '</article>'
 								));
 							break;
 					}
