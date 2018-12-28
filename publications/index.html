@@ -186,7 +186,7 @@
 							var showMoreBTN = "";
 
 							if(articleArr.length > 1){
-								showMoreBTN = '<button onclick="showMoreText(\'' +  data[i].ID + '\')">Show More Text</button>';
+								showMoreBTN = '<button id = \'' + data[i].ID + 'button\'onclick="showMoreText(\'' +  data[i].ID + '\')">Show More Text</button>';
 							}
 
 							for(var j = 0; j < articleArr.length; j++){
@@ -249,6 +249,8 @@
 		function showMoreText(elementID) {
 			x = document.getElementById(elementID + "ShowText");
 			x.className = "show";
+			button = document.getElementById(elementID + "button");
+			button.className = "hide";
 		}
 	</script>
 </body>
