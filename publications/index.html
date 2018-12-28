@@ -163,7 +163,7 @@
 									);
 								}
 							}
-							
+
 							var location_html = '';
 							var locationArr = data[i].LOCATION.split(";");
 							var location_buttons_html = '';
@@ -171,7 +171,7 @@
 								location_html += locationArr[j] + " ";
 								if (locationArr[j] === " " || locationArr[j] === "") continue;
 								location_buttons_html += '<a href="#" class="button" onclick="filterSelection(\'' + locationArr[j] + '\')">' + locationArr[j].replace("-", " ") + '</a> ';
-								if(!visited_locations.includes(locationArr[j])){
+								if (!visited_locations.includes(locationArr[j])) {
 									visited_locations.push(locationArr[j]);
 									$("#locations").append(
 										'<a href="#" class="button" onclick="filterSelection(\'' + locationArr[j] + '\')">' + data[i].LOCATION.replace("-", " ") + '</a> '
@@ -182,7 +182,7 @@
 
 							$("#publications").append(
 								$.parseHTML(
-									'<article ' + tags_html + location_html + '><header><div class = "title"><h3><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_buttons_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + tags_html + '</p></article>'
+									'<article ' + tags_html + location_html + '><header><div class = "title"><h3><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_buttons_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;">' + data[i].ABSTRACT + '</p>'+ '<button onclick="showMoreText()" id="myBtn">Show More Text</button>' + '</article>'
 								));
 							break;
 					}
@@ -191,7 +191,7 @@
 
 		});
 	</script>
-
+	
 	<script>
 		filterSelection("all")
 		function filterSelection(c) {
@@ -224,6 +224,23 @@
 				}
 			}
 			element.className = arr1.join(" ");
+		}
+	</script>
+
+	<script>
+		function showMoreText() {
+			var dots = document.getElementById("dots");
+			var moreText = document.getElementById("more");
+			var btnText = document.getElementById("myBtn");
+
+			if (dots.style.display === "none") {
+				dots.style.display = "inline";
+				moreText.style.display = "inline";
+			} else {
+				dots.style.display = "none";
+				document.getElementById("myBtn").style.visibility = 'hidden';
+				moreText.style.display = "inline";
+			}
 		}
 	</script>
 </body>
