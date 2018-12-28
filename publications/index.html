@@ -180,12 +180,13 @@
 							}
 							location_html += '"';
 
-							
 							var articleArr = data[i].ABSTRACT.split(" ");
 							var firstSection = "";
 							var secondSection = "";
 							var showMoreBTN = "";
 
+							console.log("Title: " + data[i].NAME);
+							console.log("Len of the text: "+ articleArr.length);
 							if(articleArr.length > 0){
 								showMoreBTN = '<button onclick="showMoreText()" id="myBtn">Show More Text</button>';
 							}
