@@ -91,6 +91,7 @@
 				&nbsp;
 				<div style="display: block; float:left" id="scientists"></div>
 				<div id="people"></div>
+				<div id="people-modals"></div>
 			</article>
 		</div>
 
@@ -110,6 +111,7 @@
 		$(function () {
 			$(window).on('hashchange', function (event) {
 				alert("yes");
+				
 			});
 
 			$.get("../snippets/navigation.html").then(function (text, status, xhr) {
@@ -140,6 +142,10 @@
 									'<a href= "#' + data[i].ID + '">' +
 									'<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + '</ul></center></div>' +
 									'</a> '
+								));
+							$("#people-modals").append(
+								$.parseHTML(
+									'<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><p>' + data[i].BIOGRAPHY + '</p><ul class="icons">' + email_html + twitter_html + '</ul></center></div> '
 								));
 							break;
 					}

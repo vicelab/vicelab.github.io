@@ -1,28 +1,28 @@
-ID,NAME,TITLE,EMAIL,TWITTER
-josh-viers,Josh Viers,Director,jviers@ucmerced.edu,http://twitter.com/vicelab
-anna-rallings,Anna Rallings,Lab Manger,arallings@ucmerced.edu,https://twitter.com/anna_rallings
-leigh-bernacchi,Leigh Bernacchi,Senior Scientist,lbernacchi@ucmerced.edu,https://twitter.com/UCWater
-daniel-nover,Daniel Nover,Senior Scientist,dmnover@ucdavis.edu,
-RESEARCHERS,,,,
-daniel-gomez,Daniel Gomez,Researcher,dgomez50@ucmerced.edu,
-andy-anderson,Andreas Anderson,Researcher,aanderson29@ucmerced.edu,
-alan-cai,Alan Cai,Graduate Student,jviers@ucmerced.edu,
-vicky-espinoza,Vicky Espinoza,Graduate Student,jviers@ucmerced.edu,
-anna-fryjoff-hung,Anna Fryjoff-Hung,Graduate Student,jviers@ucmerced.edu,
-alison-whipple,Alison Whipple,Graduate Student,aawhipple@ucdavis.edu,
-lorenzo-booth,Lorenzo Booth,Graduate Student,lbooth@ucmerced.edu,
-ALUMNI,,,,
-mark-santiago,Mark Santiago,,msantiago8@ucmerced.edu,
-sweta-yonjan,Sweta Yonjan,,syonjan@ucmerced.edu,
-quang-tran,Quang Tran,,qtran2@ucmerced.edu,
-matt-beaman,Matt Beaman,,jviers@ucmerced.edu,
-kian-bradley,Kian Bradley,,kbradley@ucmerced.edu,
-catherine-fong,Catherine Fong,,ctfong@ucdavis.edu,
-megan-mayzelle,Megan Mayzelle,,mmmayzelle@ucdavis.edu,
-david-rheinheimer,David Rheinheimer,,drheinheimer@ucdavis.edu,
-jessica-sharkey,Jessica Sharkey,,jasharkey@ucdavis.edu,
-jenny-ta,Jenny Ta,,jta22@ucmerced.edu,
-jefferson-laird,Jefferson Laird,,jlaird@ucmerced.edu,
-andres-morande,Andres Morande,,jmorande@ucmerced.edu,
-brendan-smith,Brendan Smith,,bsmith24@ucmerced.edu,
-selina-davila-olivera,Selina Davila Olivera,Researcher,sdavilaolivera@ucmerced.edu,
+ID,NAME,TITLE,EMAIL,TWITTER,BIOGRAPHY
+josh-viers,Josh Viers,Director,jviers@ucmerced.edu,http://twitter.com/vicelab,Example. Example. Example
+anna-rallings,Anna Rallings,Lab Manger,arallings@ucmerced.edu,https://twitter.com/anna_rallings,Example. Example. Example
+leigh-bernacchi,Leigh Bernacchi,Senior Scientist,lbernacchi@ucmerced.edu,https://twitter.com/UCWater,Example. Example. Example
+daniel-nover,Daniel Nover,Senior Scientist,dmnover@ucdavis.edu,,Example. Example. Example
+RESEARCHERS,,,,,
+daniel-gomez,Daniel Gomez,Researcher,dgomez50@ucmerced.edu,,Example. Example. Example
+andy-anderson,Andreas Anderson,Researcher,aanderson29@ucmerced.edu,,Example. Example. Example
+alan-cai,Alan Cai,Graduate Student,,,Example. Example. Example
+vicky-espinoza,Vicky Espinoza,Graduate Student,,,Example. Example. Example
+anna-fryjoff-hung,Anna Fryjoff-Hung,Graduate Student,,,Example. Example. Example
+alison-whipple,Alison Whipple,Graduate Student,aawhipple@ucdavis.edu,,Example. Example. Example
+lorenzo-booth,Lorenzo Booth,Graduate Student,lbooth@ucmerced.edu,,Example. Example. Example
+ALUMNI,,,,,
+mark-santiago,Mark Santiago,,msantiago8@ucmerced.edu,,Example. Example. Example
+sweta-yonjan,Sweta Yonjan,,syonjan@ucmerced.edu,,Example. Example. Example
+quang-tran,Quang Tran,,qtran2@ucmerced.edu,,Example. Example. Example
+matt-beaman,Matt Beaman,,,,Example. Example. Example
+kian-bradley,Kian Bradley,,kbradley@ucmerced.edu,,Example. Example. Example
+catherine-fong,Catherine Fong,,ctfong@ucdavis.edu,,Example. Example. Example
+megan-mayzelle,Megan Mayzelle,,mmmayzelle@ucdavis.edu,,Example. Example. Example
+david-rheinheimer,David Rheinheimer,,drheinheimer@ucdavis.edu,,Example. Example. Example
+jessica-sharkey,Jessica Sharkey,,jasharkey@ucdavis.edu,,Example. Example. Example
+jenny-ta,Jenny Ta,,jta22@ucmerced.edu,,Example. Example. Example
+jefferson-laird,Jefferson Laird,,jlaird@ucmerced.edu,,Example. Example. Example
+andres-morande,Andres Morande,,jmorande@ucmerced.edu,,Example. Example. Example
+brendan-smith,Brendan Smith,,bsmith24@ucmerced.edu,,Example. Example. Example
+selina-davila-olivera,Selina Davila Olivera,Researcher,sdavilaolivera@ucmerced.edu,,Example. Example. Example
