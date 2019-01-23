@@ -208,9 +208,7 @@
 			});
 
 		});
-	</script>
-	
-	<script>
+
 		filterSelection("all")
 		function filterSelection(c) {
 			var x, i;
@@ -222,7 +220,6 @@
 				if (x[i].className.indexOf(c) > -1) removeElement(x[i], "hide");
 			}
 		}
-
 		function addElement(element, name) {
 			var i, arr1, arr2;
 			arr1 = element.className.split(" ");
@@ -231,7 +228,6 @@
 				if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
 			}
 		}
-
 		function removeElement(element, name) {
 			var i, arr1, arr2;
 			arr1 = element.className.split(" ");
@@ -243,9 +239,6 @@
 			}
 			element.className = arr1.join(" ");
 		}
-	</script>
-
-	<script>
 		function showMoreText(elementID) {
 			x = document.getElementById(elementID + "ShowText");
 			x.className = "show";
