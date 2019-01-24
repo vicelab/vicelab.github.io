@@ -142,14 +142,7 @@
 		// var span = document.getElementsByClassName("close")[0];
 		modal.onclick = function () { modal.style.display = "none"; window.location.hash = ''; }
 
-		function getInfo(person) {
-			for (var i = 0; i < data.length; i++) {
-				if (data[i].ID == person) {
-					return data[i];
-				}
-			}
-		}
-
+	
 		$(function () {
 			$(window).on('hashchange', function (event) {
 				if (window.location.hash != '') {
@@ -205,6 +198,14 @@
 			});
 
 		});
+		function getInfo(person) {
+			for (var i = 0; i < data.length; i++) {
+				if (data[i].ID == person) {
+					return data[i];
+				}
+			}
+		}
+
 	</script>
 </body>
 
