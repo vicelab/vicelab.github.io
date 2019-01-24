@@ -92,7 +92,23 @@
 				<div style="display: block; float:left" id="scientists"></div>
 				<div id="people"></div>
 				<div id="people-modal" class="modal">
-					<img id="modal-image" class="image featured" style="margin: 0 0 1em 0; width:50%;" src="/images/people/josh-viers.jpg">
+					<table style="width:100%">
+						<tr>
+							<th>
+								<img id="modal-image" class="image featured" style="margin: 2em; width:35%;" src="/images/people/josh-viers.jpg"></th>
+							<th>
+								<h1 id="modal-name">
+									Josh Viers
+								</h1>
+								<h2 id="modal-title">
+									Director
+								</h2>
+								<p id="modal-biography">
+									Important guy.
+								</p>
+							</th>
+						</tr>
+					</table>
 				</div>
 			</article>
 		</div>
@@ -110,6 +126,10 @@
 	<script src="../assets/js/util.js"></script>
 	<script src="../assets/js/main.js"></script>
 	<script>
+		var data;
+		$.get("/people.csv").then(function (text, status, xhr) {
+			data = $.csv.toObjects(text);
+		});
 		// Get the modal
 		var modal = document.getElementById('people-modal');
 		// Get the image and insert it inside the modal - use its "alt" text as a caption
@@ -124,14 +144,27 @@
 		// var span = document.getElementsByClassName("close")[0];
 		modal.onclick = function () { modal.style.display = "none"; window.location.hash = ''; }
 
+		function getInfo(person) {
+			for (var i = 0; i < data.length; i++) {
+				if (data[i].NAME == person) {
+					return data[i];
+				}
+			}
+		}
+
 		$(function () {
 			$(window).on('hashchange', function (event) {
 				if (window.location.hash != '') {
+					var id = window.location.hash.substring(1);
 					modal.style.display = "block";
-					alert(window.location.hash);
 					var logo = document.getElementById('modal-image');
-					logo.src = '/images/people/' + window.location.hash.substring(1) + '.jpg';
-
+					logo.src = '/images/people/' + id + '.jpg';
+					var id = document.getElementById('modal-name');
+					biography.innerHTML = getInfo(id).NAME;
+					var title = document.getElementById('modal-title');
+					title.innerHTML = getInfo(id).TITLE;
+					var biography = document.getElementById('modal-biography');
+					biography.innerHTML = getInfo(id).BIOGRAPHY;
 				}
 			});
 
@@ -140,38 +173,36 @@
 				$("#navigation_side").append($.parseHTML(text));
 			});
 			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-			$.get("/people.csv").then(function (text, status, xhr) {
-				var data = $.csv.toObjects(text);
-				for (var i = 0; i < data.length; i++) {
-					switch (data[i].ID) {
-						case "RESEARCHERS":
-							$("#people").append($.parseHTML('<hr><h2>Researchers<h2><hr>'));
-							break;
-						case "GRADSTUDENTS":
-							$("#people").append($.parseHTML('<hr><h2>Graduate Students<h2><hr>'));
-							break;
-						case "ALUMNI":
-							$("#people").append($.parseHTML('<hr><h2>Alumni<h2><hr>'));
-							break;
-						default:
-							var email_html = '';
-							var twitter_html = '';
-							if (data[i].EMAIL !== " " && data[i].EMAIL !== "") email_html = '<li><a href="mailto:' + data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li>';
-							if (data[i].TWITTER !== " " && data[i].TWITTER !== "") twitter_html = '<li><a href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li>';
-							$("#people").append(
-								$.parseHTML(
-									'<a href= "#' + data[i].ID + '">' +
-									'<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + '</ul></center></div>' +
-									'</a> '
-								));
-							// $("#people-modals").append(
-							// 	$.parseHTML(
-							// 		'<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><p>' + data[i].BIOGRAPHY + '</p><ul class="icons">' + email_html + twitter_html + '</ul></center></div> '
-							// 	));
-							break;
-					}
+			for (var i = 0; i < data.length; i++) {
+				switch (data[i].ID) {
+					case "RESEARCHERS":
+						$("#people").append($.parseHTML('<hr><h2>Researchers<h2><hr>'));
+						break;
+					case "GRADSTUDENTS":
+						$("#people").append($.parseHTML('<hr><h2>Graduate Students<h2><hr>'));
+						break;
+					case "ALUMNI":
+						$("#people").append($.parseHTML('<hr><h2>Alumni<h2><hr>'));
+						break;
+					default:
+						var email_html = '';
+						var twitter_html = '';
+						if (data[i].EMAIL !== " " && data[i].EMAIL !== "") email_html = '<li><a href="mailto:' + data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li>';
+						if (data[i].TWITTER !== " " && data[i].TWITTER !== "") twitter_html = '<li><a href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li>';
+						$("#people").append(
+							$.parseHTML(
+								'<a href= "#' + data[i].ID + '">' +
+								'<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + '</ul></center></div>' +
+								'</a> '
+							));
+						// $("#people-modals").append(
+						// 	$.parseHTML(
+						// 		'<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><p>' + data[i].BIOGRAPHY + '</p><ul class="icons">' + email_html + twitter_html + '</ul></center></div> '
+						// 	));
+						break;
 				}
-			});
+			}
+
 		});
 	</script>
 </body>
