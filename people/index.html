@@ -157,8 +157,8 @@
 					modal.style.display = "block";
 					var logo = document.getElementById('modal-image');
 					logo.src = '/images/people/' + id + '.jpg';
-					var id = document.getElementById('modal-name');
-					biography.innerHTML = getInfo(id).NAME;
+					var name = document.getElementById('modal-name');
+					name.innerHTML = getInfo(id).NAME;
 					var title = document.getElementById('modal-title');
 					title.innerHTML = getInfo(id).TITLE;
 					var biography = document.getElementById('modal-biography');
