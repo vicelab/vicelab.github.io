@@ -92,7 +92,7 @@
 				<div style="display: block; float:left" id="scientists"></div>
 				<div id="people"></div>
 				<div id="people-modal" class="modal">
-					<img id="modal-image" class="image featured" style="margin: 0 0 1em 0" src="/images/people/josh-viers.jpg"> 
+					<img id="modal-image" class="image featured" style="margin: 0 0 1em 0; width:50%;" src="/images/people/josh-viers.jpg">
 				</div>
 			</article>
 		</div>
@@ -128,9 +128,9 @@
 			$(window).on('hashchange', function (event) {
 				if (window.location.hash != '') {
 					modal.style.display = "block";
-					alert (window.location.hash);
+					alert(window.location.hash);
 					var logo = document.getElementById('modal-image');
-					logo.src = "images/people/josh-viers.jpg";
+					logo.src = '/images/people/' + window.location.hash.substring(1) + '.jpg';
 
 				}
 			});
