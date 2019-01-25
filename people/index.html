@@ -140,7 +140,7 @@
 		// 	captionText.innerHTML = this.alt;
 		// }
 		// var span = document.getElementsByClassName("close")[0];
-		modal.onclick = function () { modal.style.display = "none"; window.location.hash = ''; }
+		modal.onclick = function () { modal.style.display = "none";  }
 
 	
 		$(function () {
@@ -184,10 +184,9 @@
 							if (data[i].TWITTER !== " " && data[i].TWITTER !== "") twitter_html = '<li><a href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li>';
 							$("#people").append(
 								$.parseHTML(
-									'<a name="' + data[i].ID + '">' +
 									'<a href= "#' + data[i].ID + '">' +
 									'<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + '</ul></center></div>' +
-									'</a>'
+									'</a> '
 								));
 							// $("#people-modals").append(
 							// 	$.parseHTML(
