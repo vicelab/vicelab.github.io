@@ -157,7 +157,6 @@
 		}
 
 		$(function () {
-			loadModal(window.location.hash.substring(1));
 			$(window).on('hashchange', function (event) {
 				loadModal(window.location.hash.substring(1));
 			});
@@ -198,6 +197,8 @@
 							break;
 					}
 				}
+
+				loadModal(window.location.hash.substring(1));
 			});
 
 		});
