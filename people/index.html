@@ -140,23 +140,26 @@
 		// 	captionText.innerHTML = this.alt;
 		// }
 		// var span = document.getElementsByClassName("close")[0];
-		modal.onclick = function () { modal.style.display = "none";  }
+		modal.onclick = function () { modal.style.display = "none"; }
 
-	
+		function loadModal(id) {
+			if (id != '') {
+				modal.style.display = "block";
+				var logo = document.getElementById('modal-image');
+				logo.src = '/images/people/' + id + '.jpg';
+				var name = document.getElementById('modal-name');
+				name.innerHTML = getInfo(id).NAME;
+				var title = document.getElementById('modal-title');
+				title.innerHTML = getInfo(id).TITLE;
+				var biography = document.getElementById('modal-biography');
+				biography.innerHTML = getInfo(id).BIOGRAPHY;
+			}
+		}
+
 		$(function () {
+			loadModal(window.location.hash.substring(1));
 			$(window).on('hashchange', function (event) {
-				if (window.location.hash != '') {
-					var id = window.location.hash.substring(1);
-					modal.style.display = "block";
-					var logo = document.getElementById('modal-image');
-					logo.src = '/images/people/' + id + '.jpg';
-					var name = document.getElementById('modal-name');
-					name.innerHTML = getInfo(id).NAME;
-					var title = document.getElementById('modal-title');
-					title.innerHTML = getInfo(id).TITLE;
-					var biography = document.getElementById('modal-biography');
-					biography.innerHTML = getInfo(id).BIOGRAPHY;
-				}
+				loadModal(window.location.hash.substring(1));
 			});
 
 			$.get("../snippets/navigation.html").then(function (text, status, xhr) {
