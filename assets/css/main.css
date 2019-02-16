@@ -91,10 +91,8 @@ input, select, textarea {
 .positioned {
 	position: relative;
 	top: 30px;
-	right: 30px;
+	right: 50px;
   }
-
-
 
 /* Basic */
 
