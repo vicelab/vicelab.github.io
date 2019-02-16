@@ -89,7 +89,7 @@ input, select, textarea {
 
 /* Positioning*/ 
 .positioned {
-	position: absolute;
+	position: relative;
 	top: 30px;
 	right: 30px;
   }
