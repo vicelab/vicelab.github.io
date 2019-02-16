@@ -88,10 +88,10 @@ input, select, textarea {
   }
 
 /* Positioning*/ 
-.positioned {
+.namePosition {
 	position: relative;
 	top: 30px;
-	right: 50px;
+	right: 5000px;
   }
 
 /* Basic */
