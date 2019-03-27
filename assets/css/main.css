@@ -87,13 +87,6 @@ input, select, textarea {
 	background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
   }
 
-/* Positioning*/ 
-.namePosition {
-	position: relative;
-	top: 30px;
-	right: 5000px;
-  }
-
 /* Basic */
 
 	@-ms-viewport {
