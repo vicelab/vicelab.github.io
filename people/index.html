@@ -97,10 +97,10 @@
 					<h2 class="namePosition" id="modal-name" style="margin:3em; color:white">
 						Josh Viers
 					</h2>
-					<h3 id="modal-title" style="color:white">
+					<h3 id="modal-title" style="margin:3em; color:white">
 						Director
 					</h3>
-					<p id="modal-biography" style="color:white">
+					<p id="modal-biography" style="margin:3em; color:white">
 						...
 					</p>
 					<!-- <table style="width:100%">
@@ -151,7 +151,7 @@
 		// 	captionText.innerHTML = this.alt;
 		// }
 		// var span = document.getElementsByClassName("close")[0];
-		modal.onclick = function () { modal.style.display = "none"; }
+		modal.onclick = function () { modal.style.display = "none"; window.location.hash = ""; }
 
 		function loadModal(id) {
 			if (id != '') {
