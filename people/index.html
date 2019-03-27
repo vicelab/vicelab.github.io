@@ -92,7 +92,8 @@
 				<div style="display: block; float:left" id="scientists"></div>
 				<div id="people"></div>
 				<div id="people-modal" class="modal">
-					<img id="modal-image" class="image featured" style="box-shadow: 5px 5px 25px -5px rgba(0, 0, 0, 0.45); margin:3em; width:25%; float:left" src="../images/people/josh-viers.jpg">
+					<img id="modal-image" class="image featured" style="box-shadow: 5px 5px 25px -5px rgba(0, 0, 0, 0.45); margin:3em; width:25%; float:left"
+					 src="../images/people/josh-viers.jpg">
 					<h2 class="namePosition" id="modal-name" style="margin:3em; color:white">
 						Josh Viers
 					</h2>
@@ -192,12 +193,14 @@
 						default:
 							var email_html = '';
 							var twitter_html = '';
+							var github_html = '';
 							if (data[i].EMAIL !== " " && data[i].EMAIL !== "") email_html = '<li><a href="mailto:' + data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li>';
 							if (data[i].TWITTER !== " " && data[i].TWITTER !== "") twitter_html = '<li><a href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li>';
+							if (data[i].GITHUB !== " " && data[i].GITHUB !== "") github_html = '<li><a href="' + data[i].GITHUB + '" class="fa-github"><span class="label">Github</span></a></li>';
 							$("#people").append(
 								$.parseHTML(
 									'<a href= "#' + data[i].ID + '">' +
-									'<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + '</ul></center></div>' +
+									'<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
 									'</a> '
 								));
 							// $("#people-modals").append(
