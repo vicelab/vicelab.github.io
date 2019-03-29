@@ -192,22 +192,20 @@
 							$("#people").append($.parseHTML('<hr><h2>Alumni<h2><hr>'));
 							break;
 						default:
-							var email_html = '';
-							var twitter_html = '';
-							var github_html = '';
-							if (data[i].EMAIL !== " " && data[i].EMAIL !== "") email_html = '<li><a href="mailto:' + data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li>';
-							if (data[i].TWITTER !== " " && data[i].TWITTER !== "") twitter_html = '<li><a href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li>';
-							if (data[i].GITHUB !== " " && data[i].GITHUB !== "") github_html = '<li><a href="' + data[i].GITHUB + '" class="fa-github"><span class="label">Github</span></a></li>';
-							$("#people").append(
-								$.parseHTML(
-									'<a href= "#' + data[i].ID + '">' +
-									'<div style="display:inline-block;width:15em;height:100%;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
-									'</a> '
-								));
-							// $("#people-modals").append(
-							// 	$.parseHTML(
-							// 		'<div style="display:inline-block;width:15em;height:200px;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><p>' + data[i].BIOGRAPHY + '</p><ul class="icons">' + email_html + twitter_html + '</ul></center></div> '
-							// 	));
+							if (data[i].ID.indexOf("//") != 0) {	//ignoring people commented out in .csv file
+								var email_html = '';
+								var twitter_html = '';
+								var github_html = '';
+								if (data[i].EMAIL !== " " && data[i].EMAIL !== "") email_html = '<li><a href="mailto:' + data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li>';
+								if (data[i].TWITTER !== " " && data[i].TWITTER !== "") twitter_html = '<li><a href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li>';
+								if (data[i].GITHUB !== " " && data[i].GITHUB !== "") github_html = '<li><a href="' + data[i].GITHUB + '" class="fa-github"><span class="label">Github</span></a></li>';
+								$("#people").append(
+									$.parseHTML(
+										'<a href= "#' + data[i].ID + '">' +
+										'<div style="display:inline-block;width:15em;height:100%;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
+										'</a> '
+									));
+							}
 							break;
 					}
 				}
