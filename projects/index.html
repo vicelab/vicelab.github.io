@@ -169,7 +169,12 @@
 							location_html += '"';
 							$("#projects").append(
 								$.parseHTML(
-									'<article ' + tags_html + location_html + '><header><div class="title"><h2><a href="/projects">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_buttons_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header><table><tr style="border:0px; background-color:white;"><th style="width:25.5%"><img class="image featured" src="/images/' + data[i].ID + '.jpg" alt="" /></th><th style="width:74.5%; vertical-align: top;"><p style="margin:0;">' + data[i].TEXT + '</p></th></tr></table></article>'
+									'<article ' + tags_html + location_html + '><header><div class="title"><h2><a href="/projects">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_buttons_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header>' + 
+										'<div style="display: block;">' +
+											'<img style= "margin: 0 1em 1em 0; float:left; width: 25%;" class="image featured" src="/images/news/' + data[i].ID + '.jpg" alt="" />' +
+											'<p style="margin:0;">' + data[i].TEXT + '</p>' +
+										'</div>' + 
+									'</article>'
 								));
 							break;
 					}
