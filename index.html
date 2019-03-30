@@ -150,7 +150,7 @@
 			slides[slideIndex - 1].style.display = "block";
 			setTimeout(showSlides, 2000); // Change image every 2 seconds
 		}
-		
+
 		$(function () {
 
 			jQuery.get("../snippets/navigation.html").then(function (text, status, xhr) {
@@ -169,7 +169,21 @@
 						default:
 							$("#news").append(
 								$.parseHTML(
-									'<article class="post"><header><div class="title"><h2><a href="/news">' + data[i].NAME + '</a></h2></div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replace("-"," ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header><table><tr style="border:0px; background-color:white;"><th style="width:25.5%"><img class="image featured" src="/images/news/' + data[i].ID + '.jpg" alt="" /></th><th style="width:74.5%; vertical-align: top;"><p style="margin:0;">' + data[i].TEXT + '</p></th></tr></table>'
+									'<article class="post">' +
+										'<header>' +
+											'<div class="title">' +
+												'<h2><a href="/news">' + data[i].NAME + '</a></h2>' + 
+											'</div>' +
+											'<div class="meta">' +
+												'<time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' +
+												'<a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a>' + 
+											'</div>'+
+										'</header>' +
+										'<div style="display: inline-flex;">' +
+											'<img class="image featured" src="/images/news/' + data[i].ID + '.jpg" alt="" />' +
+											'<p style="margin:0;">' + data[i].TEXT + '</p>' +
+										'</div>' + 
+									'</article>'
 								));
 							break;
 					}
