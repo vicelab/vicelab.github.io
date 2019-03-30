@@ -1,0 +1,579 @@
+@charset "utf-8";
+/* CSS Document */
+.pp-arrowLink {
+	    font-family: 'Arial W01';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 10px;
+    line-height: 11px;
+    color: #CD7100;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    white-space: nowrap;
+	display: inline-block;
+}
+.pp-arrowLink::after {
+	content: "\f178";
+	font-family: FontAwesome;
+	line-height: 11px;
+	font-size: 14px;
+	padding-left: 10px;
+	vertical-align: -1px;
+}
+
+.pp-headerLearnMore {
+    display: block;
+    font-family: "Trade Gothic W01";
+    font-weight: 800;
+    font-style: normal;
+    color: #cd7100;
+    line-height: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    padding-bottom: 8px;
+}
+
+.ppic-blog-content p {
+	margin: 0px 0px 1.6em 0px;
+}
+.ppic-blog-content .ppic-body img {
+	margin-top: 0px !important;
+}
+
+/*	.box {
+		position: relative;
+		float: left;
+		width: 300px;
+		height: 300px;
+		margin-right: 20px;
+	}
+	.last {
+		margin-right: 0;
+	}
+	.caption {
+		position: absolute;
+		background: #000;
+		opacity: 0.7;
+		bottom: 0;
+		left: 0;
+		width: 90%;
+		height: 15%;
+		padding: 5%;
+		color: #fff;
+	}
+
+
+.full-height {
+    height: 90%;
+}
+*/
+.pp-header {
+    display: block;
+    font-family: "Trade Gothic W01";
+    font-weight: 800;
+    font-style: normal;
+    color: #CC7100;
+    line-height: 18px;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: .1em;
+    margin-bottom: 10px;
+}
+.pp-label {
+    font-family: 'Arial W01';
+    font-weight: 900;
+    font-style: normal;
+    color: #999999;
+    line-height: 18px;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: .1em;
+    margin-bottom: 8px;
+}
+
+.blogHeader {
+    width: 100%;
+    height: 60px;
+    background-color: #e1e3e3;
+    background-image: url("/wp-content/uploads/viewpoints-lines.png");
+    background-position: right;
+    margin: 22px 0px 32px 0px;
+}
+.blogViewPoints span{
+transform: scale(.85,1.02);
+    display: inline-block;
+    z-index: 2;
+    position: absolute;
+}
+.blogViewPoints{
+    position: relative;
+    display: inline-block;
+    height: 60px;
+    overflow: hidden;
+    color: #fff;
+    font-family: "Trade Gothic W01";
+    font-weight: 700;
+    font-style: normal;
+    font-size: 34px;
+    line-height: 60px;
+    letter-spacing: .025em;
+    padding-left: 4px;
+    min-width: 205px;
+    width: 39%;
+    
+}
+@media only screen and (max-width: 413px) {
+    .blogViewPoints{
+        min-width: 185px;
+        font-size: 30px;
+    }
+}
+.blogViewPoints:after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #8ea99d;
+  -webkit-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: skew(-33deg);
+  -ms-transform: skew(-25deg);
+  transform: skew(-25deg);
+  z-index: 1;
+}
+
+.thePPICBlog{
+  float: right; 
+  font-weight: 600;
+  font-size: 18px;
+  color: #384042;
+  letter-spacing: 0em;
+  position: absolute;
+  top: 52px;
+  right: 29px;
+}
+
+@media only screen and (max-width: 374px) {
+    .blogHeader {
+        background-image: none;
+    }
+    .thePPICBlog{
+        font-size: 16px;
+    }
+}
+
+div.JTF, .ppic-quickpub {
+	margin-top: 22px;
+}
+
+
+#pp-mainBody h4 {
+	font-size: 14px !important;
+	letter-spacing: .025em;
+	margin: 18px 0px;
+}
+#pp-mainBody h6 {
+    color: #cd7100;
+    font-family: 'Proxima Nova W01', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0;
+}
+#quickpub-footnotes ul,
+#quickpub-footnotes ol {
+    margin: 1em 0;
+}
+
+#pp-mainBody #quickpub-mainBody ul.new-bullets li {
+    background-position: 2px 7px;
+}
+.qp-waterCenter #pp-mainBody ul.new-bullets li {
+    background-position: 2px 7px;
+}
+.qp-waterCenter .thanks {
+    display: block;
+	margin-bottom: 0px;
+}
+
+#pp-mainBody p {
+	margin-bottom: 12px;
+}
+
+#quickpub-footnotes h3 {
+	font-size: 13.6px;
+}
+a.toplink {
+    text-transform: uppercase;
+    padding-left: 20px;
+    background: url(https://www.ppic.org/common/quickpub/arrow-up.png) no-repeat 0px 2px;
+    font-size: 10px;
+    line-height: 10px;
+}
+
+#pp-mainBody #quickpub-footnotes {
+	clear: both;
+}
+
+/* blog sidebar */
+a.pp-twitterLink {
+    background-image: url("https://www.ppic.org/common/icon_twitter_16x13.png");
+    background-position: right -117px;
+    background-repeat: no-repeat;
+}
+a.pp-twitterLink {
+    font-family: 'Arial W01';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #CD7100;
+    padding-right: 22px;
+}
+.pp-sideItem p.pp-sideTagLine {
+    font-family: 'Proxima Nova W01';
+    font-weight: 600;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #8EA99D;
+    letter-spacing: .5px;
+    text-transform: none;
+}
+.pp-sideItem p {
+    font-family: 'Arial W01';
+font-weight: 900;
+font-style: normal;
+font-size: 9px;
+text-transform: uppercase;
+letter-spacing: 1px;
+line-height: 12px;
+    margin: 9px 0px;
+}
+.pp-rssLink {
+    background-image: url("https://www.ppic.org/common/icon_rss_10x10.png");
+    background-position: 0px -88px;
+    background-repeat: no-repeat;
+}
+.pp-emailLink {
+    background-image: url("https://www.ppic.org/common/icon_email_14x9.png");
+    background-position: 0px -85px;
+    background-repeat: no-repeat;
+}
+.pp-emailLink, .pp-rssLink {
+    font-family: 'Arial W01';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-left: 22px;
+}
+.pp-sideHeader, .pp-sideHeader.pp-arrowLink, .pp-sideHeader.pp-arrowLink:active, .pp-sideHeader.pp-arrowLink:focus {
+    color: #CD7100;
+    font-family: "Trade Gothic W01";
+    font-weight: 800;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.pp-sideHeader {
+	margin-bottom: 12px;
+}
+
+.pp-sideItem {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed #706123;
+}
+.pp-sideItem.pp-first {
+    border-bottom: solid 1px #e1e3e3;
+}
+ .pp-sideItem.pp-last {
+    border: none;
+ }
+.pp-blogShare {
+    font-family: 'Arial W01';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 10px;
+    line-height: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #CD7100;
+    float: left;
+}
+.pp-blogSocial {
+    float: right;
+    margin-top: 2px;
+}
+
+.pp-blogTwitter {
+    float: left;
+    padding-right: 10px;
+    padding-top: 1px;
+}
+.pp-blogFacebook {
+    float: left;
+    padding-right: 20px;
+    margin-top: 1px;
+}
+.pp-arrowLinkLeft, .pp-arrowLinkLeft:active, .pp-arrowLinkLeft:visited {
+    margin: 0px;
+    clear: both;
+    font-family: 'Arial W01';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 10px;
+    line-height: 11px;
+    color: #CD7100;
+    text-transform: uppercase;
+    padding-left: 25px;
+    background-image: url("https://www.ppic.org/common/arrowLeftOrange_7x15.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    display: inline-block;
+    padding-top: 1px;
+}
+
+.pp-sideTagLine {
+    font-family: 'Proxima Nova W01';
+    font-weight: 600;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #8EA99D;
+    letter-spacing: .5px;
+    text-transform: none;
+}
+
+.light_text {
+    font-family: Verdana;
+    font-size: 9px;
+    line-height: 11px;
+    color: #939393;
+}
+
+/* misc */
+.news_title {
+    font-family: 'Proxima Nova W01';
+    font-weight: 600;
+    font-style: normal;
+    font-size: 11px;
+	text-transform: uppercase;
+color: #706123;
+}
+.pp-image{
+	vertical-align: middle;
+}
+.pp-pageSubTitle {
+    font-family: 'Proxima Nova W01';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: .01px;
+    color: #475153;
+    margin-bottom: 8px;
+}
+
+.pp-infoBox {
+    padding: 0;
+}
+
+.pp-iconBox, .pp-infoBox {
+    position: relative;
+    padding: 10px 0px 10px 0px;
+    float: left;
+    width: 100%;
+}
+
+.pp-title {
+    display: block;
+    font-family: 'Arial';
+    color: #999999;
+    line-height: 18px;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: .1em;
+    margin-bottom: 10px;
+}
+.pp-iconBox .pp-title, .pp-iconBox .pp-header, .pp-infoBox .pp-title, .pp-infoBox .pp-header, .pp-iconBox h2, .pp-infoBox h2 {
+    font-family: "Trade Gothic W01";
+    font-weight: 800;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: #A9A9A9;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 10px;
+}
+.pp-iconBox .pp-image, .pp-infoBox .pp-image, .pp-infoBox img, .pp-iconBox img {
+    float: left;
+    margin-right: 20px;
+}
+.pp-name {
+    display: block;
+    font-family: 'Arial W01';
+    font-weight: 900;
+    font-style: normal;
+    line-height: 18px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .1em;
+}
+/* data Popup */
+.pp-dataPopup, .pp-dataBox {
+    background: #ececec;
+    padding: 30px 26px 15px;
+    position: relative;
+}
+.pp-dataPopup > p {
+	margin: 0px;
+}
+.pp-dataPopup .pp-image,
+.pp-dataBox .pp-image {
+    float: right;
+}
+.pp-dataPopup .pp-image, .pp-dataBox .pp-image {
+    padding: 0px 0px 15px 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 25px;
+    padding-left: 0px;
+}
+
+.pp-dataPopup .pp-title, 
+.pp-dataPopup .pp-header, 
+.pp-dataBox .pp-title, 
+.pp-dataBox .pp-header, 
+.pp-dataPopup h2, 
+.pp-dataBox h2 {
+    font-family: 'Arial W01';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 11px;
+    line-height: 11px;
+    color: #699daa;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    width: 100%;
+    padding: 0px;
+    margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+.pp-dataPopup .pp-caption, 
+.pp-dataBox .pp-caption {
+    font-family: 'Proxima Nova W01';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: #475153;
+    letter-spacing: .025em;
+    width: 100%;
+    padding: 0px;
+	margin-bottom: 15px;
+}
+.pp-dataPopup .pp-expand, .pp-dataBox .pp-expand {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 12px;
+}
+.pp-dataPopup:after, .pp-dataBox:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+#pp-base.pp-higherEd .pp-dataPopup .pp-title, #pp-base.pp-higherEd .pp-dataPopup .pp-header, #pp-base.pp-higherEd .pp-dataBox .pp-title, #pp-base.pp-higherEd .pp-dataBox .pp-header, #pp-base.pp-higherEd .pp-dataPopup h2, #pp-base.pp-higherEd .pp-dataBox h2 {
+    color: #4d3651;
+}
+.pp-sideRules {
+    text-align: center;
+    border-top: 1px solid #C4D0CB;
+    margin-top: 25px;
+}
+.pp-sideRules .pp-btnOrange {
+    margin-top: -25px;
+    padding: 0px 8px;
+}
+.pp-btnOrange {
+    display: inline-block;
+    height: 50px;
+    background: white;
+}
+.pp-btnOrange a {
+    float: left;
+    height: 42px;
+    text-align: center;
+    background-color: #CD7100;
+    font-family: 'Arial W01';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 12px;
+    color: #FFFFFF;
+    line-height: 42px;
+    text-transform: uppercase;
+    border: #A85722 solid 2px;
+    box-shadow: 2px 2px 0 #A8A7A7;
+    padding-left: 60px;
+    padding-right: 60px;
+    white-space: nowrap;
+}
+.pp-btnOrange a:link, .pp-btnOrange a:visited {
+    color: #FFFFFF;
+}
+.pp-btnOrange a:hover {
+    color: #B8BABB;
+}
+
+.pp-btnGreen {
+    border: solid 5px #9BC6DA;
+    background-color: #475164;
+}
+.pp-btnGreen {
+    display: block;
+    background-color: #A0B7AE;
+    border: solid 6px #B8C7C0;
+    font-family: "Trade Gothic W01";
+    font-weight: 800;
+    font-style: normal;
+    color: #FFF;
+    line-height: 24px;
+    text-transform: uppercase;
+    font-size: 22px;
+    padding: 8px 20px;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.4);
+    margin-bottom: 30px;
+}
+.pp-miniconLink {
+    display: block;
+    font-family: 'Arial W01';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    margin-top: 2px;
+}
+.pp-miniconLink img {
+    margin-right: 12px;
+    margin-top: -2px;
+	vertical-align: middle;
+}
+
+/* jtf */
+#pp-mainBody ul {
+    margin: 1em 0;
+}

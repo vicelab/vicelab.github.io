@@ -1,0 +1,155 @@
+/*
+Theme Name: PPIC
+Theme URI: http://www.ppic.org
+Description: PPIC theme.
+Author: Third Strand, Inc.
+Author URI: http://www.thirdstrand.com
+Template: Total
+Version: 1.1
+*/
+
+/* Parent stylesheet should be loaded from functions.php not using @import */
+
+/* TEMPORARY FOR HOMEPAGE BLOG FEATURE TITLE ADJUSTMENT 
+
+.ppic-home-blogs .ppic-entry:first-of-type .ppic-entry-title {
+    font-size: 22px;
+    line-height: 24px;
+}
+
+.ppic-home-blogs .ppic-entry:first-of-type .ppic-entry-details {
+    display: block;
+    padding: 14px 5px 5px 0px;
+}
+*/
+
+.ppic-large-text {
+font-size: 28px;
+line-height: 30px;
+}
+.ppic-regular-weight {
+font-weight: 400;
+}
+.ppic-light-weight {
+font-weight: 100;
+}
+.ppic-entry-title-16-regular {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: .01em;
+}
+
+/* PPIC BLOG */
+.ppic-blogNote {
+font-size: 13px;
+color: #717171;
+line-height: 10px;
+}
+.youtubevideowrap {
+width: 100%;	
+max-width: 560px;
+margin: 0 auto;
+padding-bottom:20px;
+}
+.video-container {
+position:relative;
+padding-bottom:49.25%;
+padding-top:30px;
+height:0;
+overflow:hidden;
+}
+.video-container iframe, .video-container object, .video-container embed {
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+}
+
+/* YEAR IN REVIEW for FINANCIALS */
+#YIR .feature_title {
+    font-size:14px; 
+    line-height:14px;
+}
+#YIR .financials tr td {
+    border:none;
+}
+#YIR .header {
+    font-weight:600; 
+    color:#CD7100; 
+    font-size:14px; 
+    text-align:right; 
+}
+#YIR .header2 {
+    font-weight:600; 
+    color:#CD7100; 
+    font-size:14px; 
+    text-align:left; 
+}
+#YIR .header3 {
+    font-weight:600; 
+    color:#CD7100; 
+    font-size:14px; 
+    text-align:center; 
+}
+#YIR .x128 {
+    text-align:right;
+}
+#YIR .xl32 {
+    border-top:none; 
+    border-right:none; 
+    border-bottom:1pt solid #666666; 
+    border-left:none;
+    text-align:right;
+}
+#YIR .xl33 {
+    border-top:none; 
+    border-right:none; 
+    border-bottom:2.0pt solid #666666; 
+    border-left:none;
+}
+
+/* FOR JEFF TO MAKE PERMANENT CHANGE */
+.pp-dataPopup .pp-image {
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 15px;
+	padding-left: 0px;
+}
+
+#quickpub-summary ul.new-bullets li .bulletHeadingSummary {
+	font-family: Proxima Nova W01, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+}
+/* Adds extra line-height to lists under publication tabs */
+.tab-list a {
+    line-height:20px;
+}
+
+/* New trending feature Topic page section code */
+.ppic-trending-immigrants .ppic-topic-image {
+	background-position: center;
+	background-size: cover;
+	height: 275px;
+	width: 100%;
+}
+.ppic-trending-immigrants .ppic-topic-caption {
+	padding: 25px 30px;
+}
+.ppic-trending-immigrants .ppic-topic-image {
+	background-image: url("/wp-content/uploads/trending-feature-image-immigrants-in-california.jpg");
+}
+.ppic-trending-immigrants .ppic-topic-image img {
+	display: none;
+}
+.ppic-trending-immigrants .ppic-topic-box:hover .ppic-topic-caption {
+	height: 55%;
+}
+@media only screen and (max-width: 479px) {
+.ppic-trending-immigrants .ppic-topic-box:hover .ppic-topic-caption {	
+	height: 100%;
+	}
+}

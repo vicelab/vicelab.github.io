@@ -1,0 +1,141 @@
+@charset "utf-8";
+/* CSS Document */
+
+.pp-featureBlog.pp-highlightBlog .pp-blogImage img {
+	width: 230px;
+}
+.pp-tabs > ul li a {
+	min-width: 80px;
+}
+
+/* margin-right should be 16px */
+.pp-featureBlog.pp-highlightBlog .pp-blogImage {
+	margin-right:16px;
+}
+
+/* padding should be 14px 15px 5px 0px; */
+.pp-featureBlog.pp-highlightBlog .pp-blogTitle {
+	padding: 14px 15px 5px 0px;
+}
+
+.secondary_header {
+	font-weight:600;
+}
+.pp-headerLearnMore {
+    display: block; 
+    font-family: "Trade Gothic W01"; 
+    font-weight: 800;
+    font-style: normal;
+    color: #cd7100;
+    line-height: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+    }
+
+.title_sidebar_pubs {
+	font-family:'Proxima Nova W01';
+	font-weight: 600;
+	font-style: normal;
+	font-size: 13px;
+	line-height: 14px;
+}
+.title_sidebar_policy {
+	font-family:'Proxima Nova W01';
+	font-weight: 600;
+	font-style: normal;
+	font-size: 13px;
+	line-height: 18px;
+}
+.subHeadOrange {
+	font-family:'Proxima Nova W01';
+	font-weight: 600;
+	font-style: normal;
+	font-size: 13px;
+	color:#cd7100;
+}
+.footer_copy {
+	font-family:'Proxima Nova W01';
+}
+.quickpub-caption p {
+	margin-top: 4px;
+}
+
+h3.quickpub-chartheader { 
+	text-transform: uppercase; 
+	}
+
+.quickpub-pullquote { 
+	font-size:12px; 
+	padding: 15px; 
+	margin: 8px 0 15px 20px; 
+	} 
+
+.quickpub-pullquote.l { 
+	font-size:12px; 
+	margin: 8px 20px 15px 0; 
+	}
+	
+#pp-mainBody h6 {
+	color: #cd7100; 
+	font-family: 'Proxima Nova W01', sans-serif; 
+	font-weight: 400; 
+	font-size: 16px; 
+	margin:0;
+}
+#quickpub-summary ul {
+    padding:0;
+}
+
+#quickpub-summary ul li {
+    background:url("http://www.ppic.org/common/quickpub/bullet-new.png") no-repeat;
+    margin-bottom: 5px;
+    padding-left:20px;
+    background-position: 0px 7px;
+}
+.qp-waterCenter #pp-mainBody h6 {
+	color: #699DAA;
+}
+.quickpub-textbox { 
+	padding: 15px 15px 0px 25px; 
+} 
+
+.dyk .captionG { 
+	left: 0px; 
+	right: auto; 
+	top: 35px; 
+	bottom: auto; 
+	font-size: 30px; 
+	line-height: 32px; 
+	letter-spacing: .025em; 
+	color: #475153;
+	font-family: 'Proxima Nova W01';
+	font-weight: 400;
+	font-style: normal;
+	padding-top:5px;
+}
+.dyk .headerF { 
+	left: 0px; 
+	right: auto; 
+	top: 15px; 
+	bottom: auto; 
+	font-family: "Trade Gothic W01"; 
+	font-weight: 800; 
+	font-style: normal; 
+	font-size: 13px; 
+	line-height: 16px; 
+	color: #A9A9A9; 
+	text-transform: uppercase; 
+	letter-spacing: 1px;
+}
+#pp-mainBody ul.new-bullets li {
+	background:url("http://www.ppic.org/common/quickpub/bullet-new.png") no-repeat;
+	margin-bottom: 15px;
+	padding-left:20px;
+	background-position: 0px 7px;
+}
+
+#pp-mainBody ol.new-bullets li {
+	margin-left: 6px;
+}

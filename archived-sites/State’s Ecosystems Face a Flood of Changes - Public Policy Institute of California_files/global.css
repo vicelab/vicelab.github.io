@@ -1,0 +1,246 @@
+/* Global HTML Styles */
+body {
+	font-family: 'Proxima Nova W01';
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: 400;
+	color: #222;
+	letter-spacing: .025em; /* fix for customizer bug */
+}
+
+p {
+	margin: 1em 0;
+}
+
+a {
+	color: #706123;
+	text-decoration: none;
+}
+a:hover {
+	color: #8EA99D;
+	text-decoration: none;
+}
+
+.ppic-paragraph a {
+	color: #A0702C;
+}
+li ul, li ol {
+	margin:0 1.5em;
+}
+ul, ol {
+	margin:0 1.5em 1.5em 1.5em;
+}
+ul {
+	list-style-type:disc;
+}
+ol {
+	list-style-type:decimal;
+}
+ol ol {
+	list-style: upper-alpha;
+}
+ol ol ol {
+	list-style: lower-roman;
+}
+ol ol ol ol {
+	list-style: lower-alpha;
+}
+H1 {
+	font-size: 32px;
+	line-height: 35px;
+	color: #CD7100;
+	font-weight: 400;
+	letter-spacing: .01em;
+	margin: 0px 0px 6px 0px;
+}
+H2 {
+	font-size: 26px;
+	line-height: 1.2em;
+	color: #2f3335;
+	font-weight: 300;
+	letter-spacing: .01em;
+	margin: 0px 0px 16px 0px;
+}
+H3 {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 23px;
+	color: #475153;
+	letter-spacing: .025em;
+}
+H4 {
+	color: #CD7100;
+font-family: "Trade Gothic W01";
+font-weight: 800;
+font-style: normal;
+font-size: 13px;
+line-height: 16px;
+text-transform: uppercase;
+letter-spacing: .1em;
+margin: 13px 0px;
+}
+H5
+{font-family: 'Arial W01';
+font-weight: 900;
+font-style: normal;
+color: #999999;
+line-height: 18px;
+text-transform: uppercase;
+font-size: 11px;
+letter-spacing: .1em;
+margin: 6px 0px;
+}
+
+.ppic-entry-title {
+	font-weight: 600;
+	font-size: 17px;
+	line-height: 18px;
+	letter-spacing: .01em;
+	padding-right: 3px;
+}
+.ppic-entry-date {
+	font-size: 10px;
+	line-height: 18px;
+	color: #b7bbbc;
+	font-family: 'Arial W01';
+	font-weight: 900;
+	font-style: normal;
+	white-space: nowrap;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+}
+sub, sup {
+    font-size: 75%;
+}
+.ppic-dark-blue {
+	color: #475153;
+}
+
+.ppic-light-gray {
+	color: #A9A9A9;
+}
+.ppic-subheader-gray {
+	font-family: "Trade Gothic W01";
+	font-weight: 800;
+	font-size: 13px;
+	line-height: 15px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: #A9A9A9;
+	margin-bottom: 10px;
+	display: block;
+}
+
+blockquote {
+    background: none;
+    padding-left: 0px;
+    margin:0 1.5em 1.5em 1.5em;
+    font-size: inherit;
+    color: inherit;
+}
+
+.page-header-title, .ppic-header-title {
+	font-weight: 300;
+	font-style: normal;
+	font-size: 32px;
+	line-height: 42px;
+	border-bottom: solid 1px #787878;
+	color: #cd7100;
+}
+.ppic-header-title {
+	padding-top: 0px;
+	display: block;
+	line-height: 33px;
+    padding-bottom: 9px;
+}
+.ppic-water-policy .ppic-header-title,
+.ppic-higher-education  .ppic-header-title,
+.ppic-statewide-survey .ppic-header-title {
+	color: #475153;
+}
+
+
+.ppic-subheader {
+	font-family: 'Proxima Nova W01';
+	font-weight: 300;
+	font-style: normal;
+	font-size: 32px;
+	line-height: 42px;
+	border-bottom: solid 1px #787878;
+	margin-bottom: 30px;
+}
+.ppic-author, 
+.ppic-author-line, 
+.ppic-author-line a {
+	font-family: 'Proxima Nova W01';
+	font-weight: 600;
+	font-size: 11px;
+	line-height: 16px;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+}
+.ppic-author-line {
+	color: #707070;
+}
+
+.ppic-date {
+    font-family: "Proxima Nova W01";
+	font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #9c9c9c;
+    text-transform: uppercase;
+	letter-spacing: .025em;
+	white-space: nowrap;
+}
+
+
+
+.ppic-arrow-link {
+    font-family: 'Arial W01';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 10px;
+    line-height: 11px;
+    color: #CD7100;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    white-space: nowrap;
+}
+.ppic-arrow-link::after {
+	content: "\f178";
+	font-family: FontAwesome;
+	line-height: 11px;
+	font-size: 14px;
+	padding-left: 10px;
+	vertical-align: -1px;
+}
+.ppic-double-arrow::before { 
+	content: "\f054\f054";
+    font-family: FontAwesome;
+    font-size: 8px;
+    padding-right: 4px;
+    color: #cd7100;
+    letter-spacing: -.05em;
+}
+/* center sliders */
+
+.ppic-center-slider.ppic-slider-survey .ppic-slide-title {
+
+}
+.ppic-slide-caption  .ppic-arrow-link,
+.ppic-center-slider .ppic-arrow-link {
+	margin-top: 10px;
+	color: #fff;
+}
+
+.ppic-slide-caption:hover .ppic-arrow-link,
+.ppic-center-slider .ppic-slide-caption:hover .ppic-arrow-link {
+	color: #cd7100;
+}
+.ppic-center-slider .ppic-slide-caption {
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+
+	
