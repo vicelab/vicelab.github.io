@@ -164,38 +164,51 @@
 				var title = document.getElementById('modal-title');
 				title.innerHTML = getInfo(id).TITLE;
 				var biography = document.getElementById('modal-biography');
-				biography.innerHTML = getInfo(id).BIOGRAPHY;
+				biography.innerHTML = getInfo(id).BIOGRAPHY + '<hr>'; 
 
 				if (id == "josh-viers") {
-					biography.innerHTML += '<hr><ul class="actions fit"><li><a href="/news" class="button fit">News</a></li><li><a href="/projects" class="button fit">Projects</a></li><li><a href="/publications" class="button fit">Publications</a></li><li><a href="/people" class="button fit">People</a></li><li><a href="/collaborators" class="button fit">Collaborators</a></li></ul>';
+					biography.innerHTML += '<ul class="actions fit"><li><a href="/news" class="button fit">News</a></li><li><a href="/projects" class="button fit">Projects</a></li><li><a href="/publications" class="button fit">Publications</a></li><li><a href="/people" class="button fit">People</a></li><li><a href="/collaborators" class="button fit">Collaborators</a></li></ul>';
 				}
 				else {
-					biography.innerHTML += '<hr>';
-
+					
+					var related_news = "";
 					for (var i = 0; i < news_data.length; i++) {
 						var authors = news_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
 							console.log("for " + news_data[i].NAME + ": " + authors[j] + " compared to " + id);
 							if (authors[j] == id) {
-								biography.innerHTML += '<a href="/news/#' + news_data[i].ID + '">' + news_data[i].NAME + '<\a><br>';
+								related_news += '<a href="/news/#' + news_data[i].ID + '">' + news_data[i].NAME + '<\a><br>';
 							}
 						}
 					}
+					if (related_news != "") {
+						biography.innerHTML += '<h3>Related News</h3>' + related_news;
+					}
+
+					var related_projects = "";
 					for (var i = 0; i < project_data.length; i++) {
 						var authors = project_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
 							if (authors[j] == id) {
-								biography.innerHTML += '<a href="/projects/#' + project_data[i].ID + '">' + project_data[i].NAME + '<\a><br>';
+								related_projects += '<a href="/projects/#' + project_data[i].ID + '">' + project_data[i].NAME + '<\a><br>';
 							}
 						}
 					}
+					if (related_projects != "") {
+						biography.innerHTML += '<h3>Related Projects</h3>' + related_projects;
+					}
+
+					var related_publications = "";
 					for (var i = 0; i < publication_data.length; i++) {
 						var authors = publication_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
 							if (authors[j] == id) {
-								biography.innerHTML += '<a href="/publications/#' + publication_data[i].ID + '">' + publication_data[i].NAME + '<\a><br>';
+								related_publications += '<a href="/publications/#' + publication_data[i].ID + '">' + publication_data[i].NAME + '<\a><br>';
 							}
 						}
+					}
+					if (related_publications != "") {
+						biography.innerHTML += '<h3>Related Publications</h3>' + related_publications;
 					}
 				}
 			}
