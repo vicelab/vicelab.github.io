@@ -137,7 +137,7 @@
 	<script src="../assets/js/util.js"></script>
 	<script src="../assets/js/main.js"></script>
 	<script>
-		var data;
+		var data, news_data, project_data, publication_data;
 
 		// Get the modal
 		var modal = document.getElementById('people-modal');
@@ -165,6 +165,38 @@
 				title.innerHTML = getInfo(id).TITLE;
 				var biography = document.getElementById('modal-biography');
 				biography.innerHTML = getInfo(id).BIOGRAPHY;
+
+				if (id == "josh-viers") {
+					biography.innerHTML += '<hr><ul class="actions fit"><li><a href="/news" class="button fit">News</a></li><li><a href="/projects" class="button fit">Projects</a></li><li><a href="/publications" class="button fit">Publications</a></li><li><a href="/people" class="button fit">People</a></li><li><a href="/collaborators" class="button fit">Collaborators</a></li></ul>';
+				}
+				else {
+					biography.innerHTML += '<hr>';
+
+					for (var i = 0; i < news_data.length; i++) {
+						var authors = news_data[i].AUTHOR.split(";");
+						for (var j = 0; j < authors.length; j++) {
+							if (authors[i] == id) {
+								biography.innerHTML += news_data[i].NAME;
+							}
+						}
+					}
+					for (var i = 0; i < project_data.length; i++) {
+						var authors = project_data[i].AUTHOR.split(";");
+						for (var j = 0; j < authors.length; j++) {
+							if (authors[i] == id) {
+								biography.innerHTML += project_data[i].NAME;
+							}
+						}
+					}
+					for (var i = 0; i < publication_data.length; i++) {
+						var authors = publication_data[i].AUTHOR.split(";");
+						for (var j = 0; j < authors.length; j++) {
+							if (authors[i] == id) {
+								biography.innerHTML += publication_data[i].NAME;
+							}
+						}
+					}
+				}
 			}
 		}
 
@@ -211,6 +243,15 @@
 				}
 
 				loadModal(window.location.hash.substring(1));
+			});
+			$.get("/news.csv").then(function (text, status, xhr) {
+				news_data = $.csv.toObjects(text);
+			});
+			$.get("/projects.csv").then(function (text, status, xhr) {
+				project_data = $.csv.toObjects(text);
+			});
+			$.get("/publications.csv").then(function (text, status, xhr) {
+				publication_data = $.csv.toObjects(text);
 			});
 
 		});
