@@ -175,6 +175,7 @@
 					for (var i = 0; i < news_data.length; i++) {
 						var authors = news_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
+							console.log("for " + news_data[i].NAME + ": " + authors[i] + " compared to " + id);
 							if (authors[i] == id) {
 								biography.innerHTML += '<a href="/news/#' + news_data[i].ID + '">' + news_data[i].NAME + '<\a><br>';
 							}
