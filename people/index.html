@@ -176,7 +176,7 @@
 						var authors = news_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
 							if (authors[i] == id) {
-								biography.innerHTML += news_data[i].NAME;
+								biography.innerHTML += '<a href="/news/#' + news_data[i].ID + '">' + news_data[i].NAME + '<\a><br>';
 							}
 						}
 					}
@@ -184,7 +184,7 @@
 						var authors = project_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
 							if (authors[i] == id) {
-								biography.innerHTML += project_data[i].NAME;
+								biography.innerHTML += '<a href="/projects/#' + project_data[i].ID + '">' + project_data[i].NAME + '<\a><br>';
 							}
 						}
 					}
@@ -192,7 +192,7 @@
 						var authors = publication_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
 							if (authors[i] == id) {
-								biography.innerHTML += publication_data[i].NAME;
+								biography.innerHTML += '<a href="/publications/#' + publication_data[i].ID + '">' + publication_data[i].NAME + '<\a><br>';
 							}
 						}
 					}
