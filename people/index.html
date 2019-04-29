@@ -103,23 +103,6 @@
 					<p id="modal-biography" style="margin:3em; color:white">
 						...
 					</p>
-					<!-- <table style="width:100%">
-						<tr>
-							<th>
-								<img id="modal-image" class="image featured" style="margin: 2em; width:35%;" src="/images/people/josh-viers.jpg"></th>
-							<th>
-								<h1 class="namePosition" id="modal-name">
-									Josh Viers
-								</h1>
-								<h2 id="modal-title">
-									Director
-								</h2>
-								<p id="modal-biography">
-									Important guy.
-								</p>
-							</th>
-						</tr>
-					</table> -->
 				</div>
 			</article>
 		</div>
@@ -139,19 +122,9 @@
 	<script>
 		var data, news_data, project_data, publication_data;
 
-		// Get the modal
 		var modal = document.getElementById('people-modal');
 		modal.style.display = "none";
-		// Get the image and insert it inside the modal - use its "alt" text as a caption
-		// var img = document.getElementById('myImg');
-		// var modalImg = document.getElementById("img01");
 		var captionText = document.getElementById("caption");
-		// img.onclick = function () {
-		// 	modal.style.display = "block";
-		// 	modalImg.src = this.src;
-		// 	captionText.innerHTML = this.alt;
-		// }
-		// var span = document.getElementsByClassName("close")[0];
 		modal.onclick = function () { modal.style.display = "none"; window.location.hash = ""; }
 
 		function loadModal(id) {
@@ -170,12 +143,10 @@
 					biography.innerHTML += '<ul class="actions fit"><li><a href="/news" class="button fit">News</a></li><li><a href="/projects" class="button fit">Projects</a></li><li><a href="/publications" class="button fit">Publications</a></li><li><a href="/people" class="button fit">People</a></li><li><a href="/collaborators" class="button fit">Collaborators</a></li></ul>';
 				}
 				else {
-					
 					var related_news = "";
 					for (var i = 0; i < news_data.length; i++) {
 						var authors = news_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
-							console.log("for " + news_data[i].NAME + ": " + authors[j] + " compared to " + id);
 							if (authors[j] == id) {
 								related_news += '<p><a href="/news/#' + news_data[i].ID + '">' + news_data[i].NAME + '</a>, ' + news_data[i].DATE + '</p>';
 							}

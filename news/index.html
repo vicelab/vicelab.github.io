@@ -116,28 +116,24 @@
 			$.get("/news.csv").then(function (text, status, xhr) {
 				var data = $.csv.toObjects(text);
 				for (var i = 0; i < data.length; i++) {
-					switch (data[i].ID) {
-						default:
-							$("#news").append(
-								$.parseHTML(
-									'<article class="post">' +
-										'<header>' +
-											'<div class="title">' +
-												'<h2 id ="' + data[i].ID + '">' + data[i].NAME + '</h2>' + 
-											'</div>' +
-											'<div class="meta">' +
-												'<time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' +
-												'<a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a>' + 
-											'</div>'+
-										'</header>' +
-										'<div style="display: block; overflow: auto">' +
-											'<img style= "margin: 0 1em 1em 0; float:left; width: 25%;" class="image featured" src="/images/news/' + data[i].ID + '.jpg" alt="" />' +
-											'<p style="margin:0;">' + data[i].TEXT + '</p>' +
-										'</div>' + 
-									'</article>'
-								));
-							break;
-					}
+					$("#news").append(
+						$.parseHTML(
+							'<article class="post">' +
+								'<header>' +
+									'<div class="title">' +
+										'<h2 id ="' + data[i].ID + '">' + data[i].NAME + '</h2>' + 
+									'</div>' +
+									'<div class="meta">' +
+										'<time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' +
+										'<a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a>' + 
+									'</div>'+
+								'</header>' +
+								'<div style="display: block; overflow: auto">' +
+									'<img style= "margin: 0 1em 1em 0; float:left; width: 25%;" class="image featured" src="/images/news/' + data[i].ID + '.jpg" alt="" />' +
+									'<p style="margin:0;">' + data[i].TEXT + '</p>' +
+								'</div>' + 
+							'</article>'
+					));
 				}
 			});
 			/*Footer: Controlled by HTML snippet in snippets/footer.html*/
