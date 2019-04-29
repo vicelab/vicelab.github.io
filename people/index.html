@@ -177,12 +177,12 @@
 						for (var j = 0; j < authors.length; j++) {
 							console.log("for " + news_data[i].NAME + ": " + authors[j] + " compared to " + id);
 							if (authors[j] == id) {
-								related_news += '<a href="/news/#' + news_data[i].ID + '">' + news_data[i].NAME + '<\a><br>';
+								related_news += '<p><a href="/news/#' + news_data[i].ID + '">' + news_data[i].NAME + '</a>, ' + news_data[i].DATE + '</p>';
 							}
 						}
 					}
 					if (related_news != "") {
-						biography.innerHTML += '<h3>Related News</h3>' + related_news;
+						biography.innerHTML += '<h3 style="margin:3em; color:white">Related News</h3>' + related_news;
 					}
 
 					var related_projects = "";
@@ -190,12 +190,12 @@
 						var authors = project_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
 							if (authors[j] == id) {
-								related_projects += '<a href="/projects/#' + project_data[i].ID + '">' + project_data[i].NAME + '<\a><br>';
+								related_projects += '<p><a href="/news/#' + project_data[i].ID + '">' + project_data[i].NAME + '</a>, ' + project_data[i].DATE + '</p>';
 							}
 						}
 					}
 					if (related_projects != "") {
-						biography.innerHTML += '<h3>Related Projects</h3>' + related_projects;
+						biography.innerHTML += '<h3 style="margin:3em; color:white">Related Projects</h3>' + related_projects;
 					}
 
 					var related_publications = "";
@@ -203,12 +203,12 @@
 						var authors = publication_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
 							if (authors[j] == id) {
-								related_publications += '<a href="/publications/#' + publication_data[i].ID + '">' + publication_data[i].NAME + '<\a><br>';
+								related_publications += '<p><a href="/news/#' + related_publications[i].ID + '">' + related_publications[i].NAME + '</a>, ' + related_publications[i].DATE + '</p>';
 							}
 						}
 					}
 					if (related_publications != "") {
-						biography.innerHTML += '<h3>Related Publications</h3>' + related_publications;
+						biography.innerHTML += '<h3 style="margin:3em; color:white">Related Publications</h3>' + related_publications;
 					}
 				}
 			}
