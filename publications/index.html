@@ -200,7 +200,7 @@
 
 							$("#publications").append(
 								$.parseHTML(
-									'<article ' + tags_html + location_html + '><header><div class = "title"><h3 id="' + data[i].ID + '"><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_buttons_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;"><span>' + firstSection + '</span>' + '<span class = "show" id = \'' + data[i].ID + 'Dots\'>' + "..." + '</span>' + '<span class = "hide" style = "margin:0;" id = \'' + data[i].ID + 'ShowText\'>' + secondSection + '</span></p>' + showMoreBTN + '</article>'
+									'<article ' + tags_html + location_html + '><header><div class = "title"><h3 id="' + data[i].ID + '"><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_buttons_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;display:none"><span>' + firstSection + '</span>' + '<span class = "show" id = \'' + data[i].ID + 'Dots\'>' + "..." + '</span>' + '<span class = "hide" style = "margin:0;" id = \'' + data[i].ID + 'ShowText\'>' + secondSection + '</span>' + showMoreBTN + '</p></article>'
 								));
 							break;
 					}
