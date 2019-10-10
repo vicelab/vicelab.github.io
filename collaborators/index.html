@@ -119,9 +119,13 @@
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
 						default:
+							people_data= '';
+							if (data[i].AUTHOR != "") {
+								people_data = '<div class="meta"><a href="people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div>'
+							}
 							$("#collaborators").append(
 								$.parseHTML(
-									'<article class="post"><header><div class="title"><h2><a href="'+ data[i].LINK +'">' + data[i].NAME + '</a></h2></div><div class="meta"><a href="people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header><p>' + data[i].TEXT + '</p></article>'
+									'<article class="post"><header><div class="title"><h2><a href="'+ data[i].LINK +'">' + data[i].NAME + '</a></h2></div>'+ people_data +'</header><p>' + data[i].TEXT + '</p></article>'
 								));
 							break;
 					}
