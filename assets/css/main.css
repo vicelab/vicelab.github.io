@@ -2312,7 +2312,8 @@ input, select, textarea {
 		.image.featured {
 			display: block;
 			margin: 0 0 3em 0;
-			width: 100%;
+			width: 240px;
+			height: 240px;
 		}
 
 			.image.featured img {
