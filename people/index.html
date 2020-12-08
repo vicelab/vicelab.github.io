@@ -161,7 +161,7 @@
 						var authors = project_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
 							if (authors[j] == id) {
-								related_projects += '<p><a href="/news/#' + project_data[i].ID + '">' + project_data[i].NAME + '</a>, ' + project_data[i].DATE + '</p>';
+								related_projects += '<p><a href="/projects/#' + project_data[i].ID + '">' + project_data[i].NAME + '</a>, ' + project_data[i].DATE + '</p>';
 							}
 						}
 					}
@@ -174,7 +174,7 @@
 						var authors = publication_data[i].AUTHOR.split(";");
 						for (var j = 0; j < authors.length; j++) {
 							if (authors[j] == id) {
-								related_publications += '<p><a href="/news/#' + related_publications[i].ID + '">' + related_publications[i].NAME + '</a>, ' + related_publications[i].DATE + '</p>';
+								related_publications += '<p><a href="/publications/#' + publication_data[i].ID + '">' + publication_data[i].NAME + '</a>, ' + publication_data[i].DATE + '</p>';
 							}
 						}
 					}
