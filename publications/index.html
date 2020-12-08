@@ -41,12 +41,12 @@
 			</nav>
 			<nav class="main">
 				<ul>
-					<li class="search">
+					<!-- <li class="search">
 						<a class="fa-search" href="#search">Search</a>
 						<form id="search" method="get" action="#">
 							<input type="text" name="query" placeholder="Search" />
 						</form>
-					</li>
+					</li> -->
 					<li class="menu">
 						<a class="fa-bars" href="#menu">Menu</a>
 					</li>
@@ -56,22 +56,22 @@
 
 		<!-- MENU [right-side pull-out menu] -->
 		<section id="menu">
-			<section>
+			<!-- <section>
 				<form class="search" method="get" action="#">
 					<input type="text" name="query" placeholder="Search" />
 				</form>
-			</section>
+			</section> -->
 			<section>
 				<ul class="links" id="navigation_side">
 				</ul>
 			</section>
-			<section>
+			<!-- <section>
 				<ul class="actions stacked">
 					<li>
 						<a href="#" class="button large fit">Log In</a>
 					</li>
 				</ul>
-			</section>
+			</section> -->
 		</section>
 
 
@@ -146,7 +146,7 @@
 							var authors = data[i].AUTHOR.split(";");
 							var authors_html = '';
 							for (var j = 0; j < authors.length; j++) {
-								authors_html += '<a href="/people" class="author"><span class="name">' + authors[j].replace("-", " ") + '</span><img src="/images/people/' + authors[j] + '.jpg" alt="" /></a>'
+								authors_html += '<a href="/people/#' + authors[j] + '" class="author"><span class="name">' + authors[j].replace("-", " ") + '</span><img src="/images/people/' + authors[j] + '.jpg" alt="" /></a>'
 							}
 							var tags = data[i].TAGS.split(";");
 							var tags_buttons_html = '';

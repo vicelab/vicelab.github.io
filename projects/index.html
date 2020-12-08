@@ -41,12 +41,12 @@
 			</nav>
 			<nav class="main">
 				<ul>
-					<li class="search">
+					<!-- <li class="search">
 						<a class="fa-search" href="#search">Search</a>
 						<form id="search" method="get" action="#">
 							<input type="text" name="query" placeholder="Search" />
 						</form>
-					</li>
+					</li> -->
 					<li class="menu">
 						<a class="fa-bars" href="#menu">Menu</a>
 					</li>
@@ -56,22 +56,22 @@
 
 		<!-- MENU [right-side pull-out menu] -->
 		<section id="menu">
-			<section>
+			<!-- <section>
 				<form class="search" method="get" action="#">
 					<input type="text" name="query" placeholder="Search" />
 				</form>
-			</section>
+			</section> -->
 			<section>
 				<ul class="links" id="navigation_side">
 				</ul>
 			</section>
-			<section>
+			<!-- <section>
 				<ul class="actions stacked">
 					<li>
 						<a href="#" class="button large fit">Log In</a>
 					</li>
 				</ul>
-			</section>
+			</section> -->
 		</section>
 
 
@@ -169,7 +169,7 @@
 							location_html += '"';
 							$("#projects").append(
 								$.parseHTML(
-									'<article ' + tags_html + location_html + '><header><div class="title"><h2 id="' + data[i].ID +'">' + data[i].NAME + '</h3>' + tags_buttons_html + /*location_buttons_html + */ '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header>' + 
+									'<article ' + tags_html + location_html + '><header><div class="title"><h2 id="' + data[i].ID +'">' + data[i].NAME + '</h3>' + tags_buttons_html + /*location_buttons_html + */ '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time><a href="/people/#' + data[i].AUTHOR + '" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div></header>' + 
 										'<div style="display: block; overflow: auto">' +
 											'<img style= "margin: 0 1em 1em 0; float:left; width: 35%;" class="image featured" src="/images/projects/' + data[i].ID + '.jpg" alt="" />' +
 											'<p style="margin:0;">' + data[i].TEXT + '</p>' +
