@@ -216,12 +216,25 @@
 								if (data[i].EMAIL !== " " && data[i].EMAIL !== "") email_html = '<li><a href="mailto:' + data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li>';
 								if (data[i].TWITTER !== " " && data[i].TWITTER !== "") twitter_html = '<li><a href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li>';
 								if (data[i].GITHUB !== " " && data[i].GITHUB !== "") github_html = '<li><a href="' + data[i].GITHUB + '" class="fa-github"><span class="label">Github</span></a></li>';
-								$("#people").append(
+								if (data[i].EMAIL == "") email_html = '<li><a hidden href="mailto:' + data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li>';
+								if (data[i].TWITTER == "") twitter_html = '<li><a hidden href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li>';
+								if (data[i].GITHUB == "") github_html = '<li><a hidden href="' + data[i].GITHUB + '" class="fa-github"><span class="label">Github</span></a></li>';
+								if (data[i].ID == "josh-viers" || data[i].ID == "leigh-bernacchi" || data[i].ID == "sarah-naumes" || data[i].ID == "nick-santos"){
+									$("#people").append(
 									$.parseHTML(
 										'<a href= "#' + data[i].ID + '">' +
-										'<div style="display:inline-block;width:15em;height:100%;"><img class="image featured" style="margin: 0 0 1em 0" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:3em">' + data[i].NAME + '</h2\><br><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
+										'<div style="display:inline-block;width:15em;height:100%;"><img class="image featured" style="margin: 0 0 1em 0; height: 240px; width: 240px;" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:4em">' + data[i].NAME + '</h2\><br><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
 										'</a> '
 									));
+								}else{
+									$("#people").append(
+									$.parseHTML(
+										'<a href= "#' + data[i].ID + '">' +
+										'<div style="display:inline-flex; flex-wrap: wrap;width:15em;height:100%;"><img class="image featured" style="margin: 0 0 1em 0; height: 240px; width: 240px;" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:4em">' + data[i].NAME + '</h2\><br><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
+										'</a> '
+									));
+								}
+								
 							}
 							break;
 					}
