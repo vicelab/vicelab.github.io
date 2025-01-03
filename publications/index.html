@@ -178,9 +178,12 @@
 									);
 								}
 							}
-							location_html += '"';
+							location_html += '\"';
 
 							var articleArr = data[i].ABSTRACT.split(" ");
+							var firstSection = "";
+							var secondSection = "";
+
 
 							if (articleArr.length <= 45) {
 								firstSection = data[i].ABSTRACT;
