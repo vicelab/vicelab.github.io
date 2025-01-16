@@ -129,86 +129,78 @@
 	<script src="/assets/js/main.js"></script>
 	<script>
 		$(function () {
-			$.get("../snippets/navigation.html").then(function (text, status, xhr) {
-				$("#navigation_top").append($.parseHTML(text)); /*Navigation: Controlled by HTML snippet in snippets/navigation.html*/
+			$.get("../snippets/navigation.html").then(function (text) {
+				$("#navigation_top").append($.parseHTML(text));
 				$("#navigation_side").append($.parseHTML(text));
 			});
-			$("#footer").load("../snippets/footer.html"); /*Footer: Controlled by HTML snippet in snippets/footer.html*/
-			$.get("/publications.csv").then(function (text, status, xhr) {
-				var data = $.csv.toObjects(text);
-				var visited_tags = [];
-				var visited_locations = [];
-				for (var i = 0; i < data.length; i++) {
-					switch (data[i].ID) {
-						case "READ MORE":
-							break;
-						default:
-							var authors = data[i].AUTHOR.split(";");
-							var authors_html = '';
-							for (var j = 0; j < authors.length; j++) {
-								authors_html += '<a href="/people/#' + authors[j] + '" class="author"><span class="name">' + authors[j].replace("-", " ") + '</span><img src="/images/people/' + authors[j] + '.jpg" alt="" /></a>'
-							}
-							var tags = data[i].TAGS.split(";");
-							var tags_buttons_html = '';
-							var tags_html = 'class="post ';
 
-							for (var j = 0; j < tags.length; j++) {
-								tags_html += tags[j] + " ";
-								if (tags[j] === " " || tags[j] === "") continue;
-								tags_buttons_html += '<a href="#" class="button" onclick="filterSelection(\'' + tags[j] + '\')">' + tags[j].replace("-", " ") + '</a> ';
-								if (!visited_tags.includes(tags[j])) {
-									visited_tags.push(tags[j]);
-									$("#tags").append(
-										'<a href="#" class="button" onclick="filterSelection(\'' + tags[j] + '\')">' + tags[j].replace("-", " ") + '</a> '
-									);
-								}
-							}
+			$("#footer").load("../snippets/footer.html");
 
-							var location_html = '';
-							var locationArr = data[i].LOCATION.split(";");
-							var location_buttons_html = '';
-							for (var j = 0; j < locationArr.length; j++) {
-								location_html += locationArr[j] + " ";
-								if (locationArr[j] === " " || locationArr[j] === "") continue;
-								location_buttons_html += '<a href="#" class="button" onclick="filterSelection(\'' + locationArr[j] + '\')">' + locationArr[j].replace("-", " ") + '</a> ';
-								if (!visited_locations.includes(locationArr[j])) {
-									visited_locations.push(locationArr[j]);
-									$("#locations").append(
-										'<a href="#" class="button" onclick="filterSelection(\'' + locationArr[j] + '\')">' + data[i].LOCATION.replace("-", " ") + '</a> '
-									);
-								}
-							}
-							location_html += '\"';
+			$.get("/publications.csv")
+				.then(function (text) {
+					var data = $.csv.toObjects(text);
+					var visited_tags = [];
+					var visited_locations = [];
 
-							var articleArr = data[i].ABSTRACT.split(" ");
-							var firstSection = "";
-							var secondSection = "";
-
-
-							if (articleArr.length <= 45) {
-								firstSection = data[i].ABSTRACT;
-								secondSection = "";
-								showMoreBTN = "";
-							} else {
-								for (var j = 0; j < articleArr.length; j++) {
-									if (j < 45) {
-										firstSection += articleArr[j] + " ";
-									} else {
-										secondSection += articleArr[j] + " ";
-									}
-								}
-							}
-
-							$("#publications").append(
-								$.parseHTML(
-									'<div style="margin: 0 0 .25em 0;" ' + tags_html + location_html + '><header style="margin:-3em 0 -1.1em 0"><div class="title"><h3 id="' + data[i].ID + '"><a href="' + data[i].LINK + '">' + data[i].NAME + '</a></h3>' + tags_buttons_html + location_buttons_html + '</div><div class="meta"><time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' + authors_html + '</div></header><p style="margin:0;display:block"><span>' + firstSection + '</span>' + '<span class="show" id = \'' + data[i].ID + 'Dots\'>' + "..." + '</span>' + '<span class="hide" style = "margin:0;" id = \'' + data[i].ID + 'ShowText\'>' + secondSection + '</span>' + showMoreBTN + '</p></div>'
-								));
-							break;
+					for (var i = 0; i < data.length; i++) {
+						if (!data[i].ID || !data[i].AUTHOR || !data[i].TAGS || !data[i].LOCATION || !data[i].ABSTRACT) {
+						continue; // Skip invalid rows
 					}
-				}
-			});
 
+					let authors_html = '';
+						data[i].AUTHOR.split(";").forEach(author => {
+							authors_html += `<a href="/people/#${author}" class="author">
+								<span class="name">${escapeHTML(author.replace("-", " "))}</span>
+							</a>`;
+					});
+
+					let tags_html = 'class="post ';
+					let tags_buttons_html = '';
+					data[i].TAGS.split(";").forEach(tag => {
+						if (!tag.trim()) return;
+							tags_html += `${tag.trim()} `;
+						if (!visited_tags.includes(tag.trim())) {
+							visited_tags.push(tag.trim());
+							$("#tags").append(`<a href="#" class="button" onclick="filterSelection('${tag.trim()}')">${escapeHTML(tag.trim())}</a>`);
+						}
+						tags_buttons_html += `<a href="#" class="button" onclick="filterSelection('${tag.trim()}')">${escapeHTML(tag.trim())}</a> `;
+					});
+
+					let articleArr = data[i].ABSTRACT.split(" ");
+					let firstSection = articleArr.slice(0, 45).join(" ");
+					let secondSection = articleArr.slice(45).join(" ");
+					let showMoreBTN = secondSection ? `<button onclick="showMoreText('${data[i].ID}')">Show More</button>` : '';
+
+					$("#publications").append(`
+						<div style="margin: 0 0 .25em 0;" ${tags_html}>
+							<header style="margin:-3em 0 -1.1em 0">
+								<div class="title">
+									<h3 id="${data[i].ID}">
+										<a href="${data[i].LINK}">${escapeHTML(data[i].NAME)}</a>
+                                </h3>
+                                ${tags_buttons_html}
+								</div>
+								<div class="meta">
+                                <time class="published">${data[i].DATE}</time>
+                                ${authors_html}
+								</div>
+							</header>
+							<p style="margin:0;display:block">
+								<span>${escapeHTML(firstSection)}</span>
+								<span class="show" id="${data[i].ID}Dots">...</span>
+								<span class="hide" style="margin:0;" id="${data[i].ID}ShowText">${escapeHTML(secondSection)}</span>
+								${showMoreBTN}
+							</p>
+						</div>
+					`);
+				}
+			})
+			.fail(function (xhr, status, error) {
+				console.error("Error loading publications:", status, error);
+				$("#publications").append("<p>Error loading publications. Please try again later.</p>");
+			});
 		});
+
 
 		filterSelection("all")
 		function filterSelection(c) {
