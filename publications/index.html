@@ -128,118 +128,110 @@
 	<script src="/assets/js/util.js"></script>
 	<script src="/assets/js/main.js"></script>
 	<script>
-		$(function () {
-			$.get("../snippets/navigation.html").then(function (text) {
+	function escapeHTML(text) {
+		return text.replace(/&/g, "&amp;")
+				   .replace(/</g, "&lt;")
+				   .replace(/>/g, "&gt;")
+				   .replace(/"/g, "&quot;")
+				   .replace(/'/g, "&#039;");
+	}
+
+	$(function () {
+		$.get("../snippets/navigation.html")
+			.then(function (text) {
 				$("#navigation_top").append($.parseHTML(text));
 				$("#navigation_side").append($.parseHTML(text));
+			})
+			.fail(function () {
+				console.error("Failed to load navigation.");
 			});
 
-			$("#footer").load("../snippets/footer.html");
+		$("#footer").load("../snippets/footer.html")
+			.fail(function () {
+				console.error("Failed to load footer.");
+			});
 
-			$.get("/publications.csv")
-				.then(function (text) {
-					var data = $.csv.toObjects(text);
-					var visited_tags = [];
-					var visited_locations = [];
+		$.get("/publications.csv")
+			.then(function (text) {
+				var data = $.csv.toObjects(text);
+				var visited_tags = [];
+				var visited_locations = [];
 
-					for (var i = 0; i < data.length; i++) {
-						if (!data[i].ID || !data[i].AUTHOR || !data[i].TAGS || !data[i].LOCATION || !data[i].ABSTRACT) {
-						continue; // Skip invalid rows
-					}
+				data.forEach((item) => {
+					if (!item.ID || !item.NAME || !item.ABSTRACT) return;
 
-					let authors_html = '';
-						data[i].AUTHOR.split(";").forEach(author => {
-							authors_html += `<a href="/people/#${author}" class="author">
-								<span class="name">${escapeHTML(author.replace("-", " "))}</span>
-							</a>`;
-					});
+					let authors_html = (item.AUTHOR || "").split(";").map(author => `
+						<a href="/people/#${author}" class="author">
+							<span class="name">${escapeHTML(author.replace("-", " "))}</span>
+						</a>`).join("");
 
-					let tags_html = 'class="post ';
+					let tags_html = '';
 					let tags_buttons_html = '';
-					data[i].TAGS.split(";").forEach(tag => {
-						if (!tag.trim()) return;
-							tags_html += `${tag.trim()} `;
-						if (!visited_tags.includes(tag.trim())) {
-							visited_tags.push(tag.trim());
-							$("#tags").append(`<a href="#" class="button" onclick="filterSelection('${tag.trim()}')">${escapeHTML(tag.trim())}</a>`);
+					(item.TAGS || "").split(";").forEach(tag => {
+						tag = tag.trim();
+						if (!tag) return;
+						tags_html += `${tag} `;
+						if (!visited_tags.includes(tag)) {
+							visited_tags.push(tag);
+							$("#tags").append(`<a href="#" class="button" onclick="filterSelection('${tag}')">${escapeHTML(tag)}</a>`);
 						}
-						tags_buttons_html += `<a href="#" class="button" onclick="filterSelection('${tag.trim()}')">${escapeHTML(tag.trim())}</a> `;
+						tags_buttons_html += `<a href="#" class="button" onclick="filterSelection('${tag}')">${escapeHTML(tag)}</a>`;
 					});
 
-					let articleArr = data[i].ABSTRACT.split(" ");
+					let articleArr = (item.ABSTRACT || "").split(" ");
 					let firstSection = articleArr.slice(0, 45).join(" ");
 					let secondSection = articleArr.slice(45).join(" ");
-					let showMoreBTN = secondSection ? `<button onclick="showMoreText('${data[i].ID}')">Show More</button>` : '';
+					let showMoreBTN = secondSection ? `<button onclick="showMoreText('${item.ID}')">Show More</button>` : '';
 
 					$("#publications").append(`
-						<div style="margin: 0 0 .25em 0;" ${tags_html}>
+						<div style="margin: 0 0 .25em 0;" class="post ${tags_html.trim()}">
 							<header style="margin:-3em 0 -1.1em 0">
 								<div class="title">
-									<h3 id="${data[i].ID}">
-										<a href="${data[i].LINK}">${escapeHTML(data[i].NAME)}</a>
-                                </h3>
-                                ${tags_buttons_html}
+									<h3 id="${item.ID}">
+										<a href="${item.LINK}">${escapeHTML(item.NAME)}</a>
+									</h3>
+									${tags_buttons_html}
 								</div>
 								<div class="meta">
-                                <time class="published">${data[i].DATE}</time>
-                                ${authors_html}
+									<time class="published">${item.DATE}</time>
+									${authors_html}
 								</div>
 							</header>
 							<p style="margin:0;display:block">
 								<span>${escapeHTML(firstSection)}</span>
-								<span class="show" id="${data[i].ID}Dots">...</span>
-								<span class="hide" style="margin:0;" id="${data[i].ID}ShowText">${escapeHTML(secondSection)}</span>
+								<span class="show" id="${item.ID}Dots">...</span>
+								<span class="hide" style="margin:0;" id="${item.ID}ShowText">${escapeHTML(secondSection)}</span>
 								${showMoreBTN}
 							</p>
 						</div>
 					`);
-				}
+				});
+
+				filterSelection("all");
 			})
-			.fail(function (xhr, status, error) {
-				console.error("Error loading publications:", status, error);
-				$("#publications").append("<p>Error loading publications. Please try again later.</p>");
-			});
+        .fail(function (xhr, status, error) {
+            console.error("Error loading publications:", status, error);
+            $("#publications").append("<p>Error loading publications. Please try again later.</p>");
+        });
+	});
+
+	function filterSelection(c) {
+		const posts = document.getElementsByClassName("post");
+		Array.from(posts).forEach(post => {
+			post.classList.add("hide");
+			if (c === "all" || post.className.includes(c)) {
+				post.classList.remove("hide");
+			}
 		});
+	}
 
+	function showMoreText(elementID) {
+		const text = document.getElementById(`${elementID}ShowText`);
+		const dots = document.getElementById(`${elementID}Dots`);
+		if (text) text.className = "show";
+		if (dots) dots.className = "hide";
+	}
 
-		filterSelection("all")
-		function filterSelection(c) {
-			var x, i;
-			//Needs each publication to have the tags be callable
-			x = document.getElementsByClassName("post");
-			if (c == "all") c = "";
-			for (i = 0; i < x.length; i++) {
-				addElement(x[i], "hide");
-				if (x[i].className.indexOf(c) > -1) removeElement(x[i], "hide");
-			}
-		}
-		function addElement(element, name) {
-			var i, arr1, arr2;
-			arr1 = element.className.split(" ");
-			arr2 = name.split(" ");
-			for (i = 0; i < arr2.length; i++) {
-				if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
-			}
-		}
-		function removeElement(element, name) {
-			var i, arr1, arr2;
-			arr1 = element.className.split(" ");
-			arr2 = name.split(" ");
-			for (i = 0; i < arr2.length; i++) {
-				while (arr1.indexOf(arr2[i]) > -1) {
-					arr1.splice(arr1.indexOf(arr2[i]), 1);
-				}
-			}
-			element.className = arr1.join(" ");
-		}
-		function showMoreText(elementID) {
-			x = document.getElementById(elementID + "ShowText");
-			x.className = "show";
-			button = document.getElementById(elementID + "button");
-			button.className = "hide";
-			dots = document.getElementById(elementID + "Dots");
-			dots.className = "hide";
-		}
 	</script>
 </body>
 
