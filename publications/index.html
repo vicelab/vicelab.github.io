@@ -171,10 +171,28 @@
 						: '';
 
 					// --- CITATION: APA-style line under title ---
-					let citation_html = item.CITATION
-						? `<p class="citation" style="margin:.5em 0 1em 0; font-style: italic;">${escapeHTML(item.CITATION)}</p>`
-						: '';
+					let citation_html = "";
+					if (item.CITATION) {
+						// Extract URL at end of citation
+						let citationText = item.CITATION.trim();
+						let urlMatch = citationText.match(/https?:\/\/\S+/);
 
+						if (urlMatch) {
+							let url = urlMatch[0];
+							let citationWithoutURL = citationText.replace(url, "").trim();
+
+							citation_html =
+								`<p class="citation" style="margin:.5em 0 1em 0; font-style: italic;">` +
+									`${escapeHTML(citationWithoutURL)} ` +
+									`<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>` +
+								`</p>`;
+						} else {
+							citation_html =
+								`<p class="citation" style="margin:.5em 0 1em 0; font-style: italic;">` +
+									`${escapeHTML(citationText)}` +
+								`</p>`;
+						}
+}
 					$("#publications").append(`
 						<div style="margin: 0 0 2em 0;" class="post ${tags_classes.trim()} filterDiv">
 							<header style="margin:-3em 0 -1.1em 0">
