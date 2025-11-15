@@ -36,8 +36,7 @@
 				<ul class="links" id="navigation_side">
 				</ul>
 			</section>
-			</section>
-
+		</section>
 
 		<div id="main">
 
@@ -92,23 +91,24 @@
 	}
 
 	$(function () {
-		$.get("../snippets/navigation.html")
-			.then(function (text) {
-				$("#navigation_top").append($.parseHTML(text));
-				$("#navigation_side").append($.parseHTML(text));
-			})
-			.fail(function () {
-				console.error("Failed to load navigation.");
-			});
+	  $.get("../snippets/navigation.html")
+		.then(function (text) {
+		  $("#navigation_top").append($.parseHTML(text));
+		  $("#navigation_side").append($.parseHTML(text));
+		})
+		.fail(function () {
+		  console.error("Failed to load navigation.");
+		});
 
-		$("#footer").load("../snippets/footer.html")
-			.fail(function () {
-				console.error("Failed to load footer.");
-			});
+	  $("#footer").load("../snippets/footer.html", function (response, status, xhr) {
+		if (status === "error") {
+		  console.error("Failed to load footer.", xhr.status, xhr.statusText);
+		}
+	  });
 
-		$.get("/publications.csv")
-			.then(function (text) {
-				var data = $.csv.toObjects(text);
+	  $.get("/publications.csv")
+		.then(function (text) {
+		  var data = $.csv.toObjects(text);
 				var visited_tags = [];
 				var visited_locations = [];
 
@@ -116,59 +116,64 @@
 					// Ensure required fields exist
 					if (!item.ID || !item.NAME || !item.ABSTRACT) return;
 
-					// --- AUTHORS FIX: Use the ID for the URL and clean up the display name ---
+					// --- AUTHORS: use slug for URL, formatted name for display ---
 					let authors_html = (item.AUTHOR || "").split(";").map(author => {
 						author = author.trim();
 						if (!author) return '';
-						// Capitalize and replace dash with space for display name
-						let displayName = author.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+						let displayName = author
+							.split('-')
+							.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+							.join(' ');
 						return `
 							<a href="/people/#${author}" class="author">
 								<span class="name">${escapeHTML(displayName)}</span>
 							</a>`;
 					}).join("");
 
-					// --- TAGS FIX: Collect tags and generate sidebar buttons and inline tags ---
-					let tags_classes = ''; // For filtering classes
-					let tags_buttons_html = ''; // For inline display
+					// --- TAGS: sidebar buttons + inline buttons + filter classes ---
+					let tags_classes = '';
+					let tags_buttons_html = '';
 					(item.TAGS || "").split(";").forEach(tag => {
 						tag = tag.trim();
-						if (!tag) return;
-						tags_classes += `${tag} `; // Used for the class list on the post div
+  						if (!tag) return;
+						tags_classes += `${tag} `;
 						if (!visited_tags.includes(tag)) {
 							visited_tags.push(tag);
-							// Append once to the sidebar, use filterSelection for interaction
-							$("#tags").append(`<a href="#" class="button" onclick="filterSelection('${tag}')">${escapeHTML(tag)}</a>`);
+							$("#tags").append(
+								`<a href="#" class="button" onclick="filterSelection('${tag}')">${escapeHTML(tag)}</a>`
+							);
 						}
-						// Inline buttons for quick filtering
 						tags_buttons_html += `<a href="#" class="button tag-inline" onclick="filterSelection('${tag}')">${escapeHTML(tag)}</a>`;
 					});
-					
-					// --- LOCATION FIX: Collect locations and generate sidebar buttons ---
-					let location_classes = ''; // For filtering classes
+
+					// --- LOCATIONS: sidebar buttons + filter classes ---
+					let location_classes = '';
 					(item.LOCATION || "").split(";").forEach(location => {
 						location = location.trim();
 						if (!location) return;
 						location_classes += `${location} `;
 						if (!visited_locations.includes(location)) {
 							visited_locations.push(location);
-							// Append once to the sidebar, use filterSelection for interaction
-							$("#locations").append(`<a href="#" class="button" onclick="filterSelection('${location}')">${escapeHTML(location)}</a>`);
+							$("#locations").append(
+								`<a href="#" class="button" onclick="filterSelection('${location}')">${escapeHTML(location)}</a>`
+							);
 						}
-						// Add locations to the post's filter class list
+						// Add locations into the main class list so they filter too
 						tags_classes += `${location} `;
 					});
 
-					// --- ABSTRACT/SNIPPET LOGIC FIX: Use the cleaned ABSTRACT field ---
+					// --- ABSTRACT: short/long split with "Show More" ---
 					let articleArr = (item.ABSTRACT || "").split(" ");
-					// Use 50 words for the first section and the rest for the hidden section
 					let firstSection = articleArr.slice(0, 50).join(" ");
 					let secondSection = articleArr.slice(50).join(" ");
-					let showMoreBTN = secondSection ? `<button onclick="showMoreText('${item.ID}')" class="button small">Show More</button>` : '';
+					let showMoreBTN = secondSection
+						? `<button onclick="showMoreText('${item.ID}')" class="button small">Show More</button>`
+						: '';
 
-					// --- CITATION FIELD: Add the new APA citation under the title/meta ---
-					let citation_html = item.CITATION ? `<p class="citation" style="margin:.5em 0 1em 0; font-style: italic;">${escapeHTML(item.CITATION)}</p>` : '';
-
+					// --- CITATION: APA-style line under title ---
+					let citation_html = item.CITATION
+						? `<p class="citation" style="margin:.5em 0 1em 0; font-style: italic;">${escapeHTML(item.CITATION)}</p>`
+						: '';
 
 					$("#publications").append(`
 						<div style="margin: 0 0 2em 0;" class="post ${tags_classes.trim()} filterDiv">
@@ -220,7 +225,7 @@
 		if (text) text.style.display = "inline";
 		if (dots) dots.style.display = "none";
 
-		// Hides the "Show More" button after clicking
+		// Hide the "Show More" button after clicking
 		const button = document.querySelector(`#publications [onclick="showMoreText('${elementID}')"]`);
 		if (button) button.style.display = "none";
 	}
