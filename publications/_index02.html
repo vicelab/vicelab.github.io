@@ -1,4 +1,19 @@
 <!DOCTYPE HTML>
+<!--
+
+########################################################################
+#																	   #
+#	VICELAB.NET, Research Lab of Professor Joshua H. Viers			   #
+#   Hosted via Github Pages (github.com/vicelab)					   #
+#																	   #
+#	This site is built using HTML, with jQuery as a light-weight CMS.  #
+#																	   #
+#	Are you a web developer maintaining this site? Have any questions? #
+#	Email brianhungerman@gmail.com with any questions!				   #
+#																	   #
+########################################################################
+
+-->
 <html>
 
 <head>
@@ -12,8 +27,10 @@
 
 <body class="is-preload">
 
+	<!-- Wrapper -->
 	<div id="wrapper">
 
+		<!-- HEADER [top menu] -->
 		<header id="header">
 			<h1>
 				<a href="../#">VICE Lab</a>
@@ -24,6 +41,12 @@
 			</nav>
 			<nav class="main">
 				<ul>
+					<!-- <li class="search">
+						<a class="fa-search" href="#search">Search</a>
+						<form id="search" method="get" action="#">
+							<input type="text" name="query" placeholder="Search" />
+						</form>
+					</li> -->
 					<li class="menu">
 						<a class="fa-bars" href="#menu">Menu</a>
 					</li>
@@ -31,16 +54,31 @@
 			</nav>
 		</header>
 
+		<!-- MENU [right-side pull-out menu] -->
 		<section id="menu">
+			<!-- <section>
+				<form class="search" method="get" action="#">
+					<input type="text" name="query" placeholder="Search" />
+				</form>
+			</section> -->
 			<section>
 				<ul class="links" id="navigation_side">
 				</ul>
 			</section>
-			</section>
+			<!-- <section>
+				<ul class="actions stacked">
+					<li>
+						<a href="#" class="button large fit">Log In</a>
+					</li>
+				</ul>
+			</section> -->
+		</section>
 
 
+		<!-- Main -->
 		<div id="main">
 
+			<!-- Post -->
 			<article class="post">
 				<header style="border-bottom:0px; margin: -3em 0 0 0">
 					<div class="title">
@@ -56,6 +94,11 @@
 			<article id="publications"></article>
 		</div>
 
+		<!-- <div id="tagfilter"></div> -->
+
+
+
+		<!-- SIDE COLUMN -->
 		<section id="sidebar">
 			<section id="intro">
 				<h2>Tags</h2>
@@ -71,11 +114,13 @@
 			<section class="blurb" id="locations">
 			</section>
 
+			<!-- Footer -->
 			<section id="footer">
 			</section>
 		</section>
 	</div>
 
+	<!-- Scripts -->
 	<script src="/assets/js/jquery.min.js"></script>
 	<script src="/assets/js/jquery.csv.min.js"></script>
 	<script src="/assets/js/browser.min.js"></script>
@@ -113,81 +158,48 @@
 				var visited_locations = [];
 
 				data.forEach((item) => {
-					// Ensure required fields exist
 					if (!item.ID || !item.NAME || !item.ABSTRACT) return;
 
-					// --- AUTHORS FIX: Use the ID for the URL and clean up the display name ---
-					let authors_html = (item.AUTHOR || "").split(";").map(author => {
-						author = author.trim();
-						if (!author) return '';
-						// Capitalize and replace dash with space for display name
-						let displayName = author.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-						return `
-							<a href="/people/#${author}" class="author">
-								<span class="name">${escapeHTML(displayName)}</span>
-							</a>`;
-					}).join("");
+					let authors_html = (item.AUTHOR || "").split(";").map(author => `
+						<a href="/people/#${author}" class="author">
+							<span class="name">${escapeHTML(author.replace("-", " "))}</span>
+						</a>`).join("");
 
-					// --- TAGS FIX: Collect tags and generate sidebar buttons and inline tags ---
-					let tags_classes = ''; // For filtering classes
-					let tags_buttons_html = ''; // For inline display
+					let tags_html = '';
+					let tags_buttons_html = '';
 					(item.TAGS || "").split(";").forEach(tag => {
 						tag = tag.trim();
 						if (!tag) return;
-						tags_classes += `${tag} `; // Used for the class list on the post div
+						tags_html += `${tag} `;
 						if (!visited_tags.includes(tag)) {
 							visited_tags.push(tag);
-							// Append once to the sidebar, use filterSelection for interaction
 							$("#tags").append(`<a href="#" class="button" onclick="filterSelection('${tag}')">${escapeHTML(tag)}</a>`);
 						}
-						// Inline buttons for quick filtering
-						tags_buttons_html += `<a href="#" class="button tag-inline" onclick="filterSelection('${tag}')">${escapeHTML(tag)}</a>`;
-					});
-					
-					// --- LOCATION FIX: Collect locations and generate sidebar buttons ---
-					let location_classes = ''; // For filtering classes
-					(item.LOCATION || "").split(";").forEach(location => {
-						location = location.trim();
-						if (!location) return;
-						location_classes += `${location} `;
-						if (!visited_locations.includes(location)) {
-							visited_locations.push(location);
-							// Append once to the sidebar, use filterSelection for interaction
-							$("#locations").append(`<a href="#" class="button" onclick="filterSelection('${location}')">${escapeHTML(location)}</a>`);
-						}
-						// Add locations to the post's filter class list
-						tags_classes += `${location} `;
+						tags_buttons_html += `<a href="#" class="button" onclick="filterSelection('${tag}')">${escapeHTML(tag)}</a>`;
 					});
 
-					// --- ABSTRACT/SNIPPET LOGIC FIX: Use the cleaned ABSTRACT field ---
 					let articleArr = (item.ABSTRACT || "").split(" ");
-					// Use 50 words for the first section and the rest for the hidden section
-					let firstSection = articleArr.slice(0, 50).join(" ");
-					let secondSection = articleArr.slice(50).join(" ");
-					let showMoreBTN = secondSection ? `<button onclick="showMoreText('${item.ID}')" class="button small">Show More</button>` : '';
-
-					// --- CITATION FIELD: Add the new APA citation under the title/meta ---
-					let citation_html = item.CITATION ? `<p class="citation" style="margin:.5em 0 1em 0; font-style: italic;">${escapeHTML(item.CITATION)}</p>` : '';
-
+					let firstSection = articleArr.slice(0, 45).join(" ");
+					let secondSection = articleArr.slice(45).join(" ");
+					let showMoreBTN = secondSection ? `<button onclick="showMoreText('${item.ID}')">Show More</button>` : '';
 
 					$("#publications").append(`
-						<div style="margin: 0 0 2em 0;" class="post ${tags_classes.trim()} filterDiv">
+						<div style="margin: 0 0 .25em 0;" class="post ${tags_html.trim()}">
 							<header style="margin:-3em 0 -1.1em 0">
 								<div class="title">
 									<h3 id="${item.ID}">
 										<a href="${item.LINK}">${escapeHTML(item.NAME)}</a>
 									</h3>
-									<div class="tags-meta" style="margin-top:.5em;">${tags_buttons_html}</div>
+									${tags_buttons_html}
 								</div>
 								<div class="meta">
 									<time class="published">${item.DATE}</time>
 									${authors_html}
 								</div>
 							</header>
-							${citation_html}
 							<p style="margin:0;display:block">
 								<span>${escapeHTML(firstSection)}</span>
-								<span class="show" id="${item.ID}Dots">${secondSection ? '...' : ''}</span>
+								<span class="show" id="${item.ID}Dots">...</span>
 								<span class="hide" style="margin:0;" id="${item.ID}ShowText">${escapeHTML(secondSection)}</span>
 								${showMoreBTN}
 							</p>
@@ -195,7 +207,6 @@
 					`);
 				});
 
-				// Initialize filtering
 				filterSelection("all");
 			})
         .fail(function (xhr, status, error) {
@@ -207,9 +218,9 @@
 	function filterSelection(c) {
 		const posts = document.getElementsByClassName("post");
 		Array.from(posts).forEach(post => {
-			post.style.display = "none";
+			post.classList.add("hide");
 			if (c === "all" || post.className.includes(c)) {
-				post.style.display = "block";
+				post.classList.remove("hide");
 			}
 		});
 	}
@@ -217,12 +228,8 @@
 	function showMoreText(elementID) {
 		const text = document.getElementById(`${elementID}ShowText`);
 		const dots = document.getElementById(`${elementID}Dots`);
-		if (text) text.style.display = "inline";
-		if (dots) dots.style.display = "none";
-
-		// Hides the "Show More" button after clicking
-		const button = document.querySelector(`#publications [onclick="showMoreText('${elementID}')"]`);
-		if (button) button.style.display = "none";
+		if (text) text.className = "show";
+		if (dots) dots.className = "hide";
 	}
 
 	</script>
