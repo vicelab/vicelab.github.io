@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<!--
+
+########################################################################
+#																	   #
+#	VICELAB.NET, Research Lab of Professor Joshua H. Viers			   #
+#   Hosted via Github Pages (github.com/vicelab)					   #
+#																	   #
+#	This site is built using HTML, with jQuery as a light-weight CMS.  #
+#																	   #
+#	Are you a web developer maintaining this site? Have any questions? #
+#	Email brianhungerman@gmail.com with any questions!				   #
+#																	   #
+########################################################################
+
+-->
+<html>
+
+<head>
+	<title>
+		Publications ~ VICE Lab
+	</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- HEADER [top menu] -->
+		<header id="header">
+			<h1>
+				<a href="../#">VICE Lab</a>
+			</h1>
+			<nav class="links">
+				<ul id="navigation_top">
+				</ul>
+			</nav>
+			<nav class="main">
+				<ul>
+					<!-- <li class="search">
+						<a class="fa-search" href="#search">Search</a>
+						<form id="search" method="get" action="#">
+							<input type="text" name="query" placeholder="Search" />
+						</form>
+					</li> -->
+					<li class="menu">
+						<a class="fa-bars" href="#menu">Menu</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<!-- MENU [right-side pull-out menu] -->
+		<section id="menu">
+			<!-- <section>
+				<form class="search" method="get" action="#">
+					<input type="text" name="query" placeholder="Search" />
+				</form>
+			</section> -->
+			<section>
+				<ul class="links" id="navigation_side">
+				</ul>
+			</section>
+			<!-- <section>
+				<ul class="actions stacked">
+					<li>
+						<a href="#" class="button large fit">Log In</a>
+					</li>
+				</ul>
+			</section> -->
+		</section>
+
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Post -->
+			<article class="post">
+				<header style="border-bottom:0px; margin: -3em 0 0 0">
+					<div class="title">
+						<h2>
+							<a href="#">Publications</a>
+						</h2>
+						<p>See the papers that VICE Lab has produced!</p>
+					</div>
+				</header>
+
+			</article>
+
+			<article id="publications"></article>
+		</div>
+
+		<!-- <div id="tagfilter"></div> -->
+
+
+
+		<!-- SIDE COLUMN -->
+		<section id="sidebar">
+			<section id="intro">
+				<h2>Tags</h2>
+			</section>
+
+			<section class="blurb" id="tags">
+			</section>
+
+			<section id="intro">
+				<h2>Locations</h2>
+			</section>
+
+			<section class="blurb" id="locations">
+			</section>
+
+			<!-- Footer -->
+			<section id="footer">
+			</section>
+		</section>
+	</div>
+
+	<!-- Scripts -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/jquery.csv.min.js"></script>
+	<script src="/assets/js/browser.min.js"></script>
+	<script src="/assets/js/breakpoints.min.js"></script>
+	<script src="/assets/js/util.js"></script>
+	<script src="/assets/js/main.js"></script>
+	<script>
+		$(function () {
+			$.get("../snippets/navigation.html").then(function (text) {
+				$("#navigation_top").append($.parseHTML(text));
+				$("#navigation_side").append($.parseHTML(text));
+			});
+
+			$("#footer").load("../snippets/footer.html");
+
+			$.get("/publications.csv")
+				.then(function (text) {
+					var data = $.csv.toObjects(text);
+					var visited_tags = [];
+					var visited_locations = [];
+
+					for (var i = 0; i < data.length; i++) {
+						if (!data[i].ID || !data[i].AUTHOR || !data[i].TAGS || !data[i].LOCATION || !data[i].ABSTRACT) {
+						continue; // Skip invalid rows
+					}
+
+					let authors_html = '';
+						data[i].AUTHOR.split(";").forEach(author => {
+							authors_html += `<a href="/people/#${author}" class="author">
+								<span class="name">${escapeHTML(author.replace("-", " "))}</span>
+							</a>`;
+					});
+
+					let tags_html = 'class="post ';
+					let tags_buttons_html = '';
+					data[i].TAGS.split(";").forEach(tag => {
+						if (!tag.trim()) return;
+							tags_html += `${tag.trim()} `;
+						if (!visited_tags.includes(tag.trim())) {
+							visited_tags.push(tag.trim());
+							$("#tags").append(`<a href="#" class="button" onclick="filterSelection('${tag.trim()}')">${escapeHTML(tag.trim())}</a>`);
+						}
+						tags_buttons_html += `<a href="#" class="button" onclick="filterSelection('${tag.trim()}')">${escapeHTML(tag.trim())}</a> `;
+					});
+
+					let articleArr = data[i].ABSTRACT.split(" ");
+					let firstSection = articleArr.slice(0, 45).join(" ");
+					let secondSection = articleArr.slice(45).join(" ");
+					let showMoreBTN = secondSection ? `<button onclick="showMoreText('${data[i].ID}')">Show More</button>` : '';
+
+					$("#publications").append(`
+						<div style="margin: 0 0 .25em 0;" ${tags_html}>
+							<header style="margin:-3em 0 -1.1em 0">
+								<div class="title">
+									<h3 id="${data[i].ID}">
+										<a href="${data[i].LINK}">${escapeHTML(data[i].NAME)}</a>
+                                </h3>
+                                ${tags_buttons_html}
+								</div>
+								<div class="meta">
+                                <time class="published">${data[i].DATE}</time>
+                                ${authors_html}
+								</div>
+							</header>
+							<p style="margin:0;display:block">
+								<span>${escapeHTML(firstSection)}</span>
+								<span class="show" id="${data[i].ID}Dots">...</span>
+								<span class="hide" style="margin:0;" id="${data[i].ID}ShowText">${escapeHTML(secondSection)}</span>
+								${showMoreBTN}
+							</p>
+						</div>
+					`);
+				}
+			})
+			.fail(function (xhr, status, error) {
+				console.error("Error loading publications:", status, error);
+				$("#publications").append("<p>Error loading publications. Please try again later.</p>");
+			});
+		});
+
+
+		filterSelection("all")
+		function filterSelection(c) {
+			var x, i;
+			//Needs each publication to have the tags be callable
+			x = document.getElementsByClassName("post");
+			if (c == "all") c = "";
+			for (i = 0; i < x.length; i++) {
+				addElement(x[i], "hide");
+				if (x[i].className.indexOf(c) > -1) removeElement(x[i], "hide");
+			}
+		}
+		function addElement(element, name) {
+			var i, arr1, arr2;
+			arr1 = element.className.split(" ");
+			arr2 = name.split(" ");
+			for (i = 0; i < arr2.length; i++) {
+				if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+			}
+		}
+		function removeElement(element, name) {
+			var i, arr1, arr2;
+			arr1 = element.className.split(" ");
+			arr2 = name.split(" ");
+			for (i = 0; i < arr2.length; i++) {
+				while (arr1.indexOf(arr2[i]) > -1) {
+					arr1.splice(arr1.indexOf(arr2[i]), 1);
+				}
+			}
+			element.className = arr1.join(" ");
+		}
+		function showMoreText(elementID) {
+			x = document.getElementById(elementID + "ShowText");
+			x.className = "show";
+			button = document.getElementById(elementID + "button");
+			button.className = "hide";
+			dots = document.getElementById(elementID + "Dots");
+			dots.className = "hide";
+		}
+	</script>
+</body>
+
+</html>
