@@ -129,6 +129,7 @@
 
 		function loadModal(id) {
 			if (id != '') {
+				if (!getInfo(id)) { modal.style.display = "none"; window.location.hash = ""; return; }	// stale/unknown person id: do not crash
 				modal.style.display = "block";
 				var logo = document.getElementById('modal-image');
 				logo.src = '/images/people/' + id + '.jpg';
@@ -200,13 +201,13 @@
 				for (var i = 0; i < data.length; i++) {
 					switch (data[i].ID) {
 						case "RESEARCHERS":
-							$("#people").append($.parseHTML('<hr><h2>Researchers<h2><hr>'));
+							$("#people").append($.parseHTML('<hr><h2>Researchers</h2><hr>'));
 							break;
 						case "AFFILIATES":
-							$("#people").append($.parseHTML('<hr><h2>Affiliates<h2><hr>'));
+							$("#people").append($.parseHTML('<hr><h2>Affiliates</h2><hr>'));
 							break;
 						case "ALUMNI":
-							$("#people").append($.parseHTML('<hr><h2>Alumni<h2><hr>'));
+							$("#people").append($.parseHTML('<hr><h2>Alumni</h2><hr>'));
 							break;
 						default:
 							if (data[i].ID.indexOf("//") != 0) {	//ignoring people commented out in .csv file
@@ -219,7 +220,7 @@
 								if (data[i].EMAIL == "") email_html = '<li><a hidden href="mailto:' + data[i].EMAIL + '"class="fa-envelope"><span class="label">Email</span></a></li>';
 								if (data[i].TWITTER == "") twitter_html = '<li><a hidden href="' + data[i].TWITTER + '" class="fa-twitter"><span class="label">Twitter</span></a></li>';
 								if (data[i].GITHUB == "") github_html = '<li><a hidden href="' + data[i].GITHUB + '" class="fa-github"><span class="label">Github</span></a></li>';
-								if (data[i].ID == "josh-viers" || data[i].ID == "leigh-bernacchi" || data[i].ID == "sarah-naumes" || data[i].ID == "nick-santos"){
+								if (data[i].ID == "josh-viers" || data[i].ID == "leigh-bernacchi" || data[i].ID == "nick-santos"){
 									$("#people").append(
 									$.parseHTML(
 										'<a href= "#' + data[i].ID + '">' +
