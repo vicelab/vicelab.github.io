@@ -1,0 +1,25 @@
+<svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TESVER taimen crest">
+  <ellipse cx="100" cy="115" rx="92" ry="108" fill="none" stroke="#cda04a" stroke-width="5"/>
+  <ellipse cx="100" cy="115" rx="83" ry="98" fill="none" stroke="#0d2138" stroke-width="6"/>
+  <ellipse cx="100" cy="115" rx="74" ry="88" fill="#f6f1e4" stroke="#cda04a" stroke-width="1.5"/>
+  <path d="M100 4 L116 22 Q100 34 84 22 Z" fill="#0d2138"/>
+  <circle cx="100" cy="14" r="5" fill="#cda04a"/>
+  <path d="M100 226 L116 208 Q100 196 84 208 Z" fill="#0d2138"/>
+  <circle cx="100" cy="216" r="5" fill="#1f9aa0"/>
+  <rect x="2" y="108" width="15" height="15" transform="rotate(45 9.5 115)" fill="#1f9aa0"/>
+  <rect x="183" y="108" width="15" height="15" transform="rotate(45 190 115)" fill="#1f9aa0"/>
+  <path d="M118 150 L138 118 L150 138 L162 110 L182 150 Z" fill="#cda04a" opacity=".9"/>
+  <path d="M96 168 q24 -10 44 0 q22 10 40 -2" fill="none" stroke="#1f9aa0" stroke-width="7" stroke-linecap="round"/>
+  <path d="M100 182 q24 -8 44 2 q20 8 36 -2" fill="none" stroke="#157f86" stroke-width="5" stroke-linecap="round"/>
+  <path d="M60 150 C44 120 52 86 86 70 C108 60 140 60 162 78 C150 74 120 76 104 92 C128 84 150 92 160 100 C150 100 126 100 112 114 C100 126 92 150 86 168 C78 156 68 152 60 150 Z" fill="#11294b"/>
+  <path d="M70 138 C60 112 70 90 96 80 C112 74 130 76 142 86 C120 86 100 96 92 116 C86 130 80 146 78 158 C74 150 72 144 70 138 Z" fill="#1f9aa0"/>
+  <g fill="#cda04a">
+    <circle cx="92" cy="98" r="2.4"/><circle cx="102" cy="94" r="2.4"/><circle cx="112" cy="92" r="2.4"/>
+    <circle cx="88" cy="110" r="2.4"/><circle cx="98" cy="106" r="2.4"/><circle cx="108" cy="103" r="2.4"/>
+    <circle cx="85" cy="124" r="2.4"/><circle cx="94" cy="120" r="2.4"/>
+    <circle cx="83" cy="138" r="2.4"/>
+  </g>
+  <circle cx="138" cy="84" r="6.5" fill="#f6f1e4"/>
+  <circle cx="138" cy="84" r="3" fill="#11294b"/>
+  <path d="M70 92 q-14 -6 -22 -2 q10 2 16 10 Z" fill="#11294b"/>
+</svg>

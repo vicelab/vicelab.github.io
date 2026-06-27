@@ -1,0 +1,35 @@
+<svg viewBox="0 0 640 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TESVER project">
+  <defs>
+    <radialGradient id="bg" cx="20%" cy="20%" r="110%">
+      <stop offset="0" stop-color="#1B3A63"/>
+      <stop offset="55%" stop-color="#11294B"/>
+      <stop offset="100%" stop-color="#0d2138"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="420" fill="url(#bg)"/>
+  <!-- crest, scaled -->
+  <g transform="translate(70,95) scale(1.0)">
+    <ellipse cx="100" cy="115" rx="92" ry="108" fill="none" stroke="#cda04a" stroke-width="5"/>
+    <ellipse cx="100" cy="115" rx="83" ry="98" fill="none" stroke="#0d2138" stroke-width="6"/>
+    <ellipse cx="100" cy="115" rx="74" ry="88" fill="#f6f1e4" stroke="#cda04a" stroke-width="1.5"/>
+    <path d="M118 150 L138 118 L150 138 L162 110 L182 150 Z" fill="#cda04a" opacity=".9"/>
+    <path d="M96 168 q24 -10 44 0 q22 10 40 -2" fill="none" stroke="#1f9aa0" stroke-width="7" stroke-linecap="round"/>
+    <path d="M100 182 q24 -8 44 2 q20 8 36 -2" fill="none" stroke="#157f86" stroke-width="5" stroke-linecap="round"/>
+    <path d="M60 150 C44 120 52 86 86 70 C108 60 140 60 162 78 C150 74 120 76 104 92 C128 84 150 92 160 100 C150 100 126 100 112 114 C100 126 92 150 86 168 C78 156 68 152 60 150 Z" fill="#11294b"/>
+    <path d="M70 138 C60 112 70 90 96 80 C112 74 130 76 142 86 C120 86 100 96 92 116 C86 130 80 146 78 158 C74 150 72 144 70 138 Z" fill="#1f9aa0"/>
+    <g fill="#cda04a">
+      <circle cx="92" cy="98" r="2.4"/><circle cx="102" cy="94" r="2.4"/><circle cx="112" cy="92" r="2.4"/>
+      <circle cx="88" cy="110" r="2.4"/><circle cx="98" cy="106" r="2.4"/><circle cx="108" cy="103" r="2.4"/>
+      <circle cx="85" cy="124" r="2.4"/><circle cx="94" cy="120" r="2.4"/><circle cx="83" cy="138" r="2.4"/>
+    </g>
+    <circle cx="138" cy="84" r="6.5" fill="#f6f1e4"/>
+    <circle cx="138" cy="84" r="3" fill="#11294b"/>
+  </g>
+  <text x="320" y="180" font-family="Raleway, Arial, sans-serif" font-weight="900" font-size="62"
+        letter-spacing="6" fill="#ffffff">TESVER</text>
+  <text x="322" y="212" font-family="Arial, sans-serif" font-weight="700" font-size="15.5"
+        letter-spacing="1" fill="#1f9aa0">TAIMEN eDNA EXPEDITION</text>
+  <text x="322" y="236" font-family="Arial, sans-serif" font-size="14.5" fill="#D8E0EC">Mongolia's Eg-Uur watershed</text>
+  <rect x="322" y="262" width="250" height="3" fill="#cda04a"/>
+  <text x="322" y="300" font-family="Arial, sans-serif" font-size="13.5" fill="#AEB9C8">eDNA &#183; food webs &#183; landscape change</text>
+</svg>
