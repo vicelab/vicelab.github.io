@@ -121,7 +121,8 @@
 						default:
 							people_data= '';
 							if (data[i].AUTHOR != "") {
-								people_data = '<div class="meta"><a href="people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a></div>'
+								var authorImage = data[i].AUTHOR === "josue-medellin" ? "josue-medellin-azuara" : data[i].AUTHOR;
+								people_data = '<div class="meta"><span class="author"><span class="name">' + data[i].AUTHOR.replaceAll("-", " ") + '</span><img loading="lazy" src="/images/people/' + authorImage + '.jpg" onerror="this.onerror=null;this.src=\'/images/people/no-picture.jpg\'" alt="' + data[i].NAME + ' collaborator portrait" /></span></div>'
 							}
 							$("#collaborators").append(
 								$.parseHTML(
@@ -130,6 +131,8 @@
 							break;
 					}
 				}
+			}).fail(function () {
+				$("#collaborators").append("<p>Unable to load collaborators right now. Please try again later.</p>");
 			});
 			/*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			$("#footer").load("../snippets/footer.html");

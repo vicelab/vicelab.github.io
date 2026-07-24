@@ -120,7 +120,7 @@
 	<script src="../assets/js/util.js"></script>
 	<script src="../assets/js/main.js"></script>
 	<script>
-		var data, news_data, project_data, publication_data;
+		var data = [], news_data = [], project_data = [], publication_data = [];
 
 		var modal = document.getElementById('people-modal');
 		modal.style.display = "none";
@@ -129,16 +129,22 @@
 
 		function loadModal(id) {
 			if (id != '') {
-				if (!getInfo(id)) { modal.style.display = "none"; window.location.hash = ""; return; }	// stale/unknown person id: do not crash
+				var personInfo = getInfo(id);
+				if (!personInfo) { modal.style.display = "none"; window.location.hash = ""; return; }	// stale/unknown person id: do not crash
 				modal.style.display = "block";
 				var logo = document.getElementById('modal-image');
 				logo.src = '/images/people/' + id + '.jpg';
+				logo.alt = personInfo.NAME;
+				logo.onerror = function () {
+					this.onerror = null;
+					this.src = '/images/people/no-picture.jpg';
+				};
 				var name = document.getElementById('modal-name');
-				name.innerHTML = getInfo(id).NAME;
+				name.textContent = personInfo.NAME;
 				var title = document.getElementById('modal-title');
-				title.innerHTML = getInfo(id).TITLE;
+				title.textContent = personInfo.TITLE;
 				var biography = document.getElementById('modal-biography');
-				biography.innerHTML = getInfo(id).BIOGRAPHY + '<hr>'; 
+				biography.innerHTML = personInfo.BIOGRAPHY + '<hr>';
 
 				if (id == "josh-viers") {
 					biography.innerHTML += '<ul class="actions fit"><li><a href="/news" class="button fit">News</a></li><li><a href="/projects" class="button fit">Projects</a></li><li><a href="/publications" class="button fit">Publications</a></li><li><a href="/people" class="button fit">People</a></li><li><a href="/collaborators" class="button fit">Collaborators</a></li></ul>';
@@ -224,33 +230,38 @@
 									$("#people").append(
 									$.parseHTML(
 										'<a href= "#' + data[i].ID + '">' +
-										'<div style="display:inline-block;width:15em;height:100%;"><img class="image featured" style="margin: 0 0 1em 0; height: 240px; width: 240px;" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:4em">' + data[i].NAME + '</h2\><br><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
+										'<div style="display:inline-block;width:15em;height:100%;"><img loading="lazy" class="image featured" style="margin: 0 0 1em 0; height: 240px; width: 240px;" src="/images/people/' + data[i].ID + '.jpg" onerror="this.onerror=null;this.src=\'/images/people/no-picture.jpg\'" alt="' + data[i].NAME + '"/><center><h2 style="height:4em">' + data[i].NAME + '</h2><br><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
 										'</a> '
 									));
 								}else{
 									$("#people").append(
 									$.parseHTML(
 										'<a href= "#' + data[i].ID + '">' +
-										'<div style="display:inline-flex; flex-wrap: wrap;width:15em;height:100%;"><img class="image featured" style="margin: 0 0 1em 0; height: 240px; width: 240px;" src="/images/people/' + data[i].ID + '.jpg" alt=""/><center><h2 style="height:4em">' + data[i].NAME + '</h2\><br><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
+										'<div style="display:inline-flex; flex-wrap: wrap;width:15em;height:100%;"><img loading="lazy" class="image featured" style="margin: 0 0 1em 0; height: 240px; width: 240px;" src="/images/people/' + data[i].ID + '.jpg" onerror="this.onerror=null;this.src=\'/images/people/no-picture.jpg\'" alt="' + data[i].NAME + '"/><center><h2 style="height:4em">' + data[i].NAME + '</h2><br><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
 										'</a> '
 									));
 								}
-								
+
 							}
 							break;
 					}
 				}
 
 				loadModal(window.location.hash.substring(1));
+			}).fail(function () {
+				$("#people").append("<p>Unable to load people right now. Please try again later.</p>");
 			});
-			$.get("/news.csv").then(function (text, status, xhr) {
-				news_data = $.csv.toObjects(text);
-			});
-			$.get("/projects.csv").then(function (text, status, xhr) {
-				project_data = $.csv.toObjects(text);
-			});
-			$.get("/publications.csv").then(function (text, status, xhr) {
-				publication_data = $.csv.toObjects(text);
+			$.when(
+				$.get("/news.csv"),
+				$.get("/projects.csv"),
+				$.get("/publications.csv")
+			).done(function (newsResponse, projectResponse, publicationResponse) {
+				news_data = $.csv.toObjects(newsResponse[0]);
+				project_data = $.csv.toObjects(projectResponse[0]);
+				publication_data = $.csv.toObjects(publicationResponse[0]);
+				loadModal(window.location.hash.substring(1));
+			}).fail(function () {
+				console.error("Unable to load related news, projects, or publications.");
 			});
 
 		});

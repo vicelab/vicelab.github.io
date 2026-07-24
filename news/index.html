@@ -121,20 +121,22 @@
 							'<article class="post">' +
 								'<header>' +
 									'<div class="title">' +
-										'<h2 id ="' + data[i].ID + '">' + data[i].NAME + '</h2>' + 
+										'<h2 id ="' + data[i].ID + '">' + data[i].NAME + '</h2>' +
 									'</div>' +
 									'<div class="meta">' +
-										'<time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' +
-										'<a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a>' + 
+										'<time class="published">' + data[i].DATE + '</time>' +
+										'<a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replaceAll("-", " ") + '</span><img loading="lazy" src="/images/people/' + data[i].AUTHOR + '.jpg" onerror="this.onerror=null;this.src=\'/images/people/no-picture.jpg\'" alt="' + data[i].AUTHOR.replaceAll("-", " ") + '" /></a>' +
 									'</div>'+
 								'</header>' +
 								'<div style="display: block; overflow: auto">' +
-									'<img style= "margin: 0 1em 1em 0; float:left; width: 25%;" class="image featured" src="/images/news/' + data[i].ID + '.jpg" alt="" />' +
+									'<img loading="lazy" style= "margin: 0 1em 1em 0; float:left; width: 25%;" class="image featured" src="/images/news/' + data[i].ID + '.jpg" alt="' + data[i].NAME + '" />' +
 									'<p style="margin:0;">' + data[i].TEXT + '</p>' +
-								'</div>' + 
+								'</div>' +
 							'</article>'
 					));
 				}
+			}).fail(function () {
+				$("#news").append("<p>Unable to load news right now. Please try again later.</p>");
 			});
 			/*Footer: Controlled by HTML snippet in snippets/footer.html*/
 			$("#footer").load("../snippets/footer.html");

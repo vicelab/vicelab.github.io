@@ -228,10 +228,10 @@
 	});
 
 	function filterSelection(c) {
-		const posts = document.getElementsByClassName("post");
+		const posts = document.querySelectorAll("#publications .post");
 		Array.from(posts).forEach(post => {
 			post.style.display = "none";
-			if (c === "all" || post.className.includes(c)) {
+			if (c === "all" || post.classList.contains(c)) {
 				post.style.display = "block";
 			}
 		});
