@@ -164,7 +164,7 @@
 
 			$.get("/news.csv").then(function (text, status, xhr) {
 				var data = $.csv.toObjects(text);
-				for (var i = 0; i < NUMBER_FRONT_PAGE_NEWS; i++) {
+				for (var i = 0; i < Math.min(NUMBER_FRONT_PAGE_NEWS, data.length); i++) {
 					switch (data[i].ID) {
 						default:
 							$("#news").append(
@@ -172,22 +172,24 @@
 									'<article class="post">' +
 										'<header>' +
 											'<div class="title">' +
-												'<h2><a href="/news">' + data[i].NAME + '</a></h2>' + 
+												'<h2><a href="/news">' + data[i].NAME + '</a></h2>' +
 											'</div>' +
 											'<div class="meta">' +
-												'<time class="published" datetime="2015-11-01">' + data[i].DATE + '</time>' +
-												'<a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replace("-", " ") + '</span><img src="/images/people/' + data[i].AUTHOR + '.jpg" alt="" /></a>' + 
+												'<time class="published">' + data[i].DATE + '</time>' +
+												'<a href="/people" class="author"><span class="name">' + data[i].AUTHOR.replaceAll("-", " ") + '</span><img loading="lazy" src="/images/people/' + data[i].AUTHOR + '.jpg" onerror="this.onerror=null;this.src=\'/images/people/no-picture.jpg\'" alt="' + data[i].AUTHOR.replaceAll("-", " ") + '" /></a>' +
 											'</div>'+
 										'</header>' +
 										'<div style="display: block; overflow: auto">' +
-											'<img style= "margin: 0 1em 1em 0; float:left; width: 35%;" class="image featured" src="/images/news/' + data[i].ID + '.jpg" alt="" />' +
+											'<img loading="lazy" style= "margin: 0 1em 1em 0; float:left; width: 35%;" class="image featured" src="/images/news/' + data[i].ID + '.jpg" alt="' + data[i].NAME + '" />' +
 											'<p style="margin:0;">' + data[i].TEXT + '</p>' +
-										'</div>' + 
+										'</div>' +
 									'</article>'
 								));
 							break;
 					}
 				}
+			}).fail(function () {
+				$("#news").append("<p>Unable to load news right now. Please try again later.</p>");
 			});
 			$.get("/projects.csv").then(function (text, status, xhr) {
 				var data = $.csv.toObjects(text);
@@ -200,11 +202,13 @@
 							break;
 						default:
 							$("#projects").append(
-								$.parseHTML('<article class="mini-post"><header><h3><a href="/projects">' + data[i].NAME + '</a></h3><time class="published" datetime="2015-10-18">' + data[i].DATE + '</time><a href="/people" class="author"><img src="/images/people/' + data[i].AUTHOR.split(";")[0] + '.jpg" alt="" /></a></header><a href="/projects" class="image"><img src="images/projects/' + data[i].ID + '.jpg" onerror="this.onerror=null;this.src=\'/images/projects/' + data[i].ID + '.svg\'" alt="" /></a></article>'
+								$.parseHTML('<article class="mini-post"><header><h3><a href="/projects">' + data[i].NAME + '</a></h3><time class="published">' + data[i].DATE + '</time><a href="/people" class="author"><img loading="lazy" src="/images/people/' + data[i].AUTHOR.split(";")[0] + '.jpg" onerror="this.onerror=null;this.src=\'/images/people/no-picture.jpg\'" alt="' + data[i].AUTHOR.split(";")[0].replaceAll("-", " ") + '" /></a></header><a href="/projects" class="image"><img loading="lazy" src="images/projects/' + data[i].ID + '.jpg" onerror="if(this.dataset.fallback){this.onerror=null;this.src=\'/images/people/no-picture.jpg\';}else{this.dataset.fallback=\'1\';this.src=\'/images/projects/' + data[i].ID + '.svg\';}" alt="' + data[i].NAME + '" /></a></article>'
 								));
 							break;
 					}
 				}
+			}).fail(function () {
+				$("#projects").append("<p>Unable to load projects right now. Please try again later.</p>");
 			});
 		});
 	</script>
