@@ -230,14 +230,14 @@
 									$("#people").append(
 									$.parseHTML(
 										'<a href= "#' + data[i].ID + '">' +
-										'<div style="display:inline-block;width:15em;height:100%;"><img loading="lazy" class="image featured" style="margin: 0 0 1em 0; height: 240px; width: 240px;" src="/images/people/' + data[i].ID + '.jpg" onerror="this.onerror=null;this.src=\'/images/people/no-picture.jpg\'" alt="' + data[i].NAME + '"/><center><h2 style="height:4em">' + data[i].NAME + '</h2><br><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
+										'<div style="display:inline-block;vertical-align:top;width:15em;height:100%;"><img loading="lazy" class="image featured" style="margin: 0 0 1em 0; height: 240px; width: 240px;" src="/images/people/' + data[i].ID + '.jpg" onerror="this.onerror=null;this.src=\'/images/people/no-picture.jpg\'" alt="' + data[i].NAME + '"/><center><h2 style="height:4em">' + data[i].NAME + '</h2><br><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
 										'</a> '
 									));
 								}else{
 									$("#people").append(
 									$.parseHTML(
 										'<a href= "#' + data[i].ID + '">' +
-										'<div style="display:inline-flex; flex-wrap: wrap;width:15em;height:100%;"><img loading="lazy" class="image featured" style="margin: 0 0 1em 0; height: 240px; width: 240px;" src="/images/people/' + data[i].ID + '.jpg" onerror="this.onerror=null;this.src=\'/images/people/no-picture.jpg\'" alt="' + data[i].NAME + '"/><center><h2 style="height:4em">' + data[i].NAME + '</h2><br><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
+										'<div style="display:inline-flex; flex-wrap: wrap;vertical-align:top;width:15em;height:100%;"><img loading="lazy" class="image featured" style="margin: 0 0 1em 0; height: 240px; width: 240px;" src="/images/people/' + data[i].ID + '.jpg" onerror="this.onerror=null;this.src=\'/images/people/no-picture.jpg\'" alt="' + data[i].NAME + '"/><center><h2 style="height:4em">' + data[i].NAME + '</h2><br><h3>' + data[i].TITLE + '</h3><ul class="icons">' + email_html + twitter_html + github_html + '</ul></center></div>' +
 										'</a> '
 									));
 								}
